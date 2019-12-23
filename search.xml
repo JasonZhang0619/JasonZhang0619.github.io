@@ -3,10 +3,24 @@
   <entry>
     <title>Gini Index vs Entropy</title>
     <url>/2019/11/28/Entropy/</url>
-    <content><![CDATA[<p><strong>Gini Index</strong> and <strong>Entropy</strong> are two types of measure of <strong>impurity</strong> of distribution which is used in information-gain rules in decision tree. </p>
-<h1 id="Gini-Index"><a href="#Gini-Index" class="headerlink" title="Gini Index"></a>Gini Index</h1><p>The formula for Gini index is direct. Given (k)</p>
-<p>$k$</p>
-<script type="math/tex; mode=display">k</script>]]></content>
+    <content><![CDATA[<p><strong>Gini Index</strong> and <strong>Entropy</strong> are two types of measure of <strong>impurity $I$</strong> (dispersion, inequality) of distribution which is used in information-gain rules in decision tree.<br>Given $k$ categories and corresponding probability $p_k$, <strong>Gini Index</strong> (also called <a href="https://en.wikipedia.org/wiki/Gini_coefficient" target="_blank" rel="noopener">Gini coefficient</a>) is defined as below :</p>
+<script type="math/tex; mode=display">I_{Gini}(p) = \sum_{i=1}^{k}p_i(1-p_i) = 1-\sum_{i=1}^{k}p_i^2 \in (0,?)</script><p>while <strong>Entropy</strong> is defined as below:</p>
+<script type="math/tex; mode=display">I_{Entropy} = -\sum_{i=1}^{k}p_i\log(p_i) \in (0,1)</script><h1 id="Similarity"><a href="#Similarity" class="headerlink" title="Similarity"></a>Similarity</h1><ul>
+<li>formula</li>
+<li>relationship with impurity: The more impurity the distribution is, the larger either measure is.</li>
+</ul>
+<h1 id="Difference"><a href="#Difference" class="headerlink" title="Difference"></a>Difference</h1><ul>
+<li>computing efficiency: Entropy is more computationally heavy due to the log in the equation. </li>
+<li>sensitivity to tiny prob: Entropy is more sensitive to small prob (<0.2) and less sensitive to large prob (>0.2)</li>
+</ul>
+<h1 id="Information-gain-rule"><a href="#Information-gain-rule" class="headerlink" title="Information-gain rule"></a>Information-gain rule</h1><p>Decision tree consists of sequence of decision nodes. In decision tree training algorithm, we recursively determine the decision nodes with respect to </p>
+<ul>
+<li>which feature or variable we use</li>
+<li>where the decision boundary(s) for children nodes, i.e. where to split</li>
+</ul>
+<p>Information-gain rule is the guide for determining the decision nodes. <strong>Information-gain</strong> is defined as the difference of information (impurity) between all children nodes and their parent node. In other words, it measures how much information the splitting takes. Given the parent node $p$ is split into several children nodes $c_i$ by a splitting $T$, the Information-gain is defined as</p>
+<script type="math/tex; mode=display">IG(T,p) = I(p) - \sum_{i}\frac{|c_i|}{|p|}I(c_i)</script><p>where $|a|$ means the number of samples in node $a$.</p>
+]]></content>
   </entry>
   <entry>
     <title>SSC</title>
