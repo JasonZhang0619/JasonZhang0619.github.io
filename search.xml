@@ -4,7 +4,7 @@
     <title>Gini Index vs Entropy</title>
     <url>/2019/11/28/Entropy/</url>
     <content><![CDATA[<p><strong>Gini Index</strong> and <strong>Entropy</strong> are two types of measure of <strong>impurity</strong> of distribution which is used in information-gain rules in decision tree. </p>
-<h1 id="Gini-Index"><a href="#Gini-Index" class="headerlink" title="Gini Index"></a>Gini Index</h1><p>The formula for Gini index is direct. Given $ k $</p>
+<h1 id="Gini-Index"><a href="#Gini-Index" class="headerlink" title="Gini Index"></a>Gini Index</h1><p>The formula for Gini index is direct. Given $k$</p>
 ]]></content>
   </entry>
   <entry>
