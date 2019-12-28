@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-12-23T06:59:24.278Z</updated>
+  <updated>2019-12-27T03:29:59.519Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,13 +17,50 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Hyperparameter tuning</title>
+    <link href="http://yoursite.com/2019/12/25/Hyperparameter/"/>
+    <id>http://yoursite.com/2019/12/25/Hyperparameter/</id>
+    <published>2019-12-26T04:49:08.000Z</published>
+    <updated>2019-12-27T03:29:59.519Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Ensenmble learning</title>
+    <link href="http://yoursite.com/2019/12/23/Ensenmble/"/>
+    <id>http://yoursite.com/2019/12/23/Ensenmble/</id>
+    <published>2019-12-24T05:22:08.000Z</published>
+    <updated>2019-12-28T06:41:58.279Z</updated>
+    
+    <content type="html"><![CDATA[<p>In statistics and machine learning, <a href="https://en.wikipedia.org/wiki/Ensemble_learning" target="_blank" rel="noopener">Ensemble method</a> use <strong>multiple learning algorithms</strong> to obtain better predictive performance than could be obtained from any of the constituent learning algorithms alone.</p><p>For regression task, given a set of regressors $r_i \in \mathcal{R}$ and training data $T$, every $r_i$ can be trained on $T$ and results in a single regression function </p><script type="math/tex; mode=display">y=g(X|c_i,T)</script><p>, denoted as $g_i(X)$. Similarly for classification, given a set of classifiers $c_i \in \mathcal{C}$, every $c_i$ can be trained on $T$ and results in a classification function that estimate the probability(or equivalent) of a given input belonging to every class </p><script type="math/tex; mode=display">y=\arg max_y P(X|y,c_i,T) = which\ max \mathcal{P}(X|c_i,T)</script><p>, $\mathcal{P}(X|c_i,T)$ denoted as $g_i(X)$ which returns a vector of probs. Hense, classification task can also be taken as multi-variate linear regression where the dependent variable is the conditional probability $P(X|y,c_i,T)$.</p><p>Either way, Ensemble learning integrated these learning algorithms by taking a weighted average of $g_i(X)$.</p><script type="math/tex; mode=display">g_{ensemble}=\sum_{i}g_i(X)w_i,\ \sum_{i}w_i=1</script><h1 id="Hard-amp-soft-voting"><a href="#Hard-amp-soft-voting" class="headerlink" title="Hard &amp; soft voting"></a>Hard &amp; soft voting</h1><p>Voting is an idea specific for classification. every learning algorithms is trained on the <strong>whole dataset</strong> and averaged with <strong>equal weight</strong>.</p><p>The soft voting is directly taking the average of prob vectors while the hard voting instead takes the average of one-hot vector transformed from probs vectors. For example, in one binary classification task we ensemble three classifiers, the prob that an observation belongs to class 1 equal (0.45, 0.45, 0.9). With soft voting the average prob is (0.45 + 0.45 + 0.9)/3 = 0.6 while hard voting will return the average prob equal (0 + 0 + 1)/3 = 0.33.</p><img src="/2019/12/23/Ensenmble/voting.PNG" class="" title="voting"><h1 id="Bagging"><a href="#Bagging" class="headerlink" title="Bagging"></a>Bagging</h1><p>Bootstrap aggregating, often abbreviated as bagging, involves having each model in the ensemble vote with <strong>equal weight.</strong> In order to promote model variance, bagging trains each model in the ensemble using a randomly drawn <strong>subset of the training set</strong>.</p><h2 id="OOB-score"><a href="#OOB-score" class="headerlink" title="OOB score??"></a>OOB score??</h2><h1 id="Boosting"><a href="#Boosting" class="headerlink" title="Boosting"></a>Boosting</h1><p>Boosting involves <strong>incrementally</strong> building an ensemble by training each new model instance to <strong>emphasize the training instances mis-classified by previous models</strong>. In some cases, boosting has been shown to yield better accuracy than bagging, but it also tends to be more likely to over-fit the training data.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;In statistics and machine learning, &lt;a href=&quot;https://en.wikipedia.org/wiki/Ensemble_learning&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Ensemble met
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>Gini Index vs Entropy</title>
     <link href="http://yoursite.com/2019/11/28/Entropy/"/>
     <id>http://yoursite.com/2019/11/28/Entropy/</id>
     <published>2019-11-29T02:34:18.000Z</published>
-    <updated>2019-12-23T06:59:24.278Z</updated>
+    <updated>2019-12-24T04:29:32.841Z</updated>
     
-    <content type="html"><![CDATA[<p><strong>Gini Index</strong> and <strong>Entropy</strong> are two types of measure of <strong>impurity $I$</strong> (dispersion, inequality) of distribution which is used in information-gain rules in decision tree.<br>Given $k$ categories and corresponding probability $p_k$, <strong>Gini Index</strong> (also called <a href="https://en.wikipedia.org/wiki/Gini_coefficient" target="_blank" rel="noopener">Gini coefficient</a>) is defined as below :</p><script type="math/tex; mode=display">I_{Gini}(p) = \sum_{i=1}^{k}p_i(1-p_i) = 1-\sum_{i=1}^{k}p_i^2 \in (0,?)</script><p>while <strong>Entropy</strong> is defined as below:</p><script type="math/tex; mode=display">I_{Entropy} = -\sum_{i=1}^{k}p_i\log(p_i) \in (0,1)</script><h1 id="Similarity"><a href="#Similarity" class="headerlink" title="Similarity"></a>Similarity</h1><ul><li>formula</li><li>relationship with impurity: The more impurity the distribution is, the larger either measure is.</li></ul><h1 id="Difference"><a href="#Difference" class="headerlink" title="Difference"></a>Difference</h1><ul><li>computing efficiency: Entropy is more computationally heavy due to the log in the equation. </li><li>sensitivity to tiny prob: Entropy is more sensitive to small prob (<0.2) and less sensitive to large prob (>0.2)</li></ul><h1 id="Information-gain-rule"><a href="#Information-gain-rule" class="headerlink" title="Information-gain rule"></a>Information-gain rule</h1><p>Decision tree consists of sequence of decision nodes. In decision tree training algorithm, we recursively determine the decision nodes with respect to </p><ul><li>which feature or variable we use</li><li>where the decision boundary(s) for children nodes, i.e. where to split</li></ul><p>Information-gain rule is the guide for determining the decision nodes. <strong>Information-gain</strong> is defined as the difference of information (impurity) between all children nodes and their parent node. In other words, it measures how much information the splitting takes. Given the parent node $p$ is split into several children nodes $c_i$ by a splitting $T$, the Information-gain is defined as</p><script type="math/tex; mode=display">IG(T,p) = I(p) - \sum_{i}\frac{|c_i|}{|p|}I(c_i)</script><p>where $|a|$ means the number of samples in node $a$.</p>]]></content>
+    <content type="html"><![CDATA[<p><strong>Gini Index</strong> and <strong>Entropy</strong> are two types of measure of <strong>impurity $I$</strong> (dispersion, inequality or variance) of <strong>categorical</strong> distribution which is used in information-gain rules in decision tree. Given $k$ categories and corresponding probability $p_k$, <strong>Gini Index</strong> (also called <a href="https://en.wikipedia.org/wiki/Gini_coefficient" target="_blank" rel="noopener">Gini coefficient</a>) is defined as below :</p><script type="math/tex; mode=display">I_{Gini}(p) = \sum_{i=1}^{k}p_i(1-p_i) = 1-\sum_{i=1}^{k}p_i^2 \in (0,1-\frac{1}{k})</script><p>while <strong>Entropy</strong> is defined as below:</p><script type="math/tex; mode=display">I_{Entropy}(p) = -\sum_{i=1}^{k}p_i\log(p_i) \in (0,1)</script><h1 id="Similarity"><a href="#Similarity" class="headerlink" title="Similarity"></a>Similarity</h1><ul><li>formula</li><li>relationship with impurity: The more impurity the distribution is, the larger either measure is.</li></ul><h1 id="Difference"><a href="#Difference" class="headerlink" title="Difference"></a>Difference</h1><ul><li>computing efficiency: Entropy is more computationally heavy due to the log in the equation. </li><li>sensitivity to tiny prob: Entropy is more sensitive to small prob (<0.2) and less sensitive to large prob (>0.2), which means <strong>sensitivity to noise</strong> at the same time.</li></ul><h1 id="Information-gain-rule"><a href="#Information-gain-rule" class="headerlink" title="Information-gain rule"></a>Information-gain rule</h1><p>Decision tree consists of sequence of decision nodes. In decision tree training algorithm, we recursively determine the decision nodes with respect to </p><ul><li>which feature or variable we use</li><li>where the decision boundary(s) for children nodes, i.e. where to split</li></ul><p>Information-gain rule is the guide for determining the decision nodes. <strong>Information-gain</strong> is defined as the difference of information (impurity) between all children nodes and their parent node. In other words, <strong>it measures how much information the splitting carries</strong>. Given the parent node $a$ is split into several children nodes $c_i$ by a splitting $T$, the Information-gain is defined as</p><script type="math/tex; mode=display">IG(T,a) = I(p(a)) - \sum_{i}\frac{|c_i|}{|p|}I(p(c_i))</script><p>where $|a|$ means the number of samples in node $a$ and $p(a)$ means the distribution of node $a$.</p><p>The idea of <strong>Information-gain rule</strong> is greedy algorithm. For each node, without other constrains(max depth, nothing to split), we use the splitting that results in <strong>maximum information gain</strong> and we recursively repeat layer by layer, node by node until all nodes contains no information (impurity is 0). It might stop early if there is constrain on the number of layers (max depth). For regression tree where the target variable is continuous, the impurity is measured by <strong>MSE</strong></p>]]></content>
     
     <summary type="html">
     
