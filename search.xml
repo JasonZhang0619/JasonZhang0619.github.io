@@ -145,7 +145,7 @@ w_i^t e^{\alpha_i \times 1}, &\ else\\
 <li>GBDT(SGBDT)<ul>
 <li>first order Taylor approximation on loss function</li>
 <li>training with <strong>pseudo-residuals from predecessor</strong></li>
-<li>training leaf weight according to loss function</li>
+<li>training leaf weight according to loss function but requires <strong>line search</strong></li>
 <li>training partition independently</li>
 <li>introduced stochastic sampling as regularization</li>
 </ul>
