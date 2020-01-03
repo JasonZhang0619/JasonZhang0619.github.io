@@ -356,7 +356,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-01-02 22:32:12" itemprop="dateModified" datetime="2020-01-02T22:32:12-07:00">2020-01-02</time>
+                <time title="Modified: 2020-01-02 22:51:10" itemprop="dateModified" datetime="2020-01-02T22:51:10-07:00">2020-01-02</time>
               </span>
 
           
@@ -434,7 +434,7 @@
 <h3 id="Gradient-Tree-Boosting"><a href="#Gradient-Tree-Boosting" class="headerlink" title="Gradient Tree Boosting"></a>Gradient Tree Boosting</h3><p>Given a known partitions ${R_j^t,\ j=1,\dots,J_t}$ of a CART $g_t$, take $g_t$ and $\Omega(g_t)$ in loss function above, we have</p>
 <script type="math/tex; mode=display">\mathbf{L}(b_j^t|\mathbf{D},R_j^t) =\sum_{j=1}^{J_t}( b_j^t \sum_{\mathbf{x}_i \in R_j^t} L^1 +  (b_j^t)^2 \sum_{\mathbf{x}_i \in R_j^t}\frac{1}{2}L^2 + (b_j^t)^2\frac{1}{2}\lambda) + \eta J</script><p>This is a quadratic form with respect to $b_j^t$, and we can compute the optimal<br>weight $b_j^t$ of region $j$ in $g_t$</p>
 <script type="math/tex; mode=display">b_j^t = -\frac{\sum_{\mathbf{x}_i \in R_j^t} L^1}{\lambda+ \sum_{\mathbf{x}_i \in R_j^t}L^2}</script><p>Once we know the partition, we can always find the best weights by the formula above. If we take it back into the loss function, we can have</p>
-<script type="math/tex; mode=display">\mathbf{L}(R_j^t|\mathbf{D}) = -\frac{1}{2} \frac{(\sum_{\mathbf{x}_i \in R_j^t} L^1)^2}{\lambda+ \sum_{\mathbf{x}_i \in R_j^t}L^2} +\eta J_t</script><p>This is a function only replies on partition. This function(score) is like the impurity<br>score for evaluating decision trees, except that <strong>it is derived for a wider range of objective functions (as long as we can have first and second order derivative)</strong>. </p>
+<script type="math/tex; mode=display">\mathbf{L}(R_j^t|\mathbf{D}) = -\frac{1}{2} \frac{(\sum_{\mathbf{x}_i \in R_j^t} L^1)^2}{\lambda+ \sum_{\mathbf{x}_i \in R_j^t}L^2} +\eta J_t</script><p>This is a function only replies on partition. This function(score) is like the impurity score for evaluating decision trees, except that <strong>it is derived for a wider range of objective functions (as long as we can have first and second order derivative)</strong>. </p>
 <p>Now let`s go talk about the partition <script type="math/tex">\{R_j^t,\ j=1,\dots,J_t\}</script>. Similar to information gain rule in CART, <strong>we can use this score as impurity i.e. indicator for greedy approach to determine a split on region</strong> (leaf split). </p>
 <p>For binary tree, assume that <script type="math/tex">R_{left}</script> and <script type="math/tex">R_{right}</script> are the instance sets of left and right nodes after the split <script type="math/tex">R_{parent}= R_{left}\cup R_{right}</script>. Then the loss reduction after the split is given by</p>
 <script type="math/tex; mode=display">\mathbf{L}_{split}=  \frac{1}{2} [ \frac{(\sum_{\mathbf{x}_i \in R_{left}} L^1)^2}{\lambda+ \sum_{\mathbf{x}_i \in R_{left}}L^2} + \frac{(\sum_{\mathbf{x}_i \in R_{left}} L^1)^2}{\lambda+ \sum_{\mathbf{x}_i \in R_{left}}L^2} -  \frac{(\sum_{\mathbf{x}_i \in R_{parent}} L^1)^2}{\lambda+ \sum_{\mathbf{x}_i \in R_{parent}}L^2}] - \eta</script><p>This also makes XGboost different from GBDT, <strong>not only the leaf of weight but also the partition of regions (leaves) are relevant to loss function</strong>.</p>
