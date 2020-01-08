@@ -51,18 +51,18 @@
   };
 </script>
 
-  <meta name="description" content="Gini Index and Entropy are two types of measure of impurity $I$ (dispersion, inequality or variance) of categorical distribution which is used in information-gain rules in decision tree. Given $k$ cat">
-<meta name="keywords" content="Machine Learning">
+  <meta name="description" content="Babylonian methodTo get the square root of $S$, it proceeds as follows:  Begin with an arbitrary positive starting value $x_0$ (the closer to the actual square root of $S$, the better). $n=0$x_0\appro">
+<meta name="keywords" content="Algorithms">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Gini Index vs Entropy">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;28&#x2F;Entropy&#x2F;index.html">
+<meta property="og:title" content="Methods of computing square roots">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;07&#x2F;square-root&#x2F;index.html">
 <meta property="og:site_name" content="Jiaxin Zhang">
-<meta property="og:description" content="Gini Index and Entropy are two types of measure of impurity $I$ (dispersion, inequality or variance) of categorical distribution which is used in information-gain rules in decision tree. Given $k$ cat">
+<meta property="og:description" content="Babylonian methodTo get the square root of $S$, it proceeds as follows:  Begin with an arbitrary positive starting value $x_0$ (the closer to the actual square root of $S$, the better). $n=0$x_0\appro">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-08T05:14:43.561Z">
+<meta property="og:updated_time" content="2020-01-08T05:13:50.401Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2019/11/28/Entropy/">
+<link rel="canonical" href="http://yoursite.com/2020/01/07/square-root/">
 
 
 <script id="page-configurations">
@@ -76,7 +76,7 @@
   };
 </script>
 
-  <title>Gini Index vs Entropy | Jiaxin Zhang</title>
+  <title>Methods of computing square roots | Jiaxin Zhang</title>
   
 
 
@@ -204,7 +204,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/28/Entropy/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/07/square-root/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -217,7 +217,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Gini Index vs Entropy
+          Methods of computing square roots
         </h1>
 
         <div class="post-meta">
@@ -226,16 +226,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2019-11-28 19:34:18" itemprop="dateCreated datePublished" datetime="2019-11-28T19:34:18-07:00">2019-11-28</time>
+              <time title="Created: 2020-01-07 21:46:07 / Modified: 22:13:50" itemprop="dateCreated datePublished" datetime="2020-01-07T21:46:07-07:00">2020-01-07</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-01-07 22:14:43" itemprop="dateModified" datetime="2020-01-07T22:14:43-07:00">2020-01-07</time>
-              </span>
 
           
 
@@ -248,25 +242,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><strong>Gini Index</strong> and <strong>Entropy</strong> are two types of measure of <strong>impurity $I$</strong> (dispersion, inequality or variance) of <strong>categorical</strong> distribution which is used in information-gain rules in decision tree. Given $k$ categories and corresponding probability $p_k$, <strong>Gini Index</strong> (also called <a href="https://en.wikipedia.org/wiki/Gini_coefficient" target="_blank" rel="noopener">Gini coefficient</a>) is defined as below :</p>
-<script type="math/tex; mode=display">I_{Gini}(p) = \sum_{i=1}^{k}p_i(1-p_i) = 1-\sum_{i=1}^{k}p_i^2 \in (0,1-\frac{1}{k})</script><p>while <strong>Entropy</strong> is defined as below:</p>
-<script type="math/tex; mode=display">I_{Entropy}(p) = -\sum_{i=1}^{k}p_i\log(p_i) \in (0,1)</script><h1 id="Similarity"><a href="#Similarity" class="headerlink" title="Similarity"></a>Similarity</h1><ul>
-<li>formula</li>
-<li>relationship with impurity: The more impurity the distribution is, the larger either measure is.</li>
-</ul>
-<h1 id="Difference"><a href="#Difference" class="headerlink" title="Difference"></a>Difference</h1><ul>
-<li>computing efficiency: Entropy is more computationally heavy due to the log in the equation. </li>
-<li>sensitivity to tiny prob: Entropy is more sensitive to small prob (<0.2) and less sensitive to large prob (>0.2), which means <strong>sensitivity to noise</strong> at the same time.</li>
-</ul>
-<h1 id="Information-gain-rule"><a href="#Information-gain-rule" class="headerlink" title="Information-gain rule"></a>Information-gain rule</h1><p>Decision tree consists of sequence of decision nodes. In decision tree training algorithm, we recursively determine the decision nodes with respect to </p>
+        <h1 id="Babylonian-method"><a href="#Babylonian-method" class="headerlink" title="Babylonian method"></a><a href="https://en.wikipedia.org/wiki/Methods_of_computing_square_roots" target="_blank" rel="noopener">Babylonian method</a></h1><p>To get the square root of $S$, it proceeds as follows:</p>
+<ol>
+<li>Begin with an arbitrary positive starting value $x_0$ (the closer to the actual square root of $S$, the better). $n=0$<script type="math/tex; mode=display">x_0\approx \sqrt{S}</script></li>
+<li>Let $x_{n+1}$ be the average of $x_n$ and $\frac{S}{x_n}$ using the arithmetic mean to approximate the geometric mean).<script type="math/tex; mode=display">x_{n+1}=\frac{1}{2}(x_n+\frac{S}{x_n})</script></li>
+<li>Repeat step 2 until the desired accuracy is achieved.</li>
+</ol>
+<p>Why it makes sense.</p>
+<p>assuming $x$ is the square root of $S$, $f(x)=x^2$, order one Taylor expansion at $x_n$ is: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+f(x) &\approx f(x_n) + f^1(x_n)(x - x_n) \\
+&= x_n^2 + 2x_n(x-x_n)
+\end{aligned}</script><p>Let $f(x) = S$ we have:</p>
+<script type="math/tex; mode=display">xx_n = \frac{1}{2}(x_n^2+S)</script><h1 id="Binary-search"><a href="#Binary-search" class="headerlink" title="Binary search"></a>Binary search</h1><p>The square root of a positive number must lies between this number and $1$. Use binary search to find the upper and lower limits by iterations.</p>
 <ul>
-<li>which feature or variable we use</li>
-<li>where the decision boundary(s) for children nodes, i.e. where to split</li>
+<li>easier to control the granularity by checking the difference between upper and lower limits</li>
+<li>not efficient</li>
 </ul>
-<p>Information-gain rule is the guide for determining the decision nodes. <strong>Information-gain</strong> is defined as the difference of information (impurity) between all children nodes and their parent node. In other words, <strong>it measures how much information the splitting carries</strong>. Given the parent node $a$ is split into several children nodes $c_i$ by a splitting $T$, the Information-gain is defined as</p>
-<script type="math/tex; mode=display">IG(T,a) = I(p(a)) - \sum_{i}\frac{|c_i|}{|p|}I(p(c_i))</script><p>where $|a|$ means the number of samples in node $a$ and $p(a)$ means the distribution of node $a$.</p>
-<p>The idea of <strong>Information-gain rule</strong> is greedy algorithm. For each node, without other constrains(max depth, nothing to split), we use the splitting that results in <strong>maximum information gain</strong> and we recursively repeat layer by layer, node by node until all nodes contains no information (impurity is 0). It might stop early if there is constrain on the number of layers (max depth). For regression tree where the target variable is continuous, the impurity is measured by <strong>MSE</strong></p>
-
+<h1 id="Initialization"><a href="#Initialization" class="headerlink" title="Initialization"></a>Initialization</h1>
     </div>
 
     
@@ -275,24 +268,21 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+              <a href="/tags/Algorithms/" rel="tag"># Algorithms</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2019/11/03/SSC/" rel="next" title="SSC">
-                  <i class="fa fa-chevron-left"></i> SSC
+                <a href="/2020/01/07/python-increment/" rel="next" title="Behaviour of increment and decrement operators in Python">
+                  <i class="fa fa-chevron-left"></i> Behaviour of increment and decrement operators in Python
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2019/12/23/Ensemble/" rel="prev" title="Ensemble learning">
-                  Ensemble learning <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
       </footer>
@@ -331,7 +321,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Similarity"><span class="nav-number">1.</span> <span class="nav-text">Similarity</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Difference"><span class="nav-number">2.</span> <span class="nav-text">Difference</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Information-gain-rule"><span class="nav-number">3.</span> <span class="nav-text">Information-gain rule</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Babylonian-method"><span class="nav-number">1.</span> <span class="nav-text">Babylonian method</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Binary-search"><span class="nav-number">2.</span> <span class="nav-text">Binary search</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Initialization"><span class="nav-number">3.</span> <span class="nav-text">Initialization</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

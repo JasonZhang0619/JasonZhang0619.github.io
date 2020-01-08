@@ -51,15 +51,15 @@
   };
 </script>
 
-  <meta name="description" content="4+ years experience in programming. Familiar with python, SQL server, R, and Git. Highly motivated and humble to learn new things and learn fast with practice. Enjoy teamwork with strong sense of resp">
+  <meta name="description" content="Gaussian Mixture Model is one of clustering model. Clustering is an unsupervised learning problem where we intend to find clusters of points in our dataset that share some common characteristics.   No">
 <meta name="keywords" content="Python, R, SQL, SPSS, Machine Learning, NLP, Statistics, Data Analysis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Gaussian Mixture Model (GMM) and Expectation–Maximization (EM)">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;02&#x2F;GMM&#x2F;index.html">
 <meta property="og:site_name" content="Jiaxin Zhang">
-<meta property="og:description" content="4+ years experience in programming. Familiar with python, SQL server, R, and Git. Highly motivated and humble to learn new things and learn fast with practice. Enjoy teamwork with strong sense of resp">
+<meta property="og:description" content="Gaussian Mixture Model is one of clustering model. Clustering is an unsupervised learning problem where we intend to find clusters of points in our dataset that share some common characteristics.   No">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-03T05:42:17.367Z">
+<meta property="og:updated_time" content="2020-01-04T08:12:31.508Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2020/01/02/GMM/">
@@ -226,10 +226,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-01-02 21:44:47 / Modified: 22:42:17" itemprop="dateCreated datePublished" datetime="2020-01-02T21:44:47-07:00">2020-01-02</time>
+              <time title="Created: 2020-01-02 21:44:47" itemprop="dateCreated datePublished" datetime="2020-01-02T21:44:47-07:00">2020-01-02</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-01-04 01:12:31" itemprop="dateModified" datetime="2020-01-04T01:12:31-07:00">2020-01-04</time>
+              </span>
 
           
 
@@ -242,7 +248,53 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <p>Gaussian Mixture Model is one of clustering model. Clustering is an unsupervised learning problem where we intend to find clusters of points in our dataset that share some common characteristics.  </p>
+<h1 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h1><p>$\mathcal{X}$ input space ($p$ dimensions)<br>$\mathbf{x}$ input variable $\mathbf{x} \in \mathcal{X}$<br>$n$ train sample size<br>$\mathbf{x}_i$ training input, $i= 1, \dots, n$<br>$d(\mathbf{x}_i,\mathbf{x}_j)$ distance between $\mathbf{x}_i,\mathbf{x}_j$<br>$K$ number of clusters<br>$\mathcal{C}(\mathbf{x}_i) = k$ encoder that assigns $\mathbf{x}_i$ to cluster $k$, $k\in \lbrace 1,\dots K\rbrace $<br>$n_k$ sample size for cluster $k$</p>
+<p>The goal of clustering is to partition observations into groups (clusters) so that similar observations should be assigned to same cluster. Assume we expect to have in total $K$ clusters and each one is labeled by an integer $k\in \lbrace 1,\dots K\rbrace$</p>
+<ul>
+<li>Combinatorial algorithm </li>
+</ul>
+<h1 id="K-means"><a href="#K-means" class="headerlink" title="K-means"></a>K-means</h1><p>Combinatorial algorithm assgins each observation to <strong>one and only one group or cluster </strong>without regard to a underlying probability model. This assignment can be characterized by a encoder $\mathcal{C}(\mathbf{x}_i) = k$. Combinatorial algorithm aims to find the particular encoder such that </p>
+<script type="math/tex; mode=display">\min \frac{1}{2}\sum_{k=1}^K \sum_{\mathcal{C}(\mathbf{x}_i) = k} \sum_{\mathcal{C}(\mathbf{x}_j) = k} d(\mathbf{x}_i,\mathbf{x}_j)</script><p>This criterion characterize the extent to which observations assigned to the same cluster tend to be close to another one. It can also be interpreted as “within cluster” distance if we have the decomposition of total pairwise distance as follow</p>
+<script type="math/tex; mode=display">\begin{aligned}
+T=& \frac{1}{2} \sum_{k=1}^K \sum_{i=1}^n \sum_{j=1}^n d(\mathbf{x}_i,\mathbf{x}_j) \\
+ =& \frac{1}{2} \sum_{k=1}^K \sum_{\mathcal{C}(\mathbf{x}_i) = k} (\sum_{\mathcal{C}(\mathbf{x}_j) = k} d(\mathbf{x}_i,\mathbf{x}_j) + \sum_{\mathcal{C}(\mathbf{x}_j) \ne k} d(\mathbf{x}_i,\mathbf{x}_j))\\
+ =& W(\mathcal{C}) + B(\mathcal{C})
+\end{aligned}</script><p>where $W(\mathcal{C})$ is the loss function introduced above called “within cluster” distance and $B(\mathcal{C})$ represents “between cluster” distance. Since $T$ is a constant value given data, minimizing $W(\mathcal{C})$ is equivalent to maximizing $B(\mathcal{C})$</p>
+<p>K-means algorithm is one of the most popular iterative descent clustering method and it defines distance function as squared Euclidean distance.</p>
+<script type="math/tex; mode=display">d(\mathbf{x}_i,\mathbf{x}_j)=\sum_{q=1}^p(x_{iq}-x_{jq})^2 = ||\mathbf{x}_i-\mathbf{x}_j||^2</script><p>Then for each cluster, “within cluster” distance can be simplified</p>
+<script type="math/tex; mode=display">\begin{aligned}
+&\frac{1}{2}\sum_{\mathcal{C}(\mathbf{x}_i) = k}\sum_{\mathcal{C}(\mathbf{x}_j) = k} ||\mathbf{x}_i-\mathbf{x}_j||^2\\ 
+=&\frac{1}{2}\sum_{\mathcal{C}(\mathbf{x}_i) = k}\sum_{\mathcal{C}(\mathbf{x}_j) = k} ||\mathbf{x}_i- \bar{\mathbf{x}}_k - (\mathbf{x}_j -  \bar{\mathbf{x}}_k) ||^2\\
+=&\frac{1}{2}\sum_{\mathcal{C}(\mathbf{x}_i) = k}\sum_{\mathcal{C}(\mathbf{x}_j) = k} ||\mathbf{x}_i- \bar{\mathbf{x}}_k||^2  + ||(\mathbf{x}_j -  \bar{\mathbf{x}}_k) ||^2 -2(\mathbf{x}_i- \bar{\mathbf{x}}_k)^T(\mathbf{x}_j -  \bar{\mathbf{x}}_k)\\
+=&\frac{1}{2}\sum_{\mathcal{C}(\mathbf{x}_i) = k} n_k ||\mathbf{x}_i- \bar{\mathbf{x}}_k||^2 +\frac{1}{2}n_k \sum_{\mathcal{C}(\mathbf{x}_j) = k}  ||\mathbf{x}_i- \bar{\mathbf{x}}_k||^2\\& + \sum_{\mathcal{C}(\mathbf{x}_i) = k}(\mathbf{x}_i- \bar{\mathbf{x}}_k)^T \sum_{\mathcal{C}(\mathbf{x}_j) = k}(\mathbf{x}_j - \bar{\mathbf{x}}_k) \\
+=& n_k \sum_{\mathcal{C}(\mathbf{x}_j) = k}  ||\mathbf{x}_i- \bar{\mathbf{x}}_k||^2 
+\end{aligned}</script><p>where $n_k$ is the sample size of cluster $k$ and $\bar{\mathbf{x}}_k$ is the mean vector of cluster $k$. The loss function can be written as</p>
+<script type="math/tex; mode=display">W(\mathcal{C})=\sum_{k=1}^K n_k \sum_{\mathcal{C}(\mathbf{x}_j) = k}  ||\mathbf{x}_i- \bar{\mathbf{x}}_k||^2</script><p>However, for either original loss function or this one using Euclidean distance, it is time consuming with respect to sample size and number of clusters if we enumerate all possible clustering combination.</p>
+<script type="math/tex; mode=display">S(n,K)=\frac{1}{K!}\sum_{k=1}^{K}(-1)^{K-k}\dbinom{K}{k}k^n</script><p>Hence, most clustering models use an iterative greedy descent strategy to find a suboptimal partition. We first initialize a partition and at each iterative step the partition are modified in a way such that loss function (or any criterion) is improved from previous value. </p>
+<h2 id="training-algorithm"><a href="#training-algorithm" class="headerlink" title="training algorithm"></a>training algorithm</h2><ol>
+<li>Initialize a cluster assignment $\mathcal{C^0}$</li>
+<li>For a given assignment $\mathcal{C^t}$, calculate cluster means $\mu_k^t = \bar{\mathbf{x}}_k$ (which minimized the cluster variance)</li>
+<li>Given cluster means $\mu_k^t$, update the assignment $\mathcal{C^{t+1}}$ that assign each observation to the closest cluster mean<script type="math/tex; mode=display">\mathcal{C}^{t+1}(\mathbf{x})=\arg \min_{k}||d(\mathbf{x},\mu_k^t)||</script></li>
+<li>if $\mathcal{C^t}=\mathcal{C}^{t+1}$: return $\mathcal{C}^{t+1}$<br>else: t=t+1, go back to step 2.</li>
+</ol>
+<h1 id="Gaussian-Mixture-Model-GMM"><a href="#Gaussian-Mixture-Model-GMM" class="headerlink" title="Gaussian Mixture Model (GMM)"></a>Gaussian Mixture Model (GMM)</h1><p>Gaussian mixture models are a probabilistic model for representing normally distributed subpopulations within an overall population. GMMs have been used for <strong>feature extraction from speech data</strong>, and have also been used extensively in <strong>object tracking</strong> of multiple objects, where the number of mixture components and their means predict object locations at each frame in a video sequence.<a href="https://brilliant.org/wiki/gaussian-mixture-model/" target="_blank" rel="noopener">GMM</a></p>
+<h2 id="Gaussian-distribution"><a href="#Gaussian-distribution" class="headerlink" title="Gaussian distribution"></a>Gaussian distribution</h2><p>Recall that a (Multi-dimensional) Gaussian distribution is determined by two parameters: mean vector $\mu$ and covariance matrix $\Sigma$. The density function $\mathcal{N}(\mathbf{x}|\mu,\Sigma)$ is</p>
+<script type="math/tex; mode=display">\mathcal{N}(\mathbf{x}|\mu,\Sigma)
+=\frac{1}{\sqrt{2\pi|\Sigma|}}
+\exp(-\frac{1}{2}(\mathbf{x}-\mu)^T\Sigma^{-1}(\mathbf{x}-\mu))</script><p>We can fit a single Gaussian distribution to a dataset $\mathbf{D}=\lbrace\mathbf{x}_i \rbrace$ by maximizing the likelihood (if no prior) and get the MLE estimator of $\mu$ and $\Sigma$.</p>
+<script type="math/tex; mode=display">\begin{aligned}
+L(\mu,\Sigma|\mathbf{D})=&\prod_{i=1}^n \mathcal{N}(\mathbf{x}|\mu,\Sigma)\\
+=& (2\pi|\Sigma|)^{-\frac{n}{2}} \exp (\sum_{i=1}^n -\frac{1}{2}(\mathbf{x}_i-\mu)^T\Sigma^{-1}(\mathbf{x}_i-\mu) )
+\end{aligned}</script><p>We know that the optimal parameter estimate is </p>
+<script type="math/tex; mode=display">\hat{\mu}= \bar{\mathbf{x}}_i</script><script type="math/tex; mode=display">\hat{\Sigma}= \frac{1}{n}\sum_{i=1}^n (\mathbf{x}_i - \hat{\mu})(\mathbf{x}_i - \hat{\mu})^T</script><h2 id="Gaussian-Mixture"><a href="#Gaussian-Mixture" class="headerlink" title="Gaussian Mixture"></a>Gaussian Mixture</h2><p>In clustering scenario, we have data clustered with patterns and it is absolutely bad idea to fit our data in one Gaussian Distribution. Instead, we assume we have several Gaussian Distributions with different parameters and our data are sampled from a distribution mixed by them. </p>
+<p>The mixture is imposed on density function</p>
+<script type="math/tex; mode=display">p(x|\mu_{\cdot},\Sigma_{\cdot},\alpha_{\cdot})=\sum_{k=1}^K\alpha_k\mathcal{N}(\mathbf{x}|\mu_k,\Sigma_k), \ \sum_{k=1}^K\alpha_k=1</script><p>We can still fit a Gaussian Mixture distribution to a dataset $\mathbf{D}=\lbrace\mathbf{x}_i \rbrace$ by maximizing the likelihood</p>
+<script type="math/tex; mode=display">\begin{aligned}
+L(\mu_k,\Sigma_k,\alpha_k|\mathbf{D})=&\prod_{i=1}^n p(\mathbf{x}|\mu_{\cdot},\Sigma_{\cdot},\alpha_{\cdot})\\
+=& 
+\end{aligned}</script><h1 id="EM"><a href="#EM" class="headerlink" title="EM"></a>EM</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://web.stanford.edu/~hastie/ElemStatLearn/" target="_blank" rel="noopener">The Elements of Statistical Learning</a></p>
+
     </div>
 
     
@@ -263,6 +315,9 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+                <a href="/2020/01/07/python-increment/" rel="prev" title="Behaviour of increment and decrement operators in Python">
+                  Behaviour of increment and decrement operators in Python <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
       </footer>
@@ -301,6 +356,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Notation"><span class="nav-number">1.</span> <span class="nav-text">Notation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#K-means"><span class="nav-number">2.</span> <span class="nav-text">K-means</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#training-algorithm"><span class="nav-number">2.1.</span> <span class="nav-text">training algorithm</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Gaussian-Mixture-Model-GMM"><span class="nav-number">3.</span> <span class="nav-text">Gaussian Mixture Model (GMM)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Gaussian-distribution"><span class="nav-number">3.1.</span> <span class="nav-text">Gaussian distribution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gaussian-Mixture"><span class="nav-number">3.2.</span> <span class="nav-text">Gaussian Mixture</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EM"><span class="nav-number">4.</span> <span class="nav-text">EM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -316,9 +372,13 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">posts</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span>
       </div>
   </nav>
 </div>

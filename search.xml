@@ -1,9 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Methods of computing square roots</title>
+    <url>/2020/01/07/square-root/</url>
+    <content><![CDATA[<h1 id="Babylonian-method"><a href="#Babylonian-method" class="headerlink" title="Babylonian method"></a><a href="https://en.wikipedia.org/wiki/Methods_of_computing_square_roots" target="_blank" rel="noopener">Babylonian method</a></h1><p>To get the square root of $S$, it proceeds as follows:</p>
+<ol>
+<li>Begin with an arbitrary positive starting value $x_0$ (the closer to the actual square root of $S$, the better). $n=0$<script type="math/tex; mode=display">x_0\approx \sqrt{S}</script></li>
+<li>Let $x_{n+1}$ be the average of $x_n$ and $\frac{S}{x_n}$ using the arithmetic mean to approximate the geometric mean).<script type="math/tex; mode=display">x_{n+1}=\frac{1}{2}(x_n+\frac{S}{x_n})</script></li>
+<li>Repeat step 2 until the desired accuracy is achieved.</li>
+</ol>
+<p>Why it makes sense.</p>
+<p>assuming $x$ is the square root of $S$, $f(x)=x^2$, order one Taylor expansion at $x_n$ is: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+f(x) &\approx f(x_n) + f^1(x_n)(x - x_n) \\
+&= x_n^2 + 2x_n(x-x_n)
+\end{aligned}</script><p>Let $f(x) = S$ we have:</p>
+<script type="math/tex; mode=display">xx_n = \frac{1}{2}(x_n^2+S)</script><h1 id="Binary-search"><a href="#Binary-search" class="headerlink" title="Binary search"></a>Binary search</h1><p>The square root of a positive number must lies between this number and $1$. Use binary search to find the upper and lower limits by iterations.</p>
+<ul>
+<li>easier to control the granularity by checking the difference between upper and lower limits</li>
+<li>not efficient</li>
+</ul>
+<h1 id="Initialization"><a href="#Initialization" class="headerlink" title="Initialization"></a>Initialization</h1>]]></content>
+      <tags>
+        <tag>Algorithms</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Behaviour of increment and decrement operators in Python</title>
+    <url>/2020/01/07/python-increment/</url>
+    <content><![CDATA[<p>What is the behavior of the pre-increment/decrement operators (++/—) in Python? </p>
+<p>When you want to increment or decrement, you typically want to do that on an integer. Like so:</p>
+<pre><code>b++
+</code></pre><p>But in Python, integers are immutable. That is you can’t change them. This is because the integer objects can be used under several names. Try this:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; b = 5</span><br><span class="line">&gt;&gt;&gt; a = 5</span><br><span class="line">&gt;&gt;&gt; id(a)</span><br><span class="line">162334512</span><br><span class="line">&gt;&gt;&gt; id(b)</span><br><span class="line">162334512</span><br><span class="line">&gt;&gt;&gt; a is b</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+<p>a and b above are actually the same object. If you incremented a, you would also increment b. That’s not what you want. So you have to reassign. Like this:</p>
+<pre><code>b = b + 1
+</code></pre><p>Or simpler:</p>
+<pre><code>b += 1
+</code></pre><p>Which will reassign b to b+1. That is not an increment operator, because it does not increment b, it reassigns it.</p>
+<p>In short: Python behaves differently here, because it is not C, and is not a low level wrapper around machine code, but a high-level dynamic language, where increments don’t make sense, and also are not as necessary as in C, where you use them every time you have a loop, for example.</p>
+<p><a href="https://stackoverflow.com/questions/1485841/behaviour-of-increment-and-decrement-operators-in-python" target="_blank" rel="noopener">Reference</a></p>
+]]></content>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Gaussian Mixture Model (GMM) and Expectation–Maximization (EM)</title>
     <url>/2020/01/02/GMM/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<p>Gaussian Mixture Model is one of clustering model. Clustering is an unsupervised learning problem where we intend to find clusters of points in our dataset that share some common characteristics.  </p>
+<h1 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h1><p>$\mathcal{X}$ input space ($p$ dimensions)<br>$\mathbf{x}$ input variable $\mathbf{x} \in \mathcal{X}$<br>$n$ train sample size<br>$\mathbf{x}_i$ training input, $i= 1, \dots, n$<br>$d(\mathbf{x}_i,\mathbf{x}_j)$ distance between $\mathbf{x}_i,\mathbf{x}_j$<br>$K$ number of clusters<br>$\mathcal{C}(\mathbf{x}_i) = k$ encoder that assigns $\mathbf{x}_i$ to cluster $k$, $k\in \lbrace 1,\dots K\rbrace $<br>$n_k$ sample size for cluster $k$</p>
+<p>The goal of clustering is to partition observations into groups (clusters) so that similar observations should be assigned to same cluster. Assume we expect to have in total $K$ clusters and each one is labeled by an integer $k\in \lbrace 1,\dots K\rbrace$</p>
+<ul>
+<li>Combinatorial algorithm </li>
+</ul>
+<h1 id="K-means"><a href="#K-means" class="headerlink" title="K-means"></a>K-means</h1><p>Combinatorial algorithm assgins each observation to <strong>one and only one group or cluster </strong>without regard to a underlying probability model. This assignment can be characterized by a encoder $\mathcal{C}(\mathbf{x}_i) = k$. Combinatorial algorithm aims to find the particular encoder such that </p>
+<script type="math/tex; mode=display">\min \frac{1}{2}\sum_{k=1}^K \sum_{\mathcal{C}(\mathbf{x}_i) = k} \sum_{\mathcal{C}(\mathbf{x}_j) = k} d(\mathbf{x}_i,\mathbf{x}_j)</script><p>This criterion characterize the extent to which observations assigned to the same cluster tend to be close to another one. It can also be interpreted as “within cluster” distance if we have the decomposition of total pairwise distance as follow</p>
+<script type="math/tex; mode=display">\begin{aligned}
+T=& \frac{1}{2} \sum_{k=1}^K \sum_{i=1}^n \sum_{j=1}^n d(\mathbf{x}_i,\mathbf{x}_j) \\
+ =& \frac{1}{2} \sum_{k=1}^K \sum_{\mathcal{C}(\mathbf{x}_i) = k} (\sum_{\mathcal{C}(\mathbf{x}_j) = k} d(\mathbf{x}_i,\mathbf{x}_j) + \sum_{\mathcal{C}(\mathbf{x}_j) \ne k} d(\mathbf{x}_i,\mathbf{x}_j))\\
+ =& W(\mathcal{C}) + B(\mathcal{C})
+\end{aligned}</script><p>where $W(\mathcal{C})$ is the loss function introduced above called “within cluster” distance and $B(\mathcal{C})$ represents “between cluster” distance. Since $T$ is a constant value given data, minimizing $W(\mathcal{C})$ is equivalent to maximizing $B(\mathcal{C})$</p>
+<p>K-means algorithm is one of the most popular iterative descent clustering method and it defines distance function as squared Euclidean distance.</p>
+<script type="math/tex; mode=display">d(\mathbf{x}_i,\mathbf{x}_j)=\sum_{q=1}^p(x_{iq}-x_{jq})^2 = ||\mathbf{x}_i-\mathbf{x}_j||^2</script><p>Then for each cluster, “within cluster” distance can be simplified</p>
+<script type="math/tex; mode=display">\begin{aligned}
+&\frac{1}{2}\sum_{\mathcal{C}(\mathbf{x}_i) = k}\sum_{\mathcal{C}(\mathbf{x}_j) = k} ||\mathbf{x}_i-\mathbf{x}_j||^2\\ 
+=&\frac{1}{2}\sum_{\mathcal{C}(\mathbf{x}_i) = k}\sum_{\mathcal{C}(\mathbf{x}_j) = k} ||\mathbf{x}_i- \bar{\mathbf{x}}_k - (\mathbf{x}_j -  \bar{\mathbf{x}}_k) ||^2\\
+=&\frac{1}{2}\sum_{\mathcal{C}(\mathbf{x}_i) = k}\sum_{\mathcal{C}(\mathbf{x}_j) = k} ||\mathbf{x}_i- \bar{\mathbf{x}}_k||^2  + ||(\mathbf{x}_j -  \bar{\mathbf{x}}_k) ||^2 -2(\mathbf{x}_i- \bar{\mathbf{x}}_k)^T(\mathbf{x}_j -  \bar{\mathbf{x}}_k)\\
+=&\frac{1}{2}\sum_{\mathcal{C}(\mathbf{x}_i) = k} n_k ||\mathbf{x}_i- \bar{\mathbf{x}}_k||^2 +\frac{1}{2}n_k \sum_{\mathcal{C}(\mathbf{x}_j) = k}  ||\mathbf{x}_i- \bar{\mathbf{x}}_k||^2\\& + \sum_{\mathcal{C}(\mathbf{x}_i) = k}(\mathbf{x}_i- \bar{\mathbf{x}}_k)^T \sum_{\mathcal{C}(\mathbf{x}_j) = k}(\mathbf{x}_j - \bar{\mathbf{x}}_k) \\
+=& n_k \sum_{\mathcal{C}(\mathbf{x}_j) = k}  ||\mathbf{x}_i- \bar{\mathbf{x}}_k||^2 
+\end{aligned}</script><p>where $n_k$ is the sample size of cluster $k$ and $\bar{\mathbf{x}}_k$ is the mean vector of cluster $k$. The loss function can be written as</p>
+<script type="math/tex; mode=display">W(\mathcal{C})=\sum_{k=1}^K n_k \sum_{\mathcal{C}(\mathbf{x}_j) = k}  ||\mathbf{x}_i- \bar{\mathbf{x}}_k||^2</script><p>However, for either original loss function or this one using Euclidean distance, it is time consuming with respect to sample size and number of clusters if we enumerate all possible clustering combination.</p>
+<script type="math/tex; mode=display">S(n,K)=\frac{1}{K!}\sum_{k=1}^{K}(-1)^{K-k}\dbinom{K}{k}k^n</script><p>Hence, most clustering models use an iterative greedy descent strategy to find a suboptimal partition. We first initialize a partition and at each iterative step the partition are modified in a way such that loss function (or any criterion) is improved from previous value. </p>
+<h2 id="training-algorithm"><a href="#training-algorithm" class="headerlink" title="training algorithm"></a>training algorithm</h2><ol>
+<li>Initialize a cluster assignment $\mathcal{C^0}$</li>
+<li>For a given assignment $\mathcal{C^t}$, calculate cluster means $\mu_k^t = \bar{\mathbf{x}}_k$ (which minimized the cluster variance)</li>
+<li>Given cluster means $\mu_k^t$, update the assignment $\mathcal{C^{t+1}}$ that assign each observation to the closest cluster mean<script type="math/tex; mode=display">\mathcal{C}^{t+1}(\mathbf{x})=\arg \min_{k}||d(\mathbf{x},\mu_k^t)||</script></li>
+<li>if $\mathcal{C^t}=\mathcal{C}^{t+1}$: return $\mathcal{C}^{t+1}$<br>else: t=t+1, go back to step 2.</li>
+</ol>
+<h1 id="Gaussian-Mixture-Model-GMM"><a href="#Gaussian-Mixture-Model-GMM" class="headerlink" title="Gaussian Mixture Model (GMM)"></a>Gaussian Mixture Model (GMM)</h1><p>Gaussian mixture models are a probabilistic model for representing normally distributed subpopulations within an overall population. GMMs have been used for <strong>feature extraction from speech data</strong>, and have also been used extensively in <strong>object tracking</strong> of multiple objects, where the number of mixture components and their means predict object locations at each frame in a video sequence.<a href="https://brilliant.org/wiki/gaussian-mixture-model/" target="_blank" rel="noopener">GMM</a></p>
+<h2 id="Gaussian-distribution"><a href="#Gaussian-distribution" class="headerlink" title="Gaussian distribution"></a>Gaussian distribution</h2><p>Recall that a (Multi-dimensional) Gaussian distribution is determined by two parameters: mean vector $\mu$ and covariance matrix $\Sigma$. The density function $\mathcal{N}(\mathbf{x}|\mu,\Sigma)$ is</p>
+<script type="math/tex; mode=display">\mathcal{N}(\mathbf{x}|\mu,\Sigma)
+=\frac{1}{\sqrt{2\pi|\Sigma|}}
+\exp(-\frac{1}{2}(\mathbf{x}-\mu)^T\Sigma^{-1}(\mathbf{x}-\mu))</script><p>We can fit a single Gaussian distribution to a dataset $\mathbf{D}=\lbrace\mathbf{x}_i \rbrace$ by maximizing the likelihood (if no prior) and get the MLE estimator of $\mu$ and $\Sigma$.</p>
+<script type="math/tex; mode=display">\begin{aligned}
+L(\mu,\Sigma|\mathbf{D})=&\prod_{i=1}^n \mathcal{N}(\mathbf{x}|\mu,\Sigma)\\
+=& (2\pi|\Sigma|)^{-\frac{n}{2}} \exp (\sum_{i=1}^n -\frac{1}{2}(\mathbf{x}_i-\mu)^T\Sigma^{-1}(\mathbf{x}_i-\mu) )
+\end{aligned}</script><p>We know that the optimal parameter estimate is </p>
+<script type="math/tex; mode=display">\hat{\mu}= \bar{\mathbf{x}}_i</script><script type="math/tex; mode=display">\hat{\Sigma}= \frac{1}{n}\sum_{i=1}^n (\mathbf{x}_i - \hat{\mu})(\mathbf{x}_i - \hat{\mu})^T</script><h2 id="Gaussian-Mixture"><a href="#Gaussian-Mixture" class="headerlink" title="Gaussian Mixture"></a>Gaussian Mixture</h2><p>In clustering scenario, we have data clustered with patterns and it is absolutely bad idea to fit our data in one Gaussian Distribution. Instead, we assume we have several Gaussian Distributions with different parameters and our data are sampled from a distribution mixed by them. </p>
+<p>The mixture is imposed on density function</p>
+<script type="math/tex; mode=display">p(x|\mu_{\cdot},\Sigma_{\cdot},\alpha_{\cdot})=\sum_{k=1}^K\alpha_k\mathcal{N}(\mathbf{x}|\mu_k,\Sigma_k), \ \sum_{k=1}^K\alpha_k=1</script><p>We can still fit a Gaussian Mixture distribution to a dataset $\mathbf{D}=\lbrace\mathbf{x}_i \rbrace$ by maximizing the likelihood</p>
+<script type="math/tex; mode=display">\begin{aligned}
+L(\mu_k,\Sigma_k,\alpha_k|\mathbf{D})=&\prod_{i=1}^n p(\mathbf{x}|\mu_{\cdot},\Sigma_{\cdot},\alpha_{\cdot})\\
+=& 
+\end{aligned}</script><h1 id="EM"><a href="#EM" class="headerlink" title="EM"></a>EM</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://web.stanford.edu/~hastie/ElemStatLearn/" target="_blank" rel="noopener">The Elements of Statistical Learning</a></p>
+]]></content>
   </entry>
   <entry>
     <title>Hyperparameter tuning</title>
@@ -192,6 +283,9 @@ w_i^t e^{\alpha_i \times 1}, &\ else\\
 <script type="math/tex; mode=display">IG(T,a) = I(p(a)) - \sum_{i}\frac{|c_i|}{|p|}I(p(c_i))</script><p>where $|a|$ means the number of samples in node $a$ and $p(a)$ means the distribution of node $a$.</p>
 <p>The idea of <strong>Information-gain rule</strong> is greedy algorithm. For each node, without other constrains(max depth, nothing to split), we use the splitting that results in <strong>maximum information gain</strong> and we recursively repeat layer by layer, node by node until all nodes contains no information (impurity is 0). It might stop early if there is constrain on the number of layers (max depth). For regression tree where the target variable is continuous, the impurity is measured by <strong>MSE</strong></p>
 ]]></content>
+      <tags>
+        <tag>Machine Learning</tag>
+      </tags>
   </entry>
   <entry>
     <title>SSC</title>
