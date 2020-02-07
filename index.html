@@ -203,6 +203,765 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/02/changba/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jiaxin Zhang">
+      <meta itemprop="description" content="4+ years experience in programming. Familiar with python, SQL server, R, and Git. Highly motivated and humble to learn new things and learn fast with practice. Enjoy teamwork with strong sense of responsibility and communication skills, but also able to work individually with high efficiency, strong self-discipline and problem solving ability.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jiaxin Zhang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/02/changba/" class="post-title-link" itemprop="url">Scraping Changba data with python + selenium</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-02-02 19:34:18" itemprop="dateCreated datePublished" datetime="2020-02-02T19:34:18-07:00">2020-02-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-03 15:22:15" itemprop="dateModified" datetime="2020-02-03T15:22:15-07:00">2020-02-03</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line">driver = webdriver.Firefox()</span><br></pre></td></tr></table></figure>
+<h1 id="Scraping-all-work-urls-from-main-personal-page"><a href="#Scraping-all-work-urls-from-main-personal-page" class="headerlink" title="Scraping all work urls from main personal page"></a>Scraping all work urls from main personal page</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">URL = <span class="string">"http://changba.com/u/26936044"</span></span><br><span class="line">driver.get(URL)</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">try</span>: </span><br><span class="line">        driver.find_element_by_id(<span class="string">"loadWork"</span>).click()</span><br><span class="line">    <span class="keyword">except</span>: </span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line"><span class="comment">#the main page only shows your most recent works which is only part of the whole list</span></span><br><span class="line"><span class="comment">#we need to keep clicking "加載更多" (load more) until we no more available</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># if we only want the name list:</span></span><br><span class="line">work_list=driver.find_element_by_id(<span class="string">'work_list'</span>)</span><br><span class="line">len(work_list.text.split(<span class="string">'\n'</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>837
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># get the list of name and corresponding url</span></span><br><span class="line">WorkUrl_list=[]</span><br><span class="line">works=driver.find_elements_by_class_name(<span class="string">'userPage-work-li'</span>) <span class="comment"># all work nodes belong to this class</span></span><br><span class="line"><span class="comment">#you can also use clearfix which actually works better since the last one does not belongs to this class</span></span><br><span class="line"><span class="keyword">for</span> work <span class="keyword">in</span> works:</span><br><span class="line">    <span class="keyword">try</span>: </span><br><span class="line">        child=work.find_element_by_xpath(<span class="string">".//*"</span>)</span><br><span class="line">	<span class="comment">#By this step i can find the only child (attribute node) with attributes &lt;a href=...&gt;&lt;/a&gt;</span></span><br><span class="line">    <span class="keyword">except</span>: </span><br><span class="line">        <span class="keyword">break</span> <span class="comment">#the last one is blank with no child</span></span><br><span class="line">    name=string.capwords(child.text.split(<span class="string">'【'</span>)[<span class="number">0</span>].lower())<span class="comment">#Name Format</span></span><br><span class="line">    url=child.get_attribute(<span class="string">'href'</span>)</span><br><span class="line">    WorkUrl_list.append((name,url)) <span class="comment"># save a list of tuples [(work name, url)]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">len(WorkUrl_list)</span><br></pre></td></tr></table></figure>
+<pre><code>837
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#for work in works:</span></span><br><span class="line"><span class="comment">#    url=driver.find_element_by_link_text(work.text).get_attribute('href')</span></span><br><span class="line"><span class="comment">#    WorkUrl_list.append((work.text,url))</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd_pages = pd.DataFrame(WorkUrl_list, columns = [<span class="string">'name'</span>, <span class="string">'Page'</span>])</span><br></pre></td></tr></table></figure>
+<h1 id="Scraping-a-page-for-single-work"><a href="#Scraping-a-page-for-single-work" class="headerlink" title="Scraping a page for single work"></a>Scraping a page for single work</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd_pages.loc[<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>name                                           Nasa
+Page    http://changba.com/s/GZr_J5_BvVpGx_odmAqtBQ
+Name: 3, dtype: object
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#scrap some info about this work</span></span><br><span class="line">URL = pd_pages.loc[<span class="number">3</span>].Page <span class="comment"># get url</span></span><br><span class="line">driver.get(URL) <span class="comment"># get page </span></span><br><span class="line">audience=driver.find_element_by_class_name(<span class="string">'audience'</span>).text <span class="comment"># get information in audience node</span></span><br><span class="line">comment=driver.find_element_by_class_name(<span class="string">'comment'</span>).text</span><br><span class="line">presents=driver.find_element_by_class_name(<span class="string">'presents'</span>).text</span><br><span class="line">share=driver.find_element_by_class_name(<span class="string">'share'</span>).text</span><br></pre></td></tr></table></figure>
+<p>Bad new is there is no time info available on the website (unlike phone). The only way we can estimate the submitting time is to use the earliest comment posting time. </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#estimate submitting time</span></span><br><span class="line">times=driver.find_elements_by_class_name(<span class="string">'post-time'</span>) <span class="comment">#get post-time of comments</span></span><br><span class="line"><span class="keyword">if</span> len(times) &gt;<span class="number">0</span>: <span class="comment"># if there is comments</span></span><br><span class="line">    time=pd.Timestamp(times[<span class="number">-1</span>].text) <span class="comment"># take the earliest time</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#locate and scrap the url of this work</span></span><br><span class="line">html=str(requests.get(URL).content)</span><br><span class="line">start, end =re.search(<span class="string">r'http://upscuw.changba.com/\d*\.mp3'</span>,html).span() <span class="comment"># find mp3 file url in raw html</span></span><br><span class="line">song_url=html[start:end]</span><br></pre></td></tr></table></figure>
+<h1 id="For-all-pages"><a href="#For-all-pages" class="headerlink" title="For all pages"></a>For all pages</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium.common.exceptions <span class="keyword">import</span> NoSuchElementException</span><br><span class="line"><span class="comment">#it happens when the page is forbidden</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pd_urls=pd.DataFrame(<span class="literal">None</span>,</span><br><span class="line">                     columns = [<span class="string">'audience'</span>, <span class="string">'comment'</span>,<span class="string">'presents'</span>,<span class="string">'share'</span>,<span class="string">'url'</span>,<span class="string">'Time'</span>],</span><br><span class="line">                     index=pd_pages.index)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> pd_urls.index:</span><br><span class="line">    URL = pd_pages.loc[i].Page</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        driver.get(URL)</span><br><span class="line">        pd_urls.audience[i]=driver.find_element_by_class_name(<span class="string">'audience'</span>).text</span><br><span class="line">        pd_urls.comment[i]=driver.find_element_by_class_name(<span class="string">'comment'</span>).text</span><br><span class="line">        pd_urls.presents[i]=driver.find_element_by_class_name(<span class="string">'presents'</span>).text</span><br><span class="line">        pd_urls.share[i]=driver.find_element_by_class_name(<span class="string">'share'</span>).text</span><br><span class="line">        </span><br><span class="line">        times=driver.find_elements_by_class_name(<span class="string">'post-time'</span>) <span class="comment">#get post-time of comments</span></span><br><span class="line">        <span class="keyword">if</span> len(times) &gt;<span class="number">0</span>: <span class="comment"># if there is comments</span></span><br><span class="line">            pd_urls.Time[i]=pd.Timestamp(times[<span class="number">-1</span>].text) <span class="comment"># take the earliest time</span></span><br><span class="line">        </span><br><span class="line">        html=str(requests.get(URL).content)</span><br><span class="line">        start, end =re.search(<span class="string">r'a="https*://.*\.changba\.com.*/\d*\.mp3'</span>,html).span()</span><br><span class="line">        pd_urls.url[i]=html[start+<span class="number">3</span>:end] <span class="comment"># updated from previous one to be more robost.</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">except</span> NoSuchElementException: <span class="comment"># the work is not permited to access due to sensitive words in name</span></span><br><span class="line">        print(<span class="string">'NoSuchElementException for index '</span>,i)</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    <span class="keyword">except</span> AttributeError: <span class="comment"># no .mp3 file found in html (if there is a mv)</span></span><br><span class="line">        print(<span class="string">'AttributeError for index '</span>,i)</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    <span class="keyword">except</span> KeyboardInterrupt: <span class="comment"># control to stop </span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    time.sleep(<span class="number">2</span>) <span class="comment"># avoid frequent request (previous steps are slow tho)</span></span><br></pre></td></tr></table></figure>
+<pre><code>AttributeError for index  157
+NoSuchElementException for index  171
+NoSuchElementException for index  179
+NoSuchElementException for index  233
+NoSuchElementException for index  394
+AttributeError for index  399
+NoSuchElementException for index  469
+NoSuchElementException for index  478
+NoSuchElementException for index  484
+AttributeError for index  540
+AttributeError for index  541
+NoSuchElementException for index  557
+NoSuchElementException for index  736
+NoSuchElementException for index  790
+AttributeError for index  803
+AttributeError for index  805
+AttributeError for index  808
+AttributeError for index  813
+AttributeError for index  821
+AttributeError for index  822
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">driver.close()</span><br><span class="line">pd_urls.to_csv(<span class="string">'changba_urls.csv'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pd_merge=pd_pages.join(pd_urls)</span><br><span class="line">pd_merge</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>Page</th>
+      <th>audience</th>
+      <th>comment</th>
+      <th>presents</th>
+      <th>share</th>
+      <th>url</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>忘我</td>
+      <td>http://changba.com/s/EXb4wphbN-GY464jDRV_KA</td>
+      <td>64</td>
+      <td>4</td>
+      <td>8</td>
+      <td>0</td>
+      <td>http://upuwmp3.changba.com/userdata/userwork/9...</td>
+      <td>2019-12-29 00:00:00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Real Friends</td>
+      <td>http://changba.com/s/FBZMCWgrLY3sO7sUEFbgSg</td>
+      <td>32</td>
+      <td>0</td>
+      <td>5</td>
+      <td>0</td>
+      <td>http://ksapuw.changba.com/userdata/userwork/81...</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>When I Was Your Man</td>
+      <td>http://changba.com/s/GZr_J5_BvVr4a-ftEiASmw</td>
+      <td>29</td>
+      <td>3</td>
+      <td>4</td>
+      <td>2</td>
+      <td>http://upscuw.changba.com/1208653739.mp3</td>
+      <td>2019-12-29 00:00:00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Nasa</td>
+      <td>http://changba.com/s/GZr_J5_BvVpGx_odmAqtBQ</td>
+      <td>25</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>http://upscuw.changba.com/1208653711.mp3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Scars To Your</td>
+      <td>http://changba.com/s/oTPTKN_3qXjKpIfapWDAAA</td>
+      <td>16</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>http://qiniuuwmp3.changba.com/1208653567.mp3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>832</th>
+      <td>恒星流星</td>
+      <td>http://changba.com/s/lxnKkg0S0RVrwOn6rjxZOg</td>
+      <td>41</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>http://upuwmp3.changba.com/userdata/userwork/8...</td>
+      <td>2013-08-05 00:00:00</td>
+    </tr>
+    <tr>
+      <th>833</th>
+      <td>也许明天</td>
+      <td>http://changba.com/s/z1FbhFD6pZ669cvjWIcqfA</td>
+      <td>106</td>
+      <td>0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>http://upuwmp3.changba.com/userdata/userwork/8...</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>834</th>
+      <td>剪爱</td>
+      <td>http://changba.com/s/TIO4hN908E8Wndka1ntQpQ</td>
+      <td>26</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>http://upuwmp3.changba.com/userdata/userwork/7...</td>
+      <td>2013-08-01 00:00:00</td>
+    </tr>
+    <tr>
+      <th>835</th>
+      <td>空白格</td>
+      <td>http://changba.com/s/co-YKmeP2LT5THi79AR9gQ</td>
+      <td>72</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>http://upuwmp3.changba.com/userdata/userwork/5...</td>
+      <td>2013-08-15 00:00:00</td>
+    </tr>
+    <tr>
+      <th>836</th>
+      <td>Listen</td>
+      <td>http://changba.com/s/BCpW1QzqtJp1bFGVkMadXw</td>
+      <td>63</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>http://upuwmp3.changba.com/userdata/userwork/4...</td>
+      <td>2013-08-01 00:00:00</td>
+    </tr>
+  </tbody>
+</table>
+<p>837 rows × 8 columns</p>
+</div>
+
+
+
+<h2 id="One-interesting-question"><a href="#One-interesting-question" class="headerlink" title="One interesting question"></a>One interesting question</h2><p>Recall that we estimate the submitting time by earliest comment time, some work has <strong>no comment</strong> and some work are firstly commented <strong>later than submitted</strong>. Hence,the time stamps are collected with some <strong>missing time</strong> and some <strong>delayed time</strong> and we want to correct them such that our time stamps should be consistent in <strong>non-increasing order</strong>. How to correct this time series?</p>
+<p>Denote the timesatamps as $t_i$ and our estimate as $\hat{t}_i$, what we are sure about is:</p>
+<ul>
+<li>$t_{i+1}\ge t_i$</li>
+<li>$\hat{t}_i\ge t_i$   if $\hat{t}_i$ is not missing</li>
+<li>we assume that most timestamp estimates including the first and the last one are correct.</li>
+</ul>
+<p>How can we check if a timestamp series is non-increasing?</p>
+<p>A: it is non-increasing everywhere. any adjacent pais is non-increasing.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check_non_increasing</span><span class="params">(times)</span>:</span></span><br><span class="line">    increase=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(times)<span class="number">-1</span>):</span><br><span class="line">        now=i</span><br><span class="line">        before=i+<span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> times[now]&lt;times[before]: <span class="comment"># there is a increase.</span></span><br><span class="line">            increase+=<span class="number">1</span> <span class="comment"># you can also stop and return something here</span></span><br><span class="line">    <span class="keyword">return</span> increase</span><br></pre></td></tr></table></figure>
+<p>There are two extreme ways of correction:</p>
+<ul>
+<li>get the upper bound of corrected time</li>
+</ul>
+<p>for each correction, let it be as large as possible，向前看齊</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pd_merge[<span class="string">'CorrectedTime_U'</span>]=<span class="literal">None</span></span><br><span class="line">earliest_time=pd_merge.Time[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> pd_merge.index:</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">not</span> pd.isna(pd_merge.Time[i]) <span class="keyword">and</span> pd_merge.Time[i] &lt;= earliest_time):</span><br><span class="line">        earliest_time = pd_merge.Time[i]</span><br><span class="line">    pd_merge.CorrectedTime_U[i] = earliest_time</span><br></pre></td></tr></table></figure>
+<ul>
+<li>get the lower bound of corrected time</li>
+</ul>
+<p>for each correction, let it be as small as possible, 向後看齊</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pd_merge[<span class="string">'CorrectedTime_L'</span>]=<span class="literal">None</span></span><br><span class="line">pd_merge[<span class="string">'fault'</span>]=<span class="literal">False</span></span><br><span class="line">earliest_time=pd_merge.Time[<span class="number">0</span>]<span class="comment"># the latest time observed so far</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> pd_merge.index:</span><br><span class="line">    <span class="keyword">if</span> pd.isna(pd_merge.Time[i]) <span class="keyword">or</span> pd_merge.Time[i] &gt; earliest_time:</span><br><span class="line">        pd_merge.fault[i]=<span class="literal">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        earliest_time = pd_merge.Time[i]</span><br></pre></td></tr></table></figure>
+<pre><code>D:\Anoconda\envs\Python\lib\site-packages\ipykernel_launcher.py:6: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">latest_time=pd_merge.Time[<span class="number">836</span>]<span class="comment"># the latest time observed so far</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">836</span>,<span class="number">-1</span>,<span class="number">-1</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> pd_merge.fault[i]:</span><br><span class="line">        latest_time = pd_merge.Time[i]</span><br><span class="line">    pd_merge.CorrectedTime_L[i]=latest_time</span><br></pre></td></tr></table></figure>
+<pre><code>D:\Anoconda\envs\Python\lib\site-packages\ipykernel_launcher.py:5: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  &quot;&quot;&quot;
+</code></pre><p>check if there is still faults</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">check_non_increasing(pd_merge.CorrectedTime_L)</span><br></pre></td></tr></table></figure>
+<pre><code>0
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">check_non_increasing(pd_merge.CorrectedTime_U)</span><br></pre></td></tr></table></figure>
+<pre><code>0
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd_merge</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>Page</th>
+      <th>audience</th>
+      <th>comment</th>
+      <th>presents</th>
+      <th>share</th>
+      <th>url</th>
+      <th>Time</th>
+      <th>CorrectedTime_U</th>
+      <th>CorrectedTime_L</th>
+      <th>fault</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>忘我</td>
+      <td>http://changba.com/s/EXb4wphbN-GY464jDRV_KA</td>
+      <td>64</td>
+      <td>4</td>
+      <td>8</td>
+      <td>0</td>
+      <td>http://upuwmp3.changba.com/userdata/userwork/9...</td>
+      <td>2019-12-29 00:00:00</td>
+      <td>2019-12-29 00:00:00</td>
+      <td>2019-12-29 00:00:00</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Real Friends</td>
+      <td>http://changba.com/s/FBZMCWgrLY3sO7sUEFbgSg</td>
+      <td>32</td>
+      <td>0</td>
+      <td>5</td>
+      <td>0</td>
+      <td>http://ksapuw.changba.com/userdata/userwork/81...</td>
+      <td>NaN</td>
+      <td>2019-12-29 00:00:00</td>
+      <td>2019-12-29 00:00:00</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>When I Was Your Man</td>
+      <td>http://changba.com/s/GZr_J5_BvVr4a-ftEiASmw</td>
+      <td>29</td>
+      <td>3</td>
+      <td>4</td>
+      <td>2</td>
+      <td>http://upscuw.changba.com/1208653739.mp3</td>
+      <td>2019-12-29 00:00:00</td>
+      <td>2019-12-29 00:00:00</td>
+      <td>2019-12-29 00:00:00</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Nasa</td>
+      <td>http://changba.com/s/GZr_J5_BvVpGx_odmAqtBQ</td>
+      <td>25</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>http://upscuw.changba.com/1208653711.mp3</td>
+      <td>NaN</td>
+      <td>2019-12-29 00:00:00</td>
+      <td>2019-12-28 00:00:00</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Scars To Your</td>
+      <td>http://changba.com/s/oTPTKN_3qXjKpIfapWDAAA</td>
+      <td>16</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>http://qiniuuwmp3.changba.com/1208653567.mp3</td>
+      <td>NaN</td>
+      <td>2019-12-29 00:00:00</td>
+      <td>2019-12-28 00:00:00</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>832</th>
+      <td>恒星流星</td>
+      <td>http://changba.com/s/lxnKkg0S0RVrwOn6rjxZOg</td>
+      <td>41</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>http://upuwmp3.changba.com/userdata/userwork/8...</td>
+      <td>2013-08-05 00:00:00</td>
+      <td>2013-08-02 00:00:00</td>
+      <td>2013-08-01 00:00:00</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>833</th>
+      <td>也许明天</td>
+      <td>http://changba.com/s/z1FbhFD6pZ669cvjWIcqfA</td>
+      <td>106</td>
+      <td>0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>http://upuwmp3.changba.com/userdata/userwork/8...</td>
+      <td>NaN</td>
+      <td>2013-08-02 00:00:00</td>
+      <td>2013-08-01 00:00:00</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>834</th>
+      <td>剪爱</td>
+      <td>http://changba.com/s/TIO4hN908E8Wndka1ntQpQ</td>
+      <td>26</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>http://upuwmp3.changba.com/userdata/userwork/7...</td>
+      <td>2013-08-01 00:00:00</td>
+      <td>2013-08-01 00:00:00</td>
+      <td>2013-08-01 00:00:00</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>835</th>
+      <td>空白格</td>
+      <td>http://changba.com/s/co-YKmeP2LT5THi79AR9gQ</td>
+      <td>72</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>http://upuwmp3.changba.com/userdata/userwork/5...</td>
+      <td>2013-08-15 00:00:00</td>
+      <td>2013-08-01 00:00:00</td>
+      <td>2013-08-01 00:00:00</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>836</th>
+      <td>Listen</td>
+      <td>http://changba.com/s/BCpW1QzqtJp1bFGVkMadXw</td>
+      <td>63</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>http://upuwmp3.changba.com/userdata/userwork/4...</td>
+      <td>2013-08-01 00:00:00</td>
+      <td>2013-08-01 00:00:00</td>
+      <td>2013-08-01 00:00:00</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+<p>837 rows × 11 columns</p>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd_merge.to_csv(<span class="string">'changba.csv'</span>,encoding=<span class="string">"utf-8-sig"</span>)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/13/SVM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jiaxin Zhang">
+      <meta itemprop="description" content="4+ years experience in programming. Familiar with python, SQL server, R, and Git. Highly motivated and humble to learn new things and learn fast with practice. Enjoy teamwork with strong sense of responsibility and communication skills, but also able to work individually with high efficiency, strong self-discipline and problem solving ability.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jiaxin Zhang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/01/13/SVM/" class="post-title-link" itemprop="url">Lagrange Duality and SVM</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-01-13 16:15:17" itemprop="dateCreated datePublished" datetime="2020-01-13T16:15:17-07:00">2020-01-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-01-15 20:38:07" itemprop="dateModified" datetime="2020-01-15T20:38:07-07:00">2020-01-15</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Duality-Theory"><a href="#Duality-Theory" class="headerlink" title="Duality Theory"></a><a href="http://www.onmyphd.com/?p=duality.theory" target="_blank" rel="noopener">Duality Theory</a></h1><h2 id="Lagrangian"><a href="#Lagrangian" class="headerlink" title="Lagrangian"></a>Lagrangian</h2><p>Given a standard form problem (not necessarily convex)</p>
+<script type="math/tex; mode=display">\begin{aligned}
+{\rm min}_{x \in \mathcal{R}^p}\ f(x)& \\
+{\rm subject \ to\ } g_i(x)&\le 0, i=1,\dots,n_g\\
+h_i(x)&=0, i=1,\dots,n_h
+\end{aligned} \tag{1}</script><p>The problem, which is defined as the <strong>primal problem</strong>, has equality and inequality constraints. Denote the primal feasible area described by constraint functions <script type="math/tex">g_i</script> and <script type="math/tex">h_i</script> as </p>
+<script type="math/tex; mode=display">\mathcal{D}=(\cap_{i=1}^{n_h}dom\ h_i)\cap(\cap_{i=1}^{n_g}dom\ g_i)</script><p>We define the Lagrangian <script type="math/tex">L:\mathcal{R}^p \times \mathcal{R}_+^{n_g} \times \mathcal{R}^{n_h} \to \mathcal{R}</script></p>
+<script type="math/tex; mode=display">\mathbf{L}(x,\lambda,\nu)= f(x) + \sum_{i=1}^{n_h}\nu_ih_i(x)+  \sum_{i=1}^{n_g}\lambda_ig_i(x)</script><p>This is a weighted sum of objective $f$ and constraint functions $g_i$ and $h_i$, where $\lambda_i \ge 0$ is Lagrange multiplier associated with $g_i(x) \le 0$ and $\nu_i$ is Lagrange multiplier associated with $h_i(x)=0$. If we define the primal function $p(x)$ as follow</p>
+<script type="math/tex; mode=display">
+p(x) = sup_{\lambda\ge 0,\nu}\mathbf{L}(x,\lambda,\nu) = \left\{
+\begin{aligned} f(x) \qquad & {\rm if} \ x \in \mathcal{D}\\
++\infty \qquad & {\rm else}
+\end{aligned}
+\right.
+\tag{2}</script><blockquote>
+<p>Proof: if $g_i(x)\le 0, h_i(x)=0$ any positive $\lambda_i$ makes Lagrangian less while $\nu_i$ does not effect the Lagrangian. Hence, the Sup of Lagrangian must be $f(x)$. On the other hand, if $g_i(x) \ge 0$ or $h_i(x)=0$ for any $i$, we can set corresponding weight as infinity then the Lagrangian can be infinity.</p>
+</blockquote>
+<p>Then we have </p>
+<script type="math/tex; mode=display">\begin{aligned}
+{\rm min}_{x}\ &f(x) \\
+{\rm subject\ to\ }&x\in \mathcal{D}
+\end{aligned} \leftrightarrows
+\begin{aligned}
+{\rm min}_{x}\ &p(x) \\
+{\rm subject\ to\ }&\lambda_i \ge 0
+\end{aligned}</script><p>Hence, the optimization (1) is equivalent to minimizing (2), which in other words is:</p>
+<script type="math/tex; mode=display">\begin{aligned}
+{\rm min}_{x}\ &f(x) \\
+{\rm subject\ to\ }&x\in \mathcal{D}
+\end{aligned} \leftrightarrows
+\begin{aligned}
+{\rm min}_{x}{\rm max}_{\lambda,\nu}\ &\mathbf{L}(x,\lambda,\nu) \\
+{\rm subject\ to\ }&\lambda_i \ge 0
+\end{aligned} \tag{Primal problem}</script><p>The function $p(x)$ (or $f(x)$) is called <strong>primal function</strong> </p>
+<h2 id="Duality"><a href="#Duality" class="headerlink" title="Duality"></a>Duality</h2><p>The <strong>primal problem</strong> maximize Lagrangian with respect to $\lambda,\nu$ first and then maximize with respect to $X$. We can define the <strong>dual problem</strong> by <strong>switching the order of minimize and maximize</strong></p>
+<script type="math/tex; mode=display">\begin{aligned}
+{\rm max}_{\lambda,\nu}{\rm min}_{x}\ &\mathbf{L}(x,\lambda,\nu) \\
+{\rm subject\ to\ }&\lambda_i \ge 0
+\end{aligned}</script><p>Now we define the <strong>dual function</strong>:</p>
+<script type="math/tex; mode=display">q(\lambda,\nu)=\inf_x\mathbf{L}(x,\lambda,\nu)</script><p>The dual problem is equivalent to maximize dual function:</p>
+<script type="math/tex; mode=display">\begin{aligned}
+{\rm max}_{\lambda,\nu}\ &q(\lambda,\nu) \\
+{\rm subject\ to\ }&\lambda_i \ge 0
+\end{aligned} \leftrightarrows
+\begin{aligned}
+{\rm max}_{\lambda,\nu}{\rm min}_{x}\ &\mathbf{L}(x,\lambda,\nu) \\
+{\rm subject\ to\ }&\lambda_i \ge 0
+\end{aligned} \tag{Dual problem}</script><p>Then we have the the lower bound property:</p>
+<script type="math/tex; mode=display">q(\lambda,\nu)=\inf_x\mathbf{L}(x,\lambda,\nu)\le \inf_{x\in \mathcal{D}}\mathbf{L}(x,\lambda,\nu) \le sup_{\lambda\ge 0,\nu}\mathbf{L}(x,\lambda,\nu) = f(x), x\in \mathcal{D}</script><p>It tells us that $q(λ,μ)$ is always smaller than $f(x)$ and, therefore, it serves as a lower bound for the <strong>primal function</strong>.</p>
+<h2 id="Duality-Gap"><a href="#Duality-Gap" class="headerlink" title="Duality Gap"></a>Duality Gap</h2><p>Assume the optimal value of primal problem is $p^\star$. Given a dual feasible $\lambda,\nu$, we can establish a lower bound on the optimal value of primal problem: $p^\star \ge q(\lambda,\nu)$. Hence, we have</p>
+<script type="math/tex; mode=display">0 \le f(x)-p^\star \le f(x) - q(\lambda,\nu)</script><p>Versus, assume optimal value of dual problem is $q^\star$, given a primal feasible $x$ we have</p>
+<script type="math/tex; mode=display">0 \le q^\star - q(\lambda,\nu) \le f(x) - q(\lambda,\nu)</script><p>The difference $f(x) - q(\lambda,\nu)$ is called <strong>duality gap</strong> associated with the primal feasible point $x$ and dual feasible point $\lambda,\nu$ and is always non-negative. If we can find the primal dual feasible point $x^\star, \lambda^\star,\nu^\star$ such that the <strong>duality gap is zero</strong>, then $x^\star$ is primal optimal and $\lambda^\star,\nu^\star$ is dual optimal</p>
+<blockquote>
+<p>Brief proof. When duality gap is zero, $0 \le f(x^\star)-p^\star \le 0$. Hence $f(x^\star)=p^\star$</p>
+</blockquote>
+<p><strong>When the duality gap is zero, we say the problem has a strong duality, otherwise it has a weak duality. </strong> </p>
+<blockquote>
+<p>Strong duality does not hold in general but if the primal problem is convex i.e. of form with $f$ and $g_i$ convex, we usually (but not always) have strong duality. </p>
+</blockquote>
+<script type="math/tex; mode=display">\begin{aligned}
+f(x^\star) &= q(\lambda^\star,\nu^\star) \\
+&= {\rm inf}_{x}(f(x) + \sum_{i=1}^{n_h}\nu_ih_i(x)+  \sum_{i=1}^{n_g}\lambda_ig_i(x))\\
+&\le f(x^\star) + \sum_{i=1}^{n_h}\nu_i^\star \underbrace{h_i(x^\star)}_{=0}+  \sum_{i=1}^{n_g}\underbrace{\lambda_i^\star}_{\ge 0} \underbrace{g_i(x^\star)}_{\le 0 }\\
+&\le f(x^\star)
+\end{aligned}</script><p>We can draw an important conclusion from above:</p>
+<script type="math/tex; mode=display">\sum_{i=1}^{n_g}\lambda_i^\star g_i(x^\star) =0</script><p>Since all terms are non-positive, we conclude that</p>
+<script type="math/tex; mode=display">\lambda_i^\star g_i(x^\star) =0, \quad i=1,\dots,n_g \tag{2}</script><p>This term is known as complementary slackness; it holds any primal optimal $x^\star$ when strong duality holds. We can express this complementary slackness condition as </p>
+<script type="math/tex; mode=display">\lambda_i^\star > 0 \to g_i(x^\star) =0</script><p>or equivalently,</p>
+<script type="math/tex; mode=display">g_i(x^\star) < 0 \to \lambda_i^\star > 0</script><p>Roughly speaking, this means the $i$-th optimal Lagrange multiplier is zero unless the $i$-th constraint is active at the optimum.</p>
+<p>Another conclusion we can draw is that since the third inequality is actually an equality, we conclude that the primal optimal $x^\star$ minimizes the Lagrange $L(x, \lambda^\star,\nu^\star)$ over $x$, which indicates that its gradient must vanish at $x^\star$</p>
+<script type="math/tex; mode=display">\triangledown f(x^\star) + \sum_{i=1}^{n_h}\nu_i^\star\triangledown h_i(x^\star)+  \sum_{i=1}^{n_g}\lambda_i^\star\triangledown g_i(x^\star) =0 \tag{3}</script><h2 id="KKT-Conditions"><a href="#KKT-Conditions" class="headerlink" title="KKT Conditions"></a>KKT Conditions</h2><p>Summarize the conditions above we have: </p>
+<script type="math/tex; mode=display">\begin{aligned}
+g_i(x^\star) & \le 0, \quad i=1,\dots,n_g\\
+h_i(x^\star) & = 0, \quad i=1,\dots,n_h\\
+\lambda_i^\star &\ge 0, \quad i=1,\dots,n_g\\
+\lambda_i^\star g_i(x^\star)& =0, \quad i=1,\dots,n_g\\
+\triangledown f(x^\star) + \sum_{i=1}^{n_h}\nu_i^\star\triangledown h_i(x^\star)+  \sum_{i=1}^{n_g}\lambda_i^\star\triangledown g_i(x^\star) &=0
+\end{aligned}</script><p>These are call <strong>Karush-Kuhn-Tucker (KKT) conditions</strong>. It consists of four parts:</p>
+<ul>
+<li>First two conditions comes from <strong>primal problem</strong></li>
+<li>third one is <strong>non-negative constrain on Lagrange multiplier</strong>. </li>
+<li>the 4-th condition follows equation (2) <strong>complementary slackness</strong>.</li>
+<li>the last one follows equation (3) which is <strong>gradient</strong> vanishing constrain. </li>
+</ul>
+<p>The KKT conditions is necessary when the primal problem is non-convex and is also <strong>sufficient for points to be primal and dual optimal when when the primal problem is convex</strong>. </p>
+<h1 id="Support-Vector-Machine"><a href="#Support-Vector-Machine" class="headerlink" title="Support Vector Machine"></a>Support Vector Machine</h1><p>Support Vector Machine (SVM) has achieved massive success and still keeps popular in many real-world situations especially in high-dimensional classification tasks. The main idea of SVM is to find the best hyperplane that separates two groups of data. So basically it is still a linear classifier. </p>
+<p>Assuming $x_i\in \mathcal{R}^p$ and $y_i\in \lbrace -1,1 \rbrace$, a hyperplane was defined as </p>
+<script type="math/tex; mode=display">\lbrace x:x^T\beta+\beta_0=0\rbrace</script><p>Then the classification function is </p>
+<script type="math/tex; mode=display">g(x)=sign(x^T\beta+\beta_0)</script><p>The <strong>geometric margin</strong> from a point $(x_i,y_i)$ to the hyperplane is </p>
+<script type="math/tex; mode=display">m_i = \frac{|x_i^T\beta+\beta_0|}{\|\beta\|}</script><p>$m_i$ measures the geometric distance from an observation to the hyperplane. </p>
+<p>Hence, we aim to find the hyperplane maximizing the minimum geometric margin</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\max_{\beta \in \mathcal{R}^p,\beta_0 \in \mathcal{R}}m\\ \text{subject to } m_i\ge m,\ &i=1,...,n
+\end{aligned}</script><p>where $m$ is the lower bound of geometric Margins. Alternatively, multiplied $||\beta||$  on both sides, the optimization problem is equivalent to the following form</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\begin{aligned}
+&\max_{\beta \in \mathcal{R}^p,\beta_0 \in \mathcal{R}}m \\ 
+&\text{subject to } |x_i^T\beta+\beta_0|\ge m \|\beta\|
+\end{aligned} 
+\\
+ m=\frac{M}{\|\beta\|} \downarrow &
+\\
+&\begin{aligned}
+&\max_{\beta \in \mathcal{R}^p,\beta_0 \in \mathcal{R}}\frac{M}{\|\beta\|} \\ 
+&\text{subject to } |x_i^T\beta+\beta_0|\ge M,
+\end{aligned}
+\\
+ M=1(i.e. \beta\leftarrow m \beta) \downarrow &
+\\
+&\begin{aligned}
+&\min_{\beta \in \mathcal{R}^p,\beta_0 \in \mathcal{R}}\frac{1}{2}\|\beta\|^2 \\ 
+&\text{subject to } |x_i^T\beta+\beta_0|\ge 1,
+\end{aligned}
+\end{aligned}</script><p>The definition of margin origins from the constrain $|x_i^T\beta+\beta_0|\ge 1$. The <strong>functional margin</strong> of an observation $(x_i,y_i)$ with respect to the hyperplane is defined as </p>
+<script type="math/tex; mode=display">M_i=|x_i^T\beta+\beta_0|=y_i(x_i^T\beta+\beta_0)</script><p>and we have our optimization problem as follow:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\max_{\beta \in \mathcal{R}^p,\beta_0 \in \mathcal{R}}\frac{1}{2}\|\beta\|^2\\ \text{subject to } M_i\ge 1,\ &i=1,...,n
+\end{aligned}\tag{Primal problem}</script><h2 id="Slackness"><a href="#Slackness" class="headerlink" title="Slackness"></a>Slackness</h2><p>When two clusters are not linearly separable or even overlap, a soft constrain is introduced to allow for some points on the wrong side of the hyperplane. As shown below, the optimization problem is modified by introducing the slack variables $\xi$.    </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\min_{\beta \in \mathcal{R}^p,\beta_0 \in \mathcal{R}}\frac{1}{2}\|\beta\|^2\\ \text{subject to } M_i&\ge 1-\xi_i,\ i=1,...,n\\
+\xi_i&\ge 0,\ i=1,...,n;\\
+\sum_{i=1}^{n}\xi_i&\le F
+\end{aligned}</script><p>where $F$ is a constant controlling the total amount of slackness we allow. By introducing slack variables $\xi$, we allow small margins close to the hyperplane with $\xi\in[0,1]$ and even negative margins i.e. $yf(x)&lt;0$ with $\xi\ge 1$.      </p>
+<h2 id="Dual-problem"><a href="#Dual-problem" class="headerlink" title="Dual problem"></a>Dual problem</h2><p>Obviously, this is a convex problem with convex objective function and linear constrain over $\beta,\beta_0$. To find the solution, we firstly get the Lagrangian as follow</p>
+<script type="math/tex; mode=display">
+L((\beta_0,\beta,\xi),(C,\alpha,\mu))= \frac{1}{2}\|\beta\|^2-\sum_{i=1}^{n}\alpha_i(M_i-(1-\xi_i))-\sum_{i=1}^{n}\mu_i\xi_i+C\sum_{i=1}^{n}\xi_i</script><p>where $\alpha_i,\mu_i,C$ are Lagrange multiplier for the constrains and $\xi_i$ are feasible variables and all of them must be positive. Since the constant is independent of any variables, we usually drop the constant term.</p>
+<p>Then the primal problem is </p>
+<script type="math/tex; mode=display">\min_{\beta_0,\beta,\xi}\max_{C,\alpha,\mu}L((\beta_0,\beta,\xi),(C,\alpha,\mu))</script><p>The corresponding <strong>Dual problem</strong> is </p>
+<script type="math/tex; mode=display">\max_{C,\alpha,\mu}\min_{\beta_0,\beta,\xi}L((\beta_0,\beta,\xi),(C,\alpha,\mu))</script><p>By setting the gradient of Lagrangian w.r.t $\beta_0,\beta,\xi$ as 0 we have:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\triangledown_{\beta_0} L =0 &\to  0=\sum_{i=1}^{n}\alpha_iy_i,\\
+\triangledown_{\beta} L =0 &\to \beta=\sum_{i=1}^{n}\alpha_iy_ix_i,\\
+\triangledown_{\xi_i} L =0 &\to \alpha_i=C-\mu_{i},
+\end{aligned}</script><p>we can cancel $\beta,\beta_0, \xi_i$ and also $\mu_i, C$ obtain the Lagrangian as below</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+L((\beta_0,\beta,\xi),(C,\alpha,\mu)) 
+&= \frac{1}{2}\|\beta\|^2
+-\sum_{i=1}^{n}\alpha_i(M_i-(1-\xi_i))
+-\sum_{i=1}^{n}\mu_i\xi_i
++C\sum_{i=1}^{n}\xi_i\\
+&=\frac{1}{2}\|\sum_{i=1}^{n}\alpha_iy_ix_i\|^2 
+-\sum_{i=1}^{n}\alpha_i(y_i(x_i^T(\sum_{j=1}^{n}\alpha_jy_jx_j)+\beta_0)-(1-\xi_i))
++\sum_{i=1}^{n}(C-\mu_i)\xi_i\\
+&=\frac{1}{2}\|\sum_{i=1}^{n}\alpha_iy_ix_i\|^2
+ -\sum_{i=1}^{n}\alpha_i(y_ix_i^T(\sum_{j=1}^{n}\alpha_jy_jx_j)
+ -\sum_{i=1}^{n}\alpha_iy_i\beta_0
+ +\sum_{i=1}^{n}\alpha_i
+ -\sum_{i=1}^{n}\alpha_i\xi_i
+ +\sum_{i=1}^{n}\alpha_i\xi_i\\
+&=\frac{1}{2}\sum_{i=1}^{n}\sum_{j=1}^{n}\alpha_i\alpha_jy_iy_jx_i^Tx_j - \sum_{i=1}^{n}\sum_{j=1}^{n}\alpha_i\alpha_jy_iy_jx_i^Tx_j +\sum_{i=1}^{n}\alpha_i\\
+&=\sum_{i=1}^{n}\alpha_i-\frac{1}{2}\sum_{i=1}^{n}\sum_{j=1}^{n}\alpha_i\alpha_jy_iy_jx_i^Tx_j
+\end{aligned}</script><p>then <strong>Dual problem</strong> is as below</p>
+<script type="math/tex; mode=display">
+\max_{\alpha,\mu,C} \sum_{i=1}^{n}\alpha_i-\frac{1}{2}\sum_{i=1}^{n}\sum_{j=1}^{n}\alpha_i\alpha_jy_iy_jx_i^Tx_j\\
+\text{subject to}\sum_{i=1}^{n}\alpha_iy_i=0</script><p>where the only variable is $\alpha$. Assume we find the unique solution $\alpha_i^*$ for the dual problem. The slope for hyperplane is </p>
+<script type="math/tex; mode=display">\beta^\star=\sum_{i=1}^{n}\alpha_i^\star y_ix_i</script><p>Notice that the slope is only determined by a linear combinations of $y_ix_i$ and those observations with non-zero weights $\alpha_i\ne 0$ is called support vectors.</p>
+<p>To determine a the hyperplane we also <a href="https://zhuanlan.zhihu.com/p/62420593" target="_blank" rel="noopener">require the intercept</a> $\beta_0^*$</p>
+<h2 id="Sequential-minimal-optimization-SMO"><a href="#Sequential-minimal-optimization-SMO" class="headerlink" title="Sequential minimal optimization (SMO)"></a>Sequential minimal optimization (SMO)</h2><h2 id="KKT-conditions"><a href="#KKT-conditions" class="headerlink" title="KKT conditions:"></a>KKT conditions:</h2><p>Now we check the KKT conditions:</p>
+<ul>
+<li>constrains comes from <strong>primal problem</strong><script type="math/tex; mode=display">\begin{aligned}
+M_i-(1-\xi_i)&\ge 0\\
+\xi_i&\ge 0\\
+\sum_{i=1}^{n}\xi_i-F&\le 0
+\end{aligned}</script></li>
+<li><strong>non-negative constrain on Lagrange multiplier</strong>.<script type="math/tex; mode=display">\begin{aligned}
+\alpha_i&\ge 0\\
+\mu_i&\ge 0\\
+C &\ge 0
+\end{aligned}</script></li>
+<li><strong>complementary slackness</strong>.<script type="math/tex; mode=display">\begin{aligned}
+\alpha_i(M_i-(1-\xi_i))&=0\\
+\mu_i\xi_i&=0\\
+C(\sum_{i=1}^{n}\xi_i-F)&=0\\
+\end{aligned}</script></li>
+<li><strong>gradient</strong> vanishing constrain. (must be true by setting gradient as zero)<script type="math/tex; mode=display">
+\begin{aligned}
+\beta_0: 0&=\sum_{i=1}^{n}\alpha_iy_i,\\
+\beta_i: \beta&=\sum_{i=1}^{n}\alpha_iy_ix_i,\\
+\xi_i: \alpha_i&=C-\mu_{i},
+\end{aligned}</script></li>
+</ul>
+<p>Ideally we can use the 6 equations from <strong>complementary slackness</strong> and <strong>gradient</strong> vanishing constrain to <strong>find the one and only optimal solution and verify the other inequalities</strong>, however, it is hard to solve these equations. Although it seems <strong>impossible to get a closed form of optimal solution</strong>, which is why we search it by SMO with iterations, (so far I don’t know how to solve these equations), we can tell that with <strong>six equations and six variables, there must be a solution</strong>. Assuming the solution also follows the inequalities, we can draw the conclusion that the optimal solution we get for dual problem is also for primal problem.</p>
+<p>Actually, it is <strong>not necessary to verify the KKT conditions</strong> since <strong>even if it is not satisfied, the optimal solution of dual problem is still a good estimation of primal problem.</strong></p>
+<h1 id="Kernal-trick"><a href="#Kernal-trick" class="headerlink" title="Kernal trick"></a>Kernal trick</h1><p>So far the optimization is still searching for a linear classifier with the hyperplane defined as ${x:\ f(x)=x^T\beta+\beta_0=0}$ a linear from with respect to x. The “Kernel trick” makes it possible for linear boundaries to lie in a higher dimensional space and to be nonlinear projected on original space. </p>
+<p>We define the basis functions as $h<em>m(x)=,m=1,…,M$ and represent all observations in the new space $h(x_i)=(h_1(x_i),h_2(x_i),…h_M(x_i))$. The hyperplane in this new space is ${x:\ f’(x)=f(h(x))=\sum</em>{i=1}^{n}\alpha_i^<em>y_ih(x_i)^Th(x) + \beta_0^</em>=0}$ and the classification function is still $g(x)=sign(f’(x))$. As observed from the form of hyperplane, the equation is a linear combination of the inner product of $h(x_i)$ and $h(x)$, which is called kernel function.</p>
+<script type="math/tex; mode=display">
+\mathcal{K}(x,y)=h(x)^Th(y)</script><p>There are many types of kernel functions such as polynomial, Gaussian, radial basis and splines. </p>
+<h1 id="Why-Dual-Problem"><a href="#Why-Dual-Problem" class="headerlink" title="Why Dual Problem?"></a>Why Dual Problem?</h1><ul>
+<li>Dual problem has no inequality constrain</li>
+<li>The complexity of primal problem is proportional to dimension while that of dual problem only matters with sample size $n$</li>
+<li>Kernel trick makes dimension even higher.</li>
+</ul>
+<h1 id="Multi-classification"><a href="#Multi-classification" class="headerlink" title="Multi-classification"></a>Multi-classification</h1><p>SVM is also capable of multi-classification and there are three ways based on binary classifiers: <code>one-against-all&#39;&#39;,</code>one-against-one’’, and  Directed Acyclic Graph Support Vector Machines (DAGSVM) . The first one builds $K$ SVM classifiers for $K$ classes respectively with data from $k$-th class as positive and from other classes as negative. Then we take the margins as score and we classify a new observation with the largest margin. The second method constructs $K(K - 1)/2$ classifiers where each one is trained on data from two classes pair-wisely. For a new observation, we use the voting strategy: with votes for all classes initialized as zero, we add one to $k$-th class’s vote if the result from one of these classifiers is $k$-th class, then the conclusion is the class with greatest votes. Though shares the same training steps as ``one-against-one’’ method with $K(K - 1)/2$ SVM classifiers, the third one DAGSVM is more complicated and delicate with a tree based decision function.</p>
+<p>One thing we need to pay attention to is its sensitivity to prior. SVM is sensitive to both noise and prior. It tends to label the new observation into the class with more samples. This is somehow undesirable when we care more about the minority instead of majority. This property is illustrated in simulation where we checked the sensitivity of all methods we used.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/07/square-root/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -553,7 +1312,7 @@ L(\mu_k,\Sigma_k,\alpha_k|\mathbf{D})=&\prod_{i=1}^n p(\mathbf{x}|\mu_{\cdot},\S
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-01-02 22:53:00" itemprop="dateModified" datetime="2020-01-02T22:53:00-07:00">2020-01-02</time>
+                <time title="Modified: 2020-01-13 16:18:26" itemprop="dateModified" datetime="2020-01-13T16:18:26-07:00">2020-01-13</time>
               </span>
 
           
@@ -722,7 +1481,7 @@ w_i^t e^{\alpha_i \times 1}, &\ else\\
 </li>
 </ul>
 <p>In summary, only XGboost contains no independent training step. Independence of GBDT lies in partition while Adaboost also has independent leaves weight training. More flexibility on regularization can be achieved in XGboost as they emphasized in their paper (most boosting methods did not pay enough attention on regularization)</p>
-
+<h2 id="LightBGM"><a href="#LightBGM" class="headerlink" title="LightBGM"></a>LightBGM</h2><h2 id="Catboost"><a href="#Catboost" class="headerlink" title="Catboost"></a>Catboost</h2>
       
     </div>
 
@@ -1083,12 +1842,12 @@ test mse =  196.17602353002354 +/- 132.57460287167424
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>

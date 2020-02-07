@@ -51,18 +51,17 @@
   };
 </script>
 
-  <meta name="description" content="What is the behavior of the pre-increment&#x2F;decrement operators (++&#x2F;—) in Python?  When you want to increment or decrement, you typically want to do that on an integer. Like so: b++ But in Python, integ">
-<meta name="keywords" content="python">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Behaviour of increment and decrement operators in Python">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;07&#x2F;python-increment&#x2F;index.html">
+  <meta name="description" content="4+ years experience in programming. Familiar with python, SQL server, R, and Git. Highly motivated and humble to learn new things and learn fast with practice. Enjoy teamwork with strong sense of resp">
+<meta name="keywords" content="Python, R, SQL, SPSS, Machine Learning, NLP, Statistics, Data Analysis">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jiaxin Zhang">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2020&#x2F;02&#x2F;index.html">
 <meta property="og:site_name" content="Jiaxin Zhang">
-<meta property="og:description" content="What is the behavior of the pre-increment&#x2F;decrement operators (++&#x2F;—) in Python?  When you want to increment or decrement, you typically want to do that on an integer. Like so: b++ But in Python, integ">
+<meta property="og:description" content="4+ years experience in programming. Familiar with python, SQL server, R, and Git. Highly motivated and humble to learn new things and learn fast with practice. Enjoy teamwork with strong sense of resp">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-08T05:14:50.440Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/01/07/python-increment/">
+<link rel="canonical" href="http://yoursite.com/archives/2020/02/">
 
 
 <script id="page-configurations">
@@ -70,13 +69,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: true,
+    isPost: false,
     isPage: false,
-    isArchive: false
+    isArchive: true
   };
 </script>
 
-  <title>Behaviour of increment and decrement operators in Python | Jiaxin Zhang</title>
+  <title>Archive | Jiaxin Zhang</title>
   
 
 
@@ -199,98 +198,49 @@
           <div class="content">
             
 
-  <div class="posts-expand">
-      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/07/python-increment/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Jiaxin Zhang">
-      <meta itemprop="description" content="4+ years experience in programming. Familiar with python, SQL server, R, and Git. Highly motivated and humble to learn new things and learn fast with practice. Enjoy teamwork with strong sense of responsibility and communication skills, but also able to work individually with high efficiency, strong self-discipline and problem solving ability.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jiaxin Zhang">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          Behaviour of increment and decrement operators in Python
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-01-07 18:47:56 / Modified: 22:14:50" itemprop="dateCreated datePublished" datetime="2020-01-07T18:47:56-07:00">2020-01-07</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+  
+  <div class="post-block">
+    <div class="posts-collapse">
+      <div class="collection-title">
+        <span class="collection-header">Um..! 10 posts in total. Keep on posting.</span>
+      </div>
 
       
-        <p>What is the behavior of the pre-increment/decrement operators (++/—) in Python? </p>
-<p>When you want to increment or decrement, you typically want to do that on an integer. Like so:</p>
-<pre><code>b++
-</code></pre><p>But in Python, integers are immutable. That is you can’t change them. This is because the integer objects can be used under several names. Try this:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; b = 5</span><br><span class="line">&gt;&gt;&gt; a = 5</span><br><span class="line">&gt;&gt;&gt; id(a)</span><br><span class="line">162334512</span><br><span class="line">&gt;&gt;&gt; id(b)</span><br><span class="line">162334512</span><br><span class="line">&gt;&gt;&gt; a is b</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
-<p>a and b above are actually the same object. If you incremented a, you would also increment b. That’s not what you want. So you have to reassign. Like this:</p>
-<pre><code>b = b + 1
-</code></pre><p>Or simpler:</p>
-<pre><code>b += 1
-</code></pre><p>Which will reassign b to b+1. That is not an increment operator, because it does not increment b, it reassigns it.</p>
-<p>In short: Python behaves differently here, because it is not C, and is not a low level wrapper around machine code, but a high-level dynamic language, where increments don’t make sense, and also are not as necessary as in C, where you use them every time you have a loop, for example.</p>
-<p><a href="https://stackoverflow.com/questions/1485841/behaviour-of-increment-and-decrement-operators-in-python" target="_blank" rel="noopener">Reference</a></p>
-
+    <div class="collection-year">
+      <h1 class="collection-header">2020</h1>
     </div>
 
-    
-    
-    
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/python/" rel="tag"># python</a>
-          </div>
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2020-02-02T19:34:18-07:00"
+              content="2020-02-02">
+          02-02
+        </time>
+      </div>
 
-        
+      <h2 class="post-title">
+          <a class="post-title-link" href="/2020/02/02/changba/" itemprop="url">
+            <span itemprop="name">Scraping Changba data with python + selenium</span>
+          </a>
+      </h2>
 
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-                <a href="/2020/01/02/GMM/" rel="next" title="Gaussian Mixture Model (GMM) and Expectation–Maximization (EM)">
-                  <i class="fa fa-chevron-left"></i> Gaussian Mixture Model (GMM) and Expectation–Maximization (EM)
-                </a>
-            </div>
-
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-                <a href="/2020/01/07/square-root/" rel="prev" title="Methods of computing square roots">
-                  Methods of computing square roots <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
-      </footer>
-    
+    </header>
   </article>
+
+
+    </div>
+  </div>
   
   
   
 
-  </div>
+  
+
 
 
           </div>
