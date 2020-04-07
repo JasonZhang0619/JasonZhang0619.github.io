@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="Jiaxin Zhang" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="A SAS program consists of two parts: DATA and PROC;  Read your dataset with DATAIt reads, and modify data. DATA steps starts with ‘’DATA’’ and is followed by a name that you make up for a SAS dataset.">
+<meta name="keywords" content="SAS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SAS DATA notes">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;19&#x2F;SAS&#x2F;index.html">
+<meta property="og:site_name" content="Jiaxin Zhang">
+<meta property="og:description" content="A SAS program consists of two parts: DATA and PROC;  Read your dataset with DATAIt reads, and modify data. DATA steps starts with ‘’DATA’’ and is followed by a name that you make up for a SAS dataset.">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-03-30T00:15:48.227Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/03/19/SAS/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>SAS DATA notes | Jiaxin Zhang</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jiaxin Zhang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">MSc in Statistical Machine Learning @ UofA</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/JasonZhang0619" class="github-corner" title="GitHub" aria-label="GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/19/SAS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jiaxin Zhang">
+      <meta itemprop="description" content="Curious, Open-eyed, Humble, Prepared, Sensitive.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jiaxin Zhang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SAS DATA notes
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-03-19 15:34:53" itemprop="dateCreated datePublished" datetime="2020-03-19T15:34:53-06:00">2020-03-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-29 18:15:48" itemprop="dateModified" datetime="2020-03-29T18:15:48-06:00">2020-03-29</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>A SAS program consists of two parts: DATA and PROC; </p>
+<h1 id="Read-your-dataset-with-DATA"><a href="#Read-your-dataset-with-DATA" class="headerlink" title="Read your dataset with DATA"></a>Read your dataset with DATA</h1><p>It <strong>reads, and modify data</strong>. DATA steps starts with ‘’DATA’’ and is followed by a name that you make up for a SAS dataset.</p>
+<p><strong>DATA STEPS EXECUTE OBSERVATION BY OBSERVATION AND THEN LINE BY LINE</strong>. i.e. for a dataset containing observations 1,2,3, and DATA step with 4 statements a, b,c,d, it takes observation 1 first to run a, b,c,d sequentially and then takes observation 2 to run a, b,c,d again.</p>
+<h2 id="Data-types"><a href="#Data-types" class="headerlink" title="Data types"></a>Data types</h2><p>In SAS there are just two data types: numeric and character.</p>
+<ul>
+<li>Numeric: Standard numeric data contain<br>only numerals, decimal points, plus and minus signs, and E for scientific notation. <strong>Numbers with embedded commas or dates, for example, are not standard.</strong></li>
+<li>Char: must be char if it contains letters or special characters, can be char if it only contains numbers</li>
+<li>Missing data: missing char is represented by <strong>blank</strong> and numeric is by a <strong>single period</strong> ‘.’</li>
+</ul>
+<h2 id="What-data-to-read"><a href="#What-data-to-read" class="headerlink" title="What data to read:"></a>What data to read:</h2><h3 id="INPUT"><a href="#INPUT" class="headerlink" title="INPUT"></a>INPUT</h3><pre><code>INPUT Name $ Age Height;
+</code></pre><p>This statement tells SAS to read three data values (Name, Age, Height) per observation/line. <strong>The $ after Name indicates that it is a character variable</strong>, whereas the Age and Height variables are both numeric.</p>
+<h2 id="Where-to-find-your-data"><a href="#Where-to-find-your-data" class="headerlink" title="Where to find your data:"></a>Where to find your data:</h2><h3 id="DATALINES"><a href="#DATALINES" class="headerlink" title="DATALINES:"></a>DATALINES:</h3><p>loading internal dataset</p>
+<pre><code>DATA uspresidents;
+    INPUT president $ Party $ number;
+    DATALINES;
+adams F 2
+lincoln R 16
+grant R 18
+kennedy D 35
+    ;
+RUN;
+</code></pre><h3 id="INFILE-path"><a href="#INFILE-path" class="headerlink" title="INFILE path:"></a>INFILE path:</h3><p>loading external dataset</p>
+<pre><code>DATA uspresidents;
+    INFILE &#39;C:\MyRawData\President.dat&#39;;
+    INPUT president $ Party $ number;
+RUN;
+</code></pre><h4 id="LRECL"><a href="#LRECL" class="headerlink" title="LRECL"></a>LRECL</h4><p>SAS assumes external files have a record length of 256 or less.If your data lines are long, and it looks like <strong>SAS is not reading all your data</strong>, then use the LRECL= option in the INFILE statement to specify a record length at least as long as the longest record in your data file.</p>
+<pre><code>DATA uspresidents;
+    INFILE &#39;C:\MyRawData\President.dat&#39; LRECL=2000;
+    INPUT president $ Party $ number;
+RUN;
+</code></pre><h2 id="How-to-read-data"><a href="#How-to-read-data" class="headerlink" title="How to read data"></a>How to read data</h2><h3 id="Data-Separated-by-Spaces-List-style"><a href="#Data-Separated-by-Spaces-List-style" class="headerlink" title="Data Separated by Spaces (List style)"></a>Data Separated by Spaces (List style)</h3><p>If the values in your raw data file are all <strong>separated by at least one space</strong>, then using <strong>list input</strong> (also called free formatted input) to read the data may be appropriate.</p>
+<pre><code>DATA toads;
+    INFILE &#39;c:\MyRawData\ToadJump.dat&#39;;
+    INPUT ToadName $ Weight Jump1 Jump2 Jump3;
+RUN;
+</code></pre><ul>
+<li>You must read all the data in a record—no skipping over unwanted values.</li>
+<li>Any missing data must be indicated with a period.</li>
+<li>Character data, if present, must be simple: <strong>no embedded spaces</strong>, and <strong>no values greater than 8 characters in length</strong></li>
+<li><p>If the data file contains <strong>dates or other values which need special treatment</strong>, then list input may not be appropriate.</p>
+<h3 id="Data-Arranged-in-Columns-Column-style"><a href="#Data-Arranged-in-Columns-Column-style" class="headerlink" title="Data Arranged in Columns (Column style)"></a>Data Arranged in Columns (Column style)</h3><p>If each of the variable’s values is always found in the same place in the data line, then you can use column input as long as all the values are character or standard numeric.</p>
+<p>  DATA sales;</p>
+<pre><code>  INFILE &#39;c:\MyRawData\OnionRing.dat&#39;;
+  INPUT VisitingTeam $ 1-20 ConcessionSales 21-24 BleacherSales 25-28
+  OurHits 29-31 TheirHits 32-34 OurRuns 35-37 TheirRuns 38-40;
+</code></pre><p>  RUN;</p>
+</li>
+</ul>
+<p>The variable VisitingTeam is character (indicated by a $) and reads the visiting team’s name in columns 1 through 20. The variables ConcessionSales and BleacherSales read the concession and bleacher sales in columns 21 through 24 and 25 through 28, respectively.</p>
+<h3 id="Data-Not-in-Standard-Format-Informats"><a href="#Data-Not-in-Standard-Format-Informats" class="headerlink" title="Data Not in Standard Format (Informats)"></a>Data Not in Standard Format (Informats)</h3><p>Sometimes raw data are not straightforward numeric or character. For example, we humans easily read the number 1,000,001 as one million and one, but your trusty computer sees it as a character string since it includes commas. In SAS, <strong>informats</strong> are<br>used to tell the computer how to interpret these types of data.</p>
+<p>There are three general types of informats: character, numeric, and date. </p>
+<ul>
+<li>Character $<em>informat</em>w. </li>
+<li>Numeric <em>informat</em>w.d</li>
+<li>Date <em>informat</em>w.</li>
+</ul>
+<p>The $ indicates character informats, <em>informat</em> is the name of the informat, <strong>w is the total width</strong>, and <strong>d is the number of decimal places</strong> (numeric informats only).</p>
+<pre><code>DATA contest;
+    INFILE &#39;c:\MyRawData\Pumpkin.dat&#39;;
+    INPUT Name $16. Age 3. +1 Type $1. +1 Date MMDDYY10.
+    (Score1 Score2 Score3 Score4 Score5) (4.1);
+RUN;
+</code></pre><p>The variable Name has an informat of $16., meaning that it is a character variable 16 columns wide. Variable Age has an informat of 3, is numeric, three columns wide, and has no decimal places. <strong>The +1 skips over one column.</strong> Variable Type is character, and it is one column wide. Variable Date has<br>an informat MMDDYY10. and reads dates in the form 10-31-2013 or 10/31/2013, each 10 columns wide. The remaining variables, Score1 through Score5, all require the same informat, 4.1. By putting the variables and the informat in separate sets of parentheses, you only have to list the<br>informat once.</p>
+<h3 id="Mixing-Input-Styles"><a href="#Mixing-Input-Styles" class="headerlink" title="Mixing Input Styles"></a>Mixing Input Styles</h3><p>List style is the easiest; column<br>style is a bit more work; and formatted style is the hardest of the three. However, <strong>column and formatted styles</strong> do not require spaces (or other delimiters) between variables and can <strong>read embedded blanks</strong>. Formatted style can read <strong>special data such as dates</strong>. SAS is so flexible that you can <strong>mix and match any of the input styles</strong> for your own convenience.</p>
+<pre><code>DATA nationalparks;
+    INFILE &#39;c:\MyRawData\NatPark.dat&#39;;
+    INPUT ParkName $ 1-22 State $ Year @40 Acreage COMMA9.;
+RUN;
+</code></pre><p>Notice that the variable ParkName is read with column style input, State and Year are read with list style input, and Acreage is read with formatted style input.</p>
+<h3 id="Messy-Raw-Data-Column-Pointer"><a href="#Messy-Raw-Data-Column-Pointer" class="headerlink" title="Messy Raw Data (Column Pointer)"></a>Messy Raw Data (Column Pointer)</h3><p>With list style input, SAS automatically scans to the next non-blank field and starts<br>reading. With column style input, SAS starts reading in the exact column you specify. But with formatted input, SAS just starts reading—wherever the pointer is, that is where SAS reads.</p>
+<h4 id="n"><a href="#n" class="headerlink" title="@n"></a>@n</h4><p>Sometimes you need to move the pointer explicitly, and you can do that by using the column pointer, @n, where <strong>n is the number of the column SAS should move to</strong>.</p>
+<pre><code>DATA nationalparks;
+    INFILE &#39;c:\MyRawData\NatPark.dat&#39;;
+    INPUT ParkName $ 1-22 State $ Year @40 Acreage COMMA9.;
+RUN;
+</code></pre><p>The column pointer, @n, has other uses, too, and can be used anytime you want SAS to skip<br>backwards or forwards within a data line. You could use it, for example, to skip over unneeded data, or to read a variable twice using different informats.</p>
+<h4 id="’character’"><a href="#’character’" class="headerlink" title="@’character’"></a>@’character’</h4><p>Sometimes you don’t know the starting column of the data, but you do know that it always comes after a particular character or word. For these types of situations, you can use the @’character’ column pointer.</p>
+<p>For example, suppose you have a data file that has information about dog ownership. Nothing in the file lines up, but you know that the breed of the dog always follows the word Breed:. You could read the dog’s breed using the following INPUT statement:</p>
+<pre><code>INPUT @&#39;Breed:&#39; DogBreed $;
+</code></pre><h4 id="The-colon-modifier"><a href="#The-colon-modifier" class="headerlink" title="The colon modifier"></a>The colon modifier</h4><p>If you only want SAS to <strong>read until it encounters a space or the end of the data line</strong>, then you can use a colon modifier on the informat. To use a colon modifier, simply put a colon (:) before the informat (such as :$20. instead of $20.).</p>
+<p>For example, given this line of raw data,</p>
+<pre><code>My dog Sam Breed: Rottweiler Vet Bills: $478
+</code></pre><p>the following table shows the results you would get using different INPUT statements:</p>
+<pre><code>Statements                         Value of variable DogBreed
+INPUT @&#39;Breed: &#39; DogBreed $;     Rottweil
+INPUT @&#39;Breed: &#39; DogBreed $20.; Rottweiler Vet Bill
+INPUT @&#39;Breed: &#39; DogBreed :$20.; Rottweiler
+</code></pre><h3 id="Multiple-Lines-of-Raw-Data-per-Observation-Line-pointers"><a href="#Multiple-Lines-of-Raw-Data-per-Observation-Line-pointers" class="headerlink" title="Multiple Lines of Raw Data per Observation (Line pointers)"></a>Multiple Lines of Raw Data per Observation (Line pointers)</h3><p>SAS will automatically<br>go to the next line if it runs out of data before it has read all the<br>variables in an INPUT statement</p>
+<ul>
+<li><p>slash (/) To read more than one line of raw data for a single observation, you simply insert a slash into your<br>INPUT statement when you want to skip to the next line of raw data.</p>
+</li>
+<li><p>pound-n (#n) The #n line pointer performs the same action except that you specify the line number. The n in #n stands for the number of the line of raw data for that observation; so #2 means to go to the second line for that observation, and #4 means go to the fourth line. You can even go backwards using the #n line pointer, reading from line 4 and then from line 3</p>
+</li>
+</ul>
+<p>See the example below. The INPUT statement reads the values for City and State from the first line of data. Then the slash tells SAS to move to column 1 of the next line of data before reading NormalHigh and NormalLow. Likewise, the #3 tells SAS to move to column 1 of the third line of data for that observation before reading RecordHigh and RecordLow.</p>
+<pre><code>DATA highlow;
+    INFILE &#39;c:\MyRawData\Temperature.dat&#39;;
+    INPUT City $ State $
+            / NormalHigh NormalLow
+            #3 RecordHigh RecordLow;
+RUN;
+</code></pre><h3 id="Multiple-Observations-per-Line"><a href="#Multiple-Observations-per-Line" class="headerlink" title="Multiple Observations per Line"></a>Multiple Observations per Line</h3><p>When you have multiple observations per line of raw data, you can use double trailing at signs(@@) at the end of your INPUT statement.</p>
+<p>The raw data look like this:</p>
+<pre><code>Nome AK 2.5 15 Miami FL 6.75
+18 Raleigh NC . 12
+</code></pre><p>Notice that in this data file the first line stops in the middle of the second observation. The following program reads these data from a file named Precipitation.dat and uses an @@ so SAS does not automatically go to a new line of raw data for each observation:</p>
+<pre><code>DATA rainfall;
+    INFILE &#39;c:\MyRawData\Precipitation.dat&#39;;
+    INPUT City $ State $ NormalRain MeanDaysRain @@;
+RUN;
+</code></pre><h3 id="Part-of-a-Raw-Data-File-IF-condition"><a href="#Part-of-a-Raw-Data-File-IF-condition" class="headerlink" title="Part of a Raw Data File (IF condition)"></a>Part of a Raw Data File (IF condition)</h3><p>Luckily, you don’t have to read all the data before you tell SAS whether to keep an observation. Instead, you can read just enough variables to decide whether to keep the current observation, then end the INPUT statement with an at sign (@), called a trailing at. This tells SAS to hold that line of raw data. While the trailing @ holds that line, you can test the observation with an IF statement to see if it’s one you want to keep. If it is, then you can read data for the remaining variables with a second INPUT statement. Without the trailing @, SAS would automatically start reading the next line of raw data with each INPUT statement.</p>
+<p>Here are the raw data:</p>
+<pre><code>freeway 408                             3684 3459
+surface Martin Luther King Jr. Blvd.     1590 1234
+surface Broadway                         1259 1290
+surface Rodeo Dr.                         1890 2067
+freeway 608                             4583 3860
+freeway 808                             2386 2518
+surface Lake Shore Dr.                     1590 1234
+surface Pennsylvania Ave.                 1259 1290
+</code></pre><p>Suppose you want to see only the freeway data at this point so you read the raw data file,<br>Traffic.dat, with this program:</p>
+<pre><code>DATA freeways;
+    INFILE &#39;c:\MyRawData\Traffic.dat&#39;;
+    INPUT Type $ @;
+        IF Type = &#39;surface&#39; THEN DELETE;
+    INPUT Name $ 9-38 AMTraffic PMTraffic;
+RUN;
+</code></pre><h3 id="INFILE-options"><a href="#INFILE-options" class="headerlink" title="INFILE options"></a>INFILE options</h3><ul>
+<li><p>FIRSTOBS=<br>The FIRSTOBS= option tells SAS at what line to begin reading data. This is useful<br>if you have a data file that contains descriptive text or header information at the beginning, and you want to skip over these lines to begin reading the data.</p>
+</li>
+<li><p>OBS=<br>The OBS= option can be used anytime you want to read only a part of your data file. It tells SAS to stop reading when it gets to that line in the raw data file. Note that it does not necessarily correspond to the number of observations.</p>
+</li>
+<li><p>MISSOVER<br><strong>By default, SAS will go to the next data line to read more data if SAS has reached<br>the end of the data line and there are still more variables in the INPUT statement that have not been assigned values.</strong> The MISSOVER option tells SAS that if it runs out of data, don’t go to the next data line. Instead, assign missing values to any remaining variables.</p>
+</li>
+<li><p>TRUNCOVER<br>If a variable’s field extends past the<br>end of the data line, then, by default, SAS will go to the next line to start reading the variable’s value. This option tells SAS to read data for the variable until it reaches the end of the data line, or the last column specified in the format or column range, whichever comes first.</p>
+</li>
+<li><p>DLM=<br>If you read your data using list input, the DATA step expects your file to<br>have spaces between your data values. The DELIMITER=, or DLM=, option in the INFILE<br>statement allows you to read data files with other delimiters such as comma ‘,’ and tab characters ‘09’X.</p>
+</li>
+<li><p>DSD<br>The DSD (Delimiter-Sensitive Data) option for the INFILE statement does<br>three things for you. </p>
+<ul>
+<li>First, it <strong>ignores delimiters in data values enclosed in quotation marks</strong>.</li>
+<li>Second, it <strong>does not read quotation marks as part of the data value</strong>. </li>
+<li>Third, it treats <strong>two delimiters in a row as a missing value</strong>.</li>
+</ul>
+</li>
+<li><p>MISSOVER<br>It is also prudent, when<br>using the DSD option, to add the MISSOVER option if there is any chance that you have missing data at the end of your data lines. The MISSOVER option tells SAS that if it runs out of data, don’t go to the next data line to continue reading.</p>
+</li>
+</ul>
+<h3 id="IMPORT-Procedure"><a href="#IMPORT-Procedure" class="headerlink" title="IMPORT Procedure"></a>IMPORT Procedure</h3><p>PROC IMPORT will scan your data file (the first 20 rows by default) and automatically<br>determine the variable types (character or numeric), will assign lengths to the character variables, and can recognize some date formats.</p>
+<p>PROC IMPORT will treat two consecutive delimiters in your data file as a missing value, will read values enclosed by quotation marks, and assign missing values to variables when it runs out of data on a line.</p>
+<p>Also, if you want, you can use the first line in your data file for the variable names.</p>
+<p>The general form of the IMPORT procedure is</p>
+<pre><code>PROC IMPORT DATAFILE = &#39;filename&#39; OUT = data-set;
+</code></pre><p>OPTIONS:</p>
+<pre><code>PROC IMPORT DATAFILE = &#39;filename&#39; OUT = data-set
+DBMS = identifier REPLACE;
+</code></pre><ul>
+<li>OUT = name</li>
+<li><p>DBMS=  identifier<br><strong>If your file does not have the proper extension, or your file is of type DLM, then you must use the DBMS = option</strong> in the PROC IMPORT statement</p>
+<ul>
+<li>.csv: CSV</li>
+<li>.txt: TAB</li>
+<li>.xls: XLS</li>
+<li>.xlsx: XLSX</li>
+<li>all types of Excel files: EXCEL</li>
+<li>Delimiters other than commas or tabs: DLM</li>
+</ul>
+</li>
+<li><p>REPLACE<br>if you already have<br>a SAS data set with the name you specified in the OUT= option, and you want to overwrite it.</p>
+</li>
+</ul>
+<p>Optional statements:</p>
+<ul>
+<li>DATAROWS = n;<br>start reading data in row n. Default is 1.</li>
+<li>DELIMITER = ‘delimiter-character’;<br>delimiter for DLM files. Default is space.</li>
+<li>GETNAMES = NO;<br>do not get variable names from the first line of input file. <strong>Default is YES.</strong> If NO, then variables are named VAR1, VAR2, VAR3, and so on.</li>
+<li>GUESSINGROWS = n;<br>use n rows to determine variable types.<br>Default is 20.</li>
+<li>SHEET = “sheet-name”;</li>
+<li>RANGE = “sheet-name$UL:LR”;</li>
+</ul>
+<h2 id="Temporary-versus-Permanent-SAS-Data-Sets"><a href="#Temporary-versus-Permanent-SAS-Data-Sets" class="headerlink" title="Temporary versus Permanent SAS Data Sets"></a>Temporary versus Permanent SAS Data Sets</h2><p>SAS data sets are available in two varieties: temporary and permanent. A temporary SAS data set is one that exists only during the current job or session and is automatically erased by SAS when you<br>finish. If a SAS data set is permanent, that doesn’t mean that it lasts for eternity, just that it remains when the job or session is finished. In general, if you use a data set more than once, it is more efficient to save it as a permanent SAS data set than to create a new temporary SAS data set every<br>time you want to use the data.</p>
+<h3 id="SAS-data-set-names"><a href="#SAS-data-set-names" class="headerlink" title="SAS data set names"></a>SAS data set names</h3><p>All SAS data sets have a two-level name: <em>libref</em>.<em>membername</em>. Both the libref and member name follow the standard rules for valid SAS names. They must start with a letter or underscore and contain only letters, numerals, or underscores. However, <strong>librefs cannot be longer than 8 characters</strong> while member names can be up to 32 characters long.</p>
+<p>You never explicitly tell SAS to make a data set temporary or permanent, it is just implied by the name you give the data set when you create it. <strong>If you specify a two-level name (and the libref is something other than WORK), then your data set will be permanent.</strong> If you specify just one level of the data set name (as we have in most of the examples in this book), then your data set will be temporary. SAS will use your one-level name as the member name and automatically append the libref WORK. By definition, <strong>any SAS data set with a libref of WORK is a temporary data set and will be<br>erased by SAS</strong> at the end of your job or session.</p>
+<p>Most data sets are created in DATA steps, but PROC steps can also create data sets. </p>
+<h3 id="Using-Permanent-SAS-Data-Sets-with-LIBNAME-Statements"><a href="#Using-Permanent-SAS-Data-Sets-with-LIBNAME-Statements" class="headerlink" title="Using Permanent SAS Data Sets with LIBNAME Statements"></a>Using Permanent SAS Data Sets with LIBNAME Statements</h3><p>A libref is a nickname that corresponds to the location of a SAS data library. The basic form of the LIBNAME statement is:</p>
+<pre><code>LIBNAME libref &#39;your-SAS-data-library&#39;;
+</code></pre><p>Here is an example of creating permanent dataset:</p>
+<pre><code>LIBNAME plants &#39;c:\MySASLib&#39;;
+DATA plants.magnolia;
+    INFILE &#39;c:\MyRawData\Mag.dat&#39;;
+    INPUT ScientificName $ 1-14 CommonName $ 16-32 MaximumHeight
+    AgeBloom Type $ Color $;
+RUN;
+</code></pre><p>To use a permanent SAS data set, you can include a LIBNAME statement in your program and refer to the data set by its two-level name.</p>
+<pre><code>LIBNAME example &#39;c:\MySASLib&#39;;
+PROC PRINT DATA = example.magnolia;
+    TITLE &#39;Magnolias&#39;;
+RUN;
+</code></pre><h3 id="Using-Permanent-SAS-Data-Sets-by-Direct-Referencing"><a href="#Using-Permanent-SAS-Data-Sets-by-Direct-Referencing" class="headerlink" title="Using Permanent SAS Data Sets by Direct Referencing"></a>Using Permanent SAS Data Sets by Direct Referencing</h3><p>If you don’t want to be bothered with setting up librefs and defining SAS libraries, but you still<br>want to use permanent SAS data sets, then you can use direct referencing.</p>
+<p>Using direct referencing is easy. Just take your operating environment’s name for a file, enclose it quotation marks, and put it in your program.<strong> The quotation marks tell SAS that this is a permanent SAS data set.</strong></p>
+<pre><code>DATA &#39;drive:\directory\filename&#39;;
+</code></pre><p>For directory-based operating environments, if you leave out the directory or path, then SAS uses the current working directory. For example, this statement would create a permanent SAS data set named TREES in your current working directory.</p>
+<pre><code>DATA &#39;trees&#39;;
+</code></pre><h2 id="Listing-the-Contents-of-a-SAS-Data-Set"><a href="#Listing-the-Contents-of-a-SAS-Data-Set" class="headerlink" title="Listing the Contents of a SAS Data Set"></a>Listing the Contents of a SAS Data Set</h2><p>there is an easy way to get a description<br>of a SAS data set; you simply run the CONTENTS procedure. <strong>PROC CONTENTS</strong> is a simple procedure. You just type the keywords PROC CONTENTS and<br>specify the data set you want with the DATA= option:</p>
+<pre><code>PROC CONTENTS DATA = data-set;
+</code></pre><p>The LABEL= data set option gives a label for the entire data set while the LABEL<br>statement assigns labels to individual variables. For variables, if you specify a LABEL statement in a DATA step, then the<br>descriptions will be stored in the data set and will be printed by PROC CONTENTS. You can also<br>use LABEL statements in PROC steps to customize your reports, but then the labels apply only for<br>the duration of the PROC step and are not stored in the data set.</p>
+<p>Just as informats give SAS special<br>instructions for reading a variable, formats give SAS special instructions for writing a variable.If you specify an INFORMAT or FORMAT statement in a DATA step, then the name of that informat or format will be saved in the data set and printed by PROC CONTENTS. FORMAT statements, like LABEL statements, can be used in PROC steps to customize your reports, but then<br>the name of the format is not stored in the data set</p>
+<h1 id="Transform-your-data"><a href="#Transform-your-data" class="headerlink" title="Transform your data"></a>Transform your data</h1><h2 id="Creating-and-Redefining-Variables"><a href="#Creating-and-Redefining-Variables" class="headerlink" title="Creating and Redefining Variables"></a>Creating and Redefining Variables</h2><p>You create and redefine variables with assignment statements using<br>this basic form:</p>
+<pre><code>variable = expression;
+</code></pre><p>When deciding how to interpret your expression, SAS follows the standard mathematical rules of precedence: SAS performs exponentiation (**) first, then multiplication(*) and division(/), followed by addition (+) and subtraction(-). You can use parentheses ( ( ) ) to override that order.</p>
+<h2 id="Using-SAS-Functions"><a href="#Using-SAS-Functions" class="headerlink" title="Using SAS Functions"></a>Using SAS Functions</h2><p>Functions perform a calculation on, or a transformation of, the arguments given in parentheses following the function name. SAS functions have the following general form:</p>
+<pre><code>function-name(argument, argument, ...)
+</code></pre><p>All functions must have parentheses even if they don’t require any arguments.</p>
+<p>Arguments are separated by commas and can be variable names, constant values such as numbers or characters enclosed in quotation marks, or expressions.</p>
+<h3 id="some-Char-function"><a href="#some-Char-function" class="headerlink" title="some Char function"></a>some Char function</h3><ul>
+<li>ANYALNUM(arg,start)</li>
+<li>ANYALPHA(arg,start)</li>
+<li>ANYDIGIT(arg,start)</li>
+<li>ANYSPACE(arg,start)</li>
+<li>CAT(arg-1,arg-2,…arg-n)</li>
+<li>COMPRESS(arg, ‘char’=’ ‘)</li>
+<li>INDEX(arg, ‘string’)</li>
+<li>LENGTH(arg): Returns the length of an argument <strong>not counting trailing blanks</strong>(missing values have a length of 1)</li>
+<li>TRANSLATE(source, to-1, from-1, …to-n, from-n): Replaces from characters in source with to characters (one to one replacement only—you can’t replace one<br>character with two, for example)</li>
+<li>TRANWRD(source,from,to): Replaces from character string in source with to<br>character string</li>
+<li>UPCASE(arg)</li>
+<li>PROPCASE(arg): Converts first character in word to uppercase and<br>remaining characters to lowercase</li>
+<li>TRIM(arg): Removes trailing blanks from character expression</li>
+</ul>
+<h3 id="some-Numeric-function"><a href="#some-Numeric-function" class="headerlink" title="some Numeric function"></a>some Numeric function</h3><ul>
+<li>INT(arg)</li>
+<li>LOG(arg)</li>
+<li>LOG10(arg)</li>
+<li>MAX(arg-1,arg-2,…arg-n)</li>
+<li>MEAN(arg-1,arg-2,…arg-n)</li>
+<li>MIN(arg-1,arg-2,…arg-n)</li>
+<li>SUM(arg-1,arg-2,…arg-n)</li>
+<li>N(arg-1,arg-2,…arg-n)</li>
+<li>NMISS(arg-1,arg-2,…arg-n)</li>
+<li>ROUND(arg, round-off-unit)</li>
+</ul>
+<h3 id="some-date-Function"><a href="#some-date-Function" class="headerlink" title="some date Function"></a>some date Function</h3><ul>
+<li>DAY(date)</li>
+<li>MONTH(date)</li>
+<li>YEAR(date)</li>
+<li>QTR(date): Returns the yearly quarter (1–4) from a SAS date value</li>
+<li>WEEKDAY(date): Returns day of week (1=Sunday) from SAS date value</li>
+<li>MDY(month,day,year): Returns a SAS date value from month, day, and year values</li>
+<li>TODAY()</li>
+<li>YRDIF(start-date,end-date,’AGE’): YeaR Difference.</li>
+</ul>
+<h2 id="IF-THEN-ELSE-Statements"><a href="#IF-THEN-ELSE-Statements" class="headerlink" title="IF-THEN/ELSE Statements"></a>IF-THEN/ELSE Statements</h2><p>IF-THEN/ELSE logic takes this basic form:</p>
+<pre><code>IF condition THEN action;
+    ELSE IF condition THEN action;
+    ELSE IF condition THEN action;
+    ELSE action;
+</code></pre><p>The condition is an expression comparing one thing to another, and the action is what SAS should do when the expression is true, often an assignment statement.</p>
+<p>Operators in condition:</p>
+<ul>
+<li>EQ =</li>
+<li>NE ~=, ^=</li>
+<li>GT &gt;</li>
+<li>LT &lt;</li>
+<li>GE &gt;=</li>
+<li>LE &lt;=</li>
+<li>IN: IN compares the value of a variable to a list of values.</li>
+<li>AND &amp;</li>
+<li>OR !,|</li>
+</ul>
+<p>You can also specify multiple conditions with the keywords AND and OR:</p>
+<pre><code>IF condition AND condition THEN action;
+</code></pre><p>A single IF-THEN statement can only have one action. If you add the keywords DO and END, then you can execute more than one action.</p>
+<pre><code>IF condition THEN DO; 
+    action; 
+    action; 
+END;
+</code></pre><p>The DO statement causes all SAS statements coming after it to be treated as a unit until a matching END statement appears. Together, the DO statement, the END statement, and all the statements in<br>between are called a DO group.</p>
+<p>Often programmers find that they want to use some of the observations in a<br>data set and exclude the rest. The most common way to do this is with a<br>subsetting IF statement in a DATA step. The basic form of a subsetting IF is</p>
+<pre><code>IF expression;
+</code></pre><p>At first subsetting IF statements may seem odd. People naturally ask, “IF Sex = ‘f’, then what?” The subsetting IF looks incomplete, as if a careless typist pressed the delete key too long. But it is really a special case of the standard IF-THEN statement.</p>
+<p>If you don’t like subsetting IFs, there is another alternative, the DELETE statement. DELETE statements do the opposite of subsetting IFs. <strong>While the subsetting IF statement tells SAS which observations to include, the DELETE statement tells SAS which observations to exclude</strong>:</p>
+<pre><code>IF expression THEN DELETE;
+</code></pre><p>Generally, you <strong>use the subsetting IF when it is easier to specify a condition for including observations</strong>, and <strong>use the DELETE statement when it is easier to specify a condition for excluding observations</strong>.</p>
+<h2 id="RETAIN-and-Sum-statement"><a href="#RETAIN-and-Sum-statement" class="headerlink" title="RETAIN and Sum statement"></a>RETAIN and Sum statement</h2><p>RETAIN statement Use the RETAIN statement when you want SAS to preserve a variable’s value from the previous iteration of the DATA step. The RETAIN statement can appear <strong>anywhere in the DATA step</strong> and has the following form, where all variables to be retained are listed after the RETAIN keyword:</p>
+<pre><code>RETAIN variable-list;
+</code></pre><p>You can also specify an initial value, instead of missing, for the variables. All variables listed before an initial value will start the first iteration of the DATA step with that value: </p>
+<pre><code>RETAIN variable-list initial-value;
+</code></pre><p>A sum statement also retains values from the previous iteration of the DATA step, but you use it for the special cases where you simply want to cumulatively add the value of an expression to a variable. A sum statement, like an assignment statement, <strong>contains no keywords</strong>. It has the following form:</p>
+<pre><code>variable + expression;
+</code></pre><p>This statement adds the value of the expression to the variable while retaining the variable’s value from one iteration of the DATA step to the next. <strong>The variable must be numeric and has the initial value of zero.</strong> This statement can be re-written<br>using the RETAIN statement and SUM function as follows:</p>
+<pre><code>RETAIN variable 0;
+variable = SUM(variable, expression);
+</code></pre><h2 id="ARRAY"><a href="#ARRAY" class="headerlink" title="ARRAY"></a>ARRAY</h2><p>In SAS, an array is a group of variables. You can define an array to be any<br>group of variables you like, as long as they are either all numeric or all character. The variables can be ones that already exist in your data set, or they can be new variables that you want to create.</p>
+<p>Arrays are defined using the ARRAY statement in the DATA step. The ARRAY statement has the following general form:</p>
+<pre><code>ARRAY name (n) $ variable-list;
+</code></pre><p>In this statement, name is a name you give to the array, and n is the number of variables in the array. Following the (n) is a list of variable names. The number of variables in the list must equal the number given in parentheses. (You may use { } or [ ] instead of parentheses if you like.) This iscalled an explicit array, where you explicitly state the number of variables in the array. <strong>The $ is needed if the variables are character, and is only necessary if the variables have not previously been defined.</strong> The array itself is not stored with the data set;<strong> it is defined only for the duration of the DATA step</strong>. You can give the array any name, as long as it does not match any of the variable names in your data set or any SAS keywords.</p>
+<p>To reference a variable using the array name, give the array name and the subscript for that variable. The first variable in the variable list has subscript 1, the second has subscript 2, and so forth.</p>
+<p>So if you have an array defined as</p>
+<pre><code>ARRAY store (4) Macys Penneys Sears Target;
+</code></pre><p>STORE(1) is the variable Macys, STORE(2) is the variable Penneys, STORE(3) is the variable Sears, and STORE(4) is the variable Target.</p>
+<p>DO loop: </p>
+<pre><code>DO i = start TO end;
+    action;
+END;
+</code></pre><h2 id="Shortcuts-for-Lists-of-Variable-Names"><a href="#Shortcuts-for-Lists-of-Variable-Names" class="headerlink" title="Shortcuts for Lists of Variable Names"></a>Shortcuts for Lists of Variable Names</h2><p>You can use an <strong>abbreviated list</strong> of variable names almost anywhere you can use a regular variable list. <strong>In functions, abbreviated lists must be preceded by the keyword OF (for example, SUM(OF Cat8 - Cat12)).</strong> Otherwise, you simply replace the regular list with the abbreviated one.</p>
+<h3 id="Numbered-range-lists"><a href="#Numbered-range-lists" class="headerlink" title="Numbered range lists"></a>Numbered range lists</h3><p>Variables which <strong>start with the same characters</strong> and end with<br><strong>consecutive numbers</strong> can be part of a numbered range list. The numbers can start and end anywhere as long as the number sequence between is <strong>complete</strong>.</p>
+<p>Variable list： </p>
+<pre><code>INPUT Cat8 Cat9 Cat10 Cat11 Cat12; 
+</code></pre><p>Abbreviated list</p>
+<pre><code>INPUT Cat8 - Cat12;
+</code></pre><h3 id="Name-range-lists"><a href="#Name-range-lists" class="headerlink" title="Name range lists"></a>Name range lists</h3><p>Name range lists depend on the <strong>internal order</strong>, or position, of the variables<br>in the SAS data set. This is <strong>determined by the order of appearance of the variables in the DATA step</strong>.<br>For example, given the following DATA step, the internal variable order would be<br>Y A C H R B:</p>
+<pre><code>DATA example;
+    INPUT y a c h r;
+    b = c + r;
+RUN;
+</code></pre><p>To specify a name range list, put the first variable, then two hyphens, then the last variable. The following PUT statements show the variable list and its abbreviated form using a named range:<br>Variable list </p>
+<pre><code>PUT y a c h r b; 
+</code></pre><p>Abbreviated list</p>
+<pre><code>PUT y -- b;
+</code></pre><p>If you are not sure of the internal order, you can find out using PROC CONTENTS with the POSITION option.</p>
+<pre><code>LIBNAME mydir &#39;c:\MySASLib&#39;;
+PROC CONTENTS DATA = mydir.distance POSITION;
+RUN;
+</code></pre><h3 id="Name-prefix-lists"><a href="#Name-prefix-lists" class="headerlink" title="Name prefix lists"></a>Name prefix lists</h3><p>Variables which start with the same characters can be part of a name prefix<br>list, and can be used in some SAS statements and functions.</p>
+<p>Variable list </p>
+<pre><code>DogBills = SUM(DogVet,DogFood,Dog_Care);
+</code></pre><p>Abbreviated list</p>
+<pre><code>DogBills = SUM(OF Dog:);
+</code></pre><h3 id="Special-SAS-name-lists"><a href="#Special-SAS-name-lists" class="headerlink" title="Special SAS name lists"></a>Special SAS name lists</h3><ul>
+<li>_ALL_： all the variables</li>
+<li>_CHARACTER_： all the character variables</li>
+<li>_NUMERIC_： all the numeric variables</li>
+</ul>
+<p>These name lists are useful when you want to do something like compute the mean of all the numeric variables for an observation (MEAN(OF _NUMERIC_)), or list the values of all variables in an observation (PUT _ALL_;)</p>
+<h1 id="PROC"><a href="#PROC" class="headerlink" title="PROC"></a>PROC</h1><h2 id="Statements"><a href="#Statements" class="headerlink" title="Statements"></a>Statements</h2><pre><code>PROC statement 
+DATA=  ;
+BY ;
+TITLE  ; FOOTNOTE  ;
+LABEL;
+</code></pre><h3 id="PROC-statement"><a href="#PROC-statement" class="headerlink" title="PROC statement"></a>PROC statement</h3><p>All procedures start with the keyword PROC followed by the name of the procedure, such as PRINT or CONTENTS. Options, if there are any, follow the procedure name.</p>
+<p>The DATA= option tells SAS which data set to use as input for that procedure. The DATA= option is, of course, optional. If you skip it, then SAS will use the most recently created data set, which is not necessarily the same as the most recently used.</p>
+<h3 id="TITLE-and-FOOTNOTE-statements"><a href="#TITLE-and-FOOTNOTE-statements" class="headerlink" title="TITLE and FOOTNOTE statements"></a>TITLE and FOOTNOTE statements</h3><p>You have seen TITLE statements many times in<br>this book. FOOTNOTE works the same way, but prints at the bottom of the page. <strong>You can put them anywhere in your program</strong>, but<br>since they apply to the procedure output it generally makes sense to put them with the procedure. </p>
+<p>Titles and footnotes stay in effect until you replace them with new ones or cancel them with a null<br>statement.</p>
+<h3 id="LABEL-statement"><a href="#LABEL-statement" class="headerlink" title="LABEL statement"></a>LABEL statement</h3><p>By default, SAS uses variable names to label your output, but with the LABEL statement you can <strong>create more descriptive labels, up to 256 characters long</strong>, for each variable.</p>
+<h3 id="BY-statement"><a href="#BY-statement" class="headerlink" title="BY statement"></a>BY statement</h3><p>The BY statement is required for only one procedure, PROC SORT. In PROC<br>SORT the BY statement tells SAS how to arrange the observations. In all other procedures, the BY statement is optional, and<strong> tells SAS to perform a separate analysis for each combination of values of the BY variables</strong> rather than treating all observations as one group. </p>
+<p><strong>All procedures, except PROC SORT, assume that your data are already sorted by the variables in your BY statement.</strong> If your observations are not already sorted, then use PROC SORT to do the job.</p>
+<h4 id="SORT-BY"><a href="#SORT-BY" class="headerlink" title="SORT BY"></a>SORT BY</h4><p>The basic form of this procedure is</p>
+<pre><code>PROC SORT;
+BY variable-list;
+</code></pre><p><strong>There are two statements!</strong><br>With one BY variable, SAS sorts the data based on the values of that variable. With more than one variable, <strong>SAS sorts observations by the first variable, then by the second variable within categories of the first</strong>, and so on. <strong>BY group is all the observations that have the same values of BY variables.</strong></p>
+<p>options:</p>
+<ul>
+<li>DATA=option<br>specify the input</li>
+<li>OUT=option<br>specify the output</li>
+<li>NODUPKEY<br>eliminate any duplicate observations that have the same values for the BY variables</li>
+<li>DUPOUT=option<br>put the deleted observations in that data set</li>
+<li><p>DESCENDING option<br>To have your data sorted in the opposite order, <strong>add the keyword DESCENDING<br>to the BY statement before each variable that should be sorted in reverse order</strong>. This statement tells SAS to sort first by State (from A to Z) and then by City (from Z to A) within State:</p>
+<p>  BY State City;<br>  BY State DESCENDING City;</p>
+</li>
+</ul>
+<h3 id="WHERE"><a href="#WHERE" class="headerlink" title="WHERE"></a>WHERE</h3><p>One optional statement for any PROC that reads a SAS data set is the WHERE statement. The WHERE statement tells a procedure to use a subset of the data. Unlike subsetting in a DATA step, <strong>using a WHERE statement in a procedure does not create a new data set</strong>. That is one of the reasons why <strong>WHERE statements are sometimes more efficient than other ways of subsetting.</strong></p>
+<p>The basic form of a WHERE statement is</p>
+<pre><code>WHERE condition;
+</code></pre><p>extra operators than IF:</p>
+<ul>
+<li>IS NOT MISSING</li>
+<li>BETWEEN <em>char_1</em> AND <em>char_2</em></li>
+<li>CONTAINS</li>
+</ul>
+<h3 id="PRINT"><a href="#PRINT" class="headerlink" title="PRINT"></a>PRINT</h3><p>The PRINT procedure requires just one statement:</p>
+<pre><code>PROC PRINT;
+</code></pre><p>By default, SAS uses the SAS data set created most recently. If you do not want to print the most recent data set, then use the DATA= option to specify the data set. We recommend always using the DATA= option for clarity in your programs as it is not always easy to quickly determine which data set was created last.</p>
+<pre><code>PROC PRINT DATA = data-set;
+</code></pre><p>options:</p>
+<ul>
+<li>NOOBS<br>SAS prints the observation numbers along with the variables’ values. If you don’t want observation numbers, use the NOOBS option.</li>
+<li>LABEL<br>If you define variable<br>labels with a LABEL statement, and you want to print the labels instead of the variable names</li>
+</ul>
+<p>optional <strong>statements</strong>:</p>
+<ul>
+<li>BY variable-list;<br>The BY statement starts a new section in the <strong>output for each new value of the BY variables</strong> and prints the values of the BY<br>variables at the top of each section. The <strong>data must be presorted by the BY variables</strong>.</li>
+<li>ID variable-list;<br>When you use the ID statement, the observation numbers are not printed. Instead, the variables in the ID variable list appear on the <strong>left-hand side of the page</strong>.</li>
+<li>SUM variable-list;<br>The sum statement prints sums for the variables in the list.</li>
+<li>VAR variable-list;<br>The VAR statement specifies <strong>which variables to print and the order</strong>. Without a VAR statement, all variables in the SAS data set are printed in the order that they occur in the data set.</li>
+<li><p>FORMAT<br>You can associate formats with variables in a FORMAT statement. The FORMAT statement starts with the keyword FORMAT, followed by the variable name (or names if more than one variable is to be associated with the same format), followed by the format. For<br>example, the following FORMAT statement associates the DOLLAR8.2 format with the variables Profit and Loss and associates the MMDDYY8. format with the variable SaleDate:</p>
+<pre><code>  FORMAT Profit Loss DOLLAR8.2 SaleDate MMDDYY8.;
+</code></pre><p>FORMAT statements can go in either DATA steps or PROC steps. <strong>If the FORMAT statement is in a DATA step, then the format association is permanent and is stored with the SAS data set. If the FORMAT statement is in a PROC step, then it is temporary—affecting only the results from that<br>procedure.</strong><br>At some time you will probably want to create your own custom formats—especially if you use a lot of coded data. The FORMAT procedure creates formats that will later be associated with variables in a FORMAT statement. The procedure starts with the statement PROC FORMAT and continues with one or more VALUE statements (other optional statements are available):</p>
+<pre><code>  PROC FORMAT;
+      VALUE name     range-1 = &#39;formatted-text-1&#39;
+                  range-2 = &#39;formatted-text-2&#39;
+                  .
+                  .
+                  .
+                  range-n = &#39;formatted-text-n&#39;;
+</code></pre><p>The name in the VALUE statement is the name of the format you are creating. If the format is for character data, the name must start with a $.<br>example:</p>
+<pre><code>  DATA carsurvey;
+      INFILE &#39;c:\MyRawData\Cars.dat&#39;;
+      INPUT Age Sex Income Color $;
+  PROC FORMAT;
+      VALUE gender     1 = &#39;Male&#39;
+                      2 = &#39;Female&#39;;
+      VALUE agegroup     13 -&lt; 20 = &#39;Teen&#39;
+                      20 -&lt; 65 = &#39;Adult&#39;
+                      65 - HIGH = &#39;Senior&#39;;
+      VALUE $col         &#39;W&#39; = &#39;Moon White&#39;
+                      &#39;B&#39; = &#39;Sky Blue&#39;
+                      &#39;Y&#39; = &#39;Sunburst Yellow&#39;
+                      &#39;G&#39; = &#39;Rain Cloud Gray&#39;;
+  * Print data using user-defined and standard (DOLLAR8.) formats;
+  PROC PRINT DATA = carsurvey;
+      FORMAT Sex gender. Age agegroup. Color $col. Income DOLLAR8.;
+      TITLE &#39;Survey Results Printed with User-Defined Formats&#39;;
+  RUN;
+</code></pre><p>This program creates <strong>two numeric formats: GENDER. for the variable Sex and AGEGROUP. for the variable Age</strong>. The program creates a character format, $COL., for the variable Color. Notice that the<br>format names do not end with periods in the VALUE statement, but they do in the FORMAT<br>statement.</p>
+</li>
+<li><p>PUT<br>You can also use formats in PUT statements when writing raw data files or reports. Place a format after each variable name, as in the following example:</p>
+<pre><code>  PUT Profit DOLLAR8.2 Loss DOLLAR8.2 SaleDate MMDDYY8.;
+</code></pre></li>
+</ul>
+<h2 id="Report"><a href="#Report" class="headerlink" title="Report"></a>Report</h2><h3 id="MEANS"><a href="#MEANS" class="headerlink" title="MEANS"></a>MEANS</h3><p>The MEANS procedure provides simple statistics for numeric variables. The MEANS procedure starts with the keywords PROC MEANS, followed by options:</p>
+<pre><code>PROC MEANS options;
+</code></pre><p>options:</p>
+<ul>
+<li>MAXDEC = n<br>specifies the number of decimal places to be displayed </li>
+<li>MISSING<br>treats missing values as valid summary groups</li>
+<li>Other options request specific summary statistics : MAX maximum value;<br>MIN minimum value;<br>MEAN mean;<br>MEDIAN median;<br>MODE mode;<br>N number of non-missing values;<br>NMISS number of missing values;<br>RANGE range;<br>STDDEV standard deviation;<br>SUM sum; </li>
+</ul>
+<p>If you do not specify any summary statistics, SAS will print the number of non-missing values, the<br>mean, the standard deviation, and the minimum and maximum values for each variable.</p>
+<p>optional statements:</p>
+<ul>
+<li><p>BY variable-list;<br>The BY statement performs separate analyses for each levelof the variables in the list. The data <strong>must first be sorted by these variables</strong>. (You can use PROC SORT to do this.)</p>
+</li>
+<li><p>CLASS variable-list;<br>The CLASS statement also performs separate analyses for each level of the variables in the list, but its output is more compact than with the BY statement, and <strong>the data do not have to be sorted first</strong>.</p>
+</li>
+<li><p>VAR variable-list;<br>The VAR statement specifies which numeric variables to use in the analysis. <strong>If it is absent, then SAS uses all numeric<br>variables.</strong></p>
+</li>
+<li><p>OUTPUT = data-set output-statistic-list;<br>Here, data-set is the name of the SAS data set which will contain the results (this can be either temporary or permanent), and output-statistic-list defines which statistics you want and the associated variable names. <strong>You can have more than one OUTPUT statement and multiple output<br>statistic lists.</strong><br>The following is one of the possible forms for output-statistic-list:</p>
+<pre><code>  statistic(variable-list) = name-list
+</code></pre><p>Here, statistic can be any of the statistics available in PROC MEANS (SUM, N, MEAN, for<br>example), variable-list defines which of the variables in the VAR statement you want to output, and <strong>name-list defines the new variable names for the statistics</strong>. The new variable names must be in the same order as their corresponding variables in variable-list.<br>The SAS data set created in the OUTPUT statement will contain all the variables defined in the output-statistic-list; any variables listed in a BY or CLASS statement; plus two new variables, <em>TYPE</em> and <em>FREQ</em>. If there is no BY or CLASS statement, then the data set will have just one<br>observation. <strong>If there is a BY statement, then the data set will have one observation for each level of the BY group.</strong> <strong>CLASS statements produce one observation for each level of interaction of the class variables.</strong> The value of the <em>TYPE</em> variable depends on the level of interaction. <strong>The observation where <em>TYPE</em> has a value of zero is the grand total.</strong></p>
+</li>
+</ul>
+<h3 id="FREQ-TABLES"><a href="#FREQ-TABLES" class="headerlink" title="FREQ TABLES"></a>FREQ TABLES</h3><p>The most obvious reason for using PROC FREQ is to create tables showing the<br>distribution of categorical data values, but PROC FREQ can also reveal irregularities<br>in your data. You could get dizzy proofreading a large data set, but data entry errors<br>are often glaringly obvious in a frequency table. The basic form of PROC FREQ is</p>
+<pre><code>PROC FREQ DATA=option;
+TABLES variable-combinations;
+</code></pre><p>To produce a one-way frequency table, just list the variable name. This statement produces a frequency table listing the number of observations for each value of YearsEducation:</p>
+<pre><code>TABLES YearsEducation;
+</code></pre><p>To produce a cross-tabulation, list the variables separated by an asterisk. This statement produces a cross-tabulation showing the number of observations for each combination of Sex by YearsEducation:</p>
+<pre><code>TABLES Sex * YearsEducation;
+</code></pre><p>You can specify any number of table requests in a single TABLES statement, and you can have as many TABLES statements as you wish.</p>
+<pre><code>TABLES YearsEducation Sex * YearsEducation;
+</code></pre><p>options:</p>
+<ul>
+<li>LIST<br>prints cross-tabulations in list format rather than grid </li>
+<li>MISSPRINT<br>includes missing values in frequencies but not in percentages</li>
+<li>MISSING<br>includes missing values in frequencies and in percentages</li>
+<li>NOCOL<br>suppresses printing of column percentages in cross-tabulations</li>
+<li>NOPERCENT<br>suppresses printing of percentages</li>
+<li>NOROW<br>suppresses printing of row percentages in cross-tabulations</li>
+<li>OUT = data-set<br>writes a data set containing frequencies</li>
+</ul>
+<h3 id="TABULATE"><a href="#TABULATE" class="headerlink" title="TABULATE"></a>TABULATE</h3><p>Every summary statistic the TABULATE procedure computes can also be produced<br>by other procedures such as PRINT, MEANS, and FREQ, but PROC TABULATE is popular because <strong>its reports are pretty</strong>.</p>
+<p>PROC TABULATE is so powerful that entire books have been written about it, but it<br>is also so concise that you may feel like you’re reading hieroglyphics. If you find the syntax of PROC TABULATE a little hard to get used to, that may be because it has<br>roots outside of SAS. PROC TABULATE is based in part on the Table Producing Language.</p>
+<p>The general form of PROC TABULATE is</p>
+<pre><code>PROC TABULATE;
+    CLASS classification-variable-list;
+    TABLE page-dimension, row-dimension, column-dimension;
+</code></pre><p>The CLASS statement tells SAS <strong>which variables contain categorical data to be used for dividing observations into groups</strong>, while the TABLE statement tells SAS how to organize your table and <strong>what numbers to compute</strong>.</p>
+<p><strong>Each TABLE statement defines only one table</strong>, but you may have multiple TABLE statements. If a variable is listed in a CLASS statement, then, by default, PROC TABULATE produces simple counts of the number of observations in each category of that variable.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/SAS/" rel="tag"># SAS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/03/02/pd-df/" rel="next" title="pandas DataDrame">
+                  <i class="fa fa-chevron-left"></i> pandas DataDrame
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2020/04/03/XML/" rel="prev" title="XML">
+                  XML <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Read-your-dataset-with-DATA"><span class="nav-number">1.</span> <span class="nav-text">Read your dataset with DATA</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-types"><span class="nav-number">1.1.</span> <span class="nav-text">Data types</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-data-to-read"><span class="nav-number">1.2.</span> <span class="nav-text">What data to read:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#INPUT"><span class="nav-number">1.2.1.</span> <span class="nav-text">INPUT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Where-to-find-your-data"><span class="nav-number">1.3.</span> <span class="nav-text">Where to find your data:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DATALINES"><span class="nav-number">1.3.1.</span> <span class="nav-text">DATALINES:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#INFILE-path"><span class="nav-number">1.3.2.</span> <span class="nav-text">INFILE path:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#LRECL"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">LRECL</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-to-read-data"><span class="nav-number">1.4.</span> <span class="nav-text">How to read data</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-Separated-by-Spaces-List-style"><span class="nav-number">1.4.1.</span> <span class="nav-text">Data Separated by Spaces (List style)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-Arranged-in-Columns-Column-style"><span class="nav-number">1.4.2.</span> <span class="nav-text">Data Arranged in Columns (Column style)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-Not-in-Standard-Format-Informats"><span class="nav-number">1.4.3.</span> <span class="nav-text">Data Not in Standard Format (Informats)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mixing-Input-Styles"><span class="nav-number">1.4.4.</span> <span class="nav-text">Mixing Input Styles</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Messy-Raw-Data-Column-Pointer"><span class="nav-number">1.4.5.</span> <span class="nav-text">Messy Raw Data (Column Pointer)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#n"><span class="nav-number">1.4.5.1.</span> <span class="nav-text">@n</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#’character’"><span class="nav-number">1.4.5.2.</span> <span class="nav-text">@’character’</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#The-colon-modifier"><span class="nav-number">1.4.5.3.</span> <span class="nav-text">The colon modifier</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multiple-Lines-of-Raw-Data-per-Observation-Line-pointers"><span class="nav-number">1.4.6.</span> <span class="nav-text">Multiple Lines of Raw Data per Observation (Line pointers)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multiple-Observations-per-Line"><span class="nav-number">1.4.7.</span> <span class="nav-text">Multiple Observations per Line</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Part-of-a-Raw-Data-File-IF-condition"><span class="nav-number">1.4.8.</span> <span class="nav-text">Part of a Raw Data File (IF condition)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#INFILE-options"><span class="nav-number">1.4.9.</span> <span class="nav-text">INFILE options</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IMPORT-Procedure"><span class="nav-number">1.4.10.</span> <span class="nav-text">IMPORT Procedure</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Temporary-versus-Permanent-SAS-Data-Sets"><span class="nav-number">1.5.</span> <span class="nav-text">Temporary versus Permanent SAS Data Sets</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SAS-data-set-names"><span class="nav-number">1.5.1.</span> <span class="nav-text">SAS data set names</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-Permanent-SAS-Data-Sets-with-LIBNAME-Statements"><span class="nav-number">1.5.2.</span> <span class="nav-text">Using Permanent SAS Data Sets with LIBNAME Statements</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-Permanent-SAS-Data-Sets-by-Direct-Referencing"><span class="nav-number">1.5.3.</span> <span class="nav-text">Using Permanent SAS Data Sets by Direct Referencing</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Listing-the-Contents-of-a-SAS-Data-Set"><span class="nav-number">1.6.</span> <span class="nav-text">Listing the Contents of a SAS Data Set</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Transform-your-data"><span class="nav-number">2.</span> <span class="nav-text">Transform your data</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Creating-and-Redefining-Variables"><span class="nav-number">2.1.</span> <span class="nav-text">Creating and Redefining Variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-SAS-Functions"><span class="nav-number">2.2.</span> <span class="nav-text">Using SAS Functions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#some-Char-function"><span class="nav-number">2.2.1.</span> <span class="nav-text">some Char function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#some-Numeric-function"><span class="nav-number">2.2.2.</span> <span class="nav-text">some Numeric function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#some-date-Function"><span class="nav-number">2.2.3.</span> <span class="nav-text">some date Function</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IF-THEN-ELSE-Statements"><span class="nav-number">2.3.</span> <span class="nav-text">IF-THEN/ELSE Statements</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RETAIN-and-Sum-statement"><span class="nav-number">2.4.</span> <span class="nav-text">RETAIN and Sum statement</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ARRAY"><span class="nav-number">2.5.</span> <span class="nav-text">ARRAY</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shortcuts-for-Lists-of-Variable-Names"><span class="nav-number">2.6.</span> <span class="nav-text">Shortcuts for Lists of Variable Names</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Numbered-range-lists"><span class="nav-number">2.6.1.</span> <span class="nav-text">Numbered range lists</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Name-range-lists"><span class="nav-number">2.6.2.</span> <span class="nav-text">Name range lists</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Name-prefix-lists"><span class="nav-number">2.6.3.</span> <span class="nav-text">Name prefix lists</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Special-SAS-name-lists"><span class="nav-number">2.6.4.</span> <span class="nav-text">Special SAS name lists</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PROC"><span class="nav-number">3.</span> <span class="nav-text">PROC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Statements"><span class="nav-number">3.1.</span> <span class="nav-text">Statements</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PROC-statement"><span class="nav-number">3.1.1.</span> <span class="nav-text">PROC statement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TITLE-and-FOOTNOTE-statements"><span class="nav-number">3.1.2.</span> <span class="nav-text">TITLE and FOOTNOTE statements</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LABEL-statement"><span class="nav-number">3.1.3.</span> <span class="nav-text">LABEL statement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BY-statement"><span class="nav-number">3.1.4.</span> <span class="nav-text">BY statement</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SORT-BY"><span class="nav-number">3.1.4.1.</span> <span class="nav-text">SORT BY</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WHERE"><span class="nav-number">3.1.5.</span> <span class="nav-text">WHERE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PRINT"><span class="nav-number">3.1.6.</span> <span class="nav-text">PRINT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Report"><span class="nav-number">3.2.</span> <span class="nav-text">Report</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MEANS"><span class="nav-number">3.2.1.</span> <span class="nav-text">MEANS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FREQ-TABLES"><span class="nav-number">3.2.2.</span> <span class="nav-text">FREQ TABLES</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TABULATE"><span class="nav-number">3.2.3.</span> <span class="nav-text">TABULATE</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="Jiaxin Zhang"
+    src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Jiaxin Zhang</p>
+  <div class="site-description" itemprop="description">Curious, Open-eyed, Humble, Prepared, Sensitive.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiaxin Zhang</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

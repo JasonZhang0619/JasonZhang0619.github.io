@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="Jiaxin Zhang" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="Create a new DataDrame objectfrom a csv file: pandas.read_csv(filepath_or_buffer)common usage:  filepath_or_buffer: str, path object or fie-like object  strAny valid string path is acceptable. The str">
+<meta name="keywords" content="Machine Learning, NLP, Statistics, Data Analysis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pandas DataDrame">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;02&#x2F;pd-df&#x2F;index.html">
+<meta property="og:site_name" content="Jiaxin Zhang">
+<meta property="og:description" content="Create a new DataDrame objectfrom a csv file: pandas.read_csv(filepath_or_buffer)common usage:  filepath_or_buffer: str, path object or fie-like object  strAny valid string path is acceptable. The str">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-04-01T17:32:53.345Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/03/02/pd-df/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>pandas DataDrame | Jiaxin Zhang</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jiaxin Zhang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">MSc in Statistical Machine Learning @ UofA</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/JasonZhang0619" class="github-corner" title="GitHub" aria-label="GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/02/pd-df/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jiaxin Zhang">
+      <meta itemprop="description" content="Curious, Open-eyed, Humble, Prepared, Sensitive.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jiaxin Zhang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          pandas DataDrame
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-03-02 15:44:07" itemprop="dateCreated datePublished" datetime="2020-03-02T15:44:07-07:00">2020-03-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-01 11:32:53" itemprop="dateModified" datetime="2020-04-01T11:32:53-06:00">2020-04-01</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Create-a-new-DataDrame-object"><a href="#Create-a-new-DataDrame-object" class="headerlink" title="Create a new DataDrame object"></a>Create a new DataDrame object</h1><h2 id="from-a-csv-file-pandas-read-csv-filepath-or-buffer"><a href="#from-a-csv-file-pandas-read-csv-filepath-or-buffer" class="headerlink" title="from a csv file: pandas.read_csv(filepath_or_buffer)"></a>from a csv file: <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html#pandas.read_csv" target="_blank" rel="noopener">pandas.read_csv</a>(filepath_or_buffer)</h2><p>common usage:</p>
+<ul>
+<li><p>filepath_or_buffer: str, path object or fie-like object</p>
+<ul>
+<li><p>str<br>Any valid string path is acceptable. The string could be a URL. Valid URL schemes include http, ftp, <strong>s3</strong>, and file. For file URLs, a host is expected.</p>
+<p><code>df= pd.read_csv(&#39;file://localhost/path/to/table.csv&#39;)</code></p>
+</li>
+<li><p>path object or fie-like object<br>If you want to pass in a path object, pandas accepts any os.PathLike. By file-like object, we refer to objects with a read() method, such as a file handler (e.g. via builtin open function) or StringIO.</p>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>sep: str, default ‘,’ Delimiter to use.</li>
+<li><p>header: int, list of int, default ‘infer’<br>Default behavior is to infer the column names: if no names are passed the behavior is identical to header=0 and <strong>column names are inferred from the first line of the file</strong></p>
+</li>
+<li><p>dtype: Type name or dict of column -&gt; type, optional</p>
+</li>
+<li><p>na_values: scalar, str, list-like, or dict, optional<br>Additional strings to recognize as NA/NaN. If dict passed, specific per-column NA values. By default the following values are interpreted as NaN: ‘’, ‘#N/A’, ‘#N/A N/A’, ‘#NA’, ‘-1.#IND’, ‘-1.#QNAN’, ‘-NaN’, ‘-nan’, ‘1.#IND’, ‘1.#QNAN’, ‘<NA>’, ‘N/A’, ‘NA’, ‘NULL’, ‘NaN’, ‘n/a’, ‘nan’, ‘null’.</p>
+</li>
+<li><p>na_filter: bool, default True<br>Detect missing value markers (empty strings and the value of na_values). In data without any NAs, <strong>passing na_filter=False can improve the performance of reading a large file</strong>.</p>
+</li>
+<li><p>comment: str, optional</p>
+<p> Indicates remainder of line should not be parsed. <strong>If found at the beginning of a line, the line will be ignored altogether.</strong> <strong>This parameter must be a single character.</strong> Like empty lines (as long as skip_blank_lines=True), fully commented lines are ignored by the parameter header but not by skiprows. For example, if comment=’#’, parsing #empty\na,b,c\n1,2,3 with header=0 will result in ‘a,b,c’ being treated as the header.</p>
+</li>
+<li><p>pandas.read_table: similar to read_csv but sep: str, default ‘\t’ (tab-stop)</p>
+</li>
+</ol>
+<h2 id="from-an-Excel-read-excel-io-sheet-name-0"><a href="#from-an-Excel-read-excel-io-sheet-name-0" class="headerlink" title="from an Excel: read_excel(io, sheet_name=0)"></a>from an Excel: read_excel(io, sheet_name=0)</h2><ul>
+<li>io: str, bytes, ExcelFile, xlrd.Book, path object, or file-like object  </li>
+</ul>
+<ol>
+<li>sheet_name: str, int, list, or None, default 0<ul>
+<li>Defaults to 0: 1st sheet as a DataFrame</li>
+<li>1: 2nd sheet as a DataFrame</li>
+<li>“Sheet1”: Load sheet with name “Sheet1”</li>
+<li>[0, 1, “Sheet5”]: Load first, second and sheet named “Sheet5” as a <strong>dict of DataFrame</strong></li>
+<li><strong>None: All sheets</strong> Return a dict of DataFrame with keys being sheet names. </li>
+</ul>
+</li>
+<li>usecols: int, str, list-like, or callable default None  <ul>
+<li>If None(default), then parse all columns.</li>
+<li>If str, then indicates comma separated list of Excel column letters and column ranges (<strong>e.g. “A:E” or “A,C,E:F”</strong>). Ranges are inclusive of both sides.</li>
+<li>If list of int, then indicates list of column numbers to be parsed.</li>
+</ul>
+</li>
+</ol>
+<h2 id="from-clipboard-pandas-read-clipboard"><a href="#from-clipboard-pandas-read-clipboard" class="headerlink" title="from clipboard: pandas.read_clipboard"></a>from clipboard: pandas.read_clipboard</h2><p>Read text from clipboard and pass to <strong>read_csv</strong>.</p>
+<ul>
+<li>sep: str, default ‘s+’ A string or regex delimiter. The default of ‘s+’ denotes one or more whitespace characters.</li>
+</ul>
+<h2 id="from-dict-pandas-DataFrame-from-dict"><a href="#from-dict-pandas-DataFrame-from-dict" class="headerlink" title="from dict: pandas.DataFrame.from_dict"></a>from dict: pandas.DataFrame.from_dict</h2><p>Construct DataFrame from dict of array-like or dicts.</p>
+<ul>
+<li>data: dict of the form {field : array-like} or {field : dict}.</li>
+</ul>
+<ol>
+<li>orient{‘columns’, ‘index’}, default ‘columns’<br>The “orientation” of the data. If the keys of the passed dict should be the columns of the resulting DataFrame, pass ‘columns’ (default). Otherwise <strong>if the keys should be rows, pass ‘index’</strong>.</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data=&#123;<span class="number">1</span>:&#123;<span class="string">'A'</span>:<span class="number">1</span>,<span class="string">'C'</span>:<span class="number">3</span>&#125;,<span class="number">2</span>:&#123;<span class="string">'A'</span>:<span class="number">2</span>,<span class="string">'B'</span>:<span class="number">2</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.DataFrame(data)</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1</th>
+      <th>2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>3.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>NaN</td>
+      <td>2.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.DataFrame.from_dict(data,orient=<span class="string">'index'</span>)</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>C</th>
+      <th>B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>3.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>NaN</td>
+      <td>2.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.DataFrame.from_dict(data,orient=<span class="string">'index'</span>,columns=(<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'D'</span>))</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>NaN</td>
+      <td>3.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="from-records-pandas-DataFrame-from-records"><a href="#from-records-pandas-DataFrame-from-records" class="headerlink" title="from records: pandas.DataFrame.from_records"></a>from records: pandas.DataFrame.from_records</h2><ul>
+<li>data: ndarray (structured dtype), list of tuples, dict, or DataFrame</li>
+</ul>
+<ol>
+<li>index: None(default), str, list of fields, array-like</li>
+<li>nrows: int, default None. Number of rows to read if data is an iterator.</li>
+<li>coerce_float: bool, default False<br>Attempt to convert values of non-string, non-numeric objects (like decimal.Decimal) to floating point, useful for <strong>SQL result sets</strong>.</li>
+</ol>
+<h1 id="Access-attributes-and-methods-of-a-DataFrame-object"><a href="#Access-attributes-and-methods-of-a-DataFrame-object" class="headerlink" title="Access attributes and methods of a DataFrame object"></a>Access attributes and methods of a DataFrame object</h1><h2 id="Attribute"><a href="#Attribute" class="headerlink" title="Attribute"></a>Attribute</h2><ul>
+<li>.T    Transpose index and columns.</li>
+</ul>
+<ol>
+<li>.at/loc[index, column]    Access a single value for a row/column label pair.</li>
+<li>.iat/iloc[row_num, column_num] Access a single value for a row/column pair by integer position.</li>
+<li>.columns    The column labels of the DataFrame.</li>
+<li>.dtypes    Return the dtypes in the DataFrame.</li>
+<li>.shape    Return a tuple representing the dimensionality of the DataFrame.</li>
+<li>.values    Return a Numpy representation of the DataFrame.</li>
+</ol>
+<h2 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h2><h3 id="missing-values"><a href="#missing-values" class="headerlink" title="missing values:"></a>missing values:</h3><ul>
+<li>.isna</li>
+</ul>
+<ol>
+<li>.isnull</li>
+<li>.notna</li>
+<li>.notnull</li>
+<li><p>.dropna(): Remove missing values.  </p>
+<ul>
+<li>axis: {0 or ‘index’, 1 or ‘columns’}, default 0<br>Determine if rows or columns which contain missing values are removed.<ul>
+<li>0, or ‘index’ : Drop rows which contain missing values.</li>
+<li>1, or ‘columns’ : Drop columns which contain missing value.</li>
+</ul>
+</li>
+<li>how: {‘any’, ‘all’}, default ‘any’<br>Determine if row or column is removed from DataFrame, when we have at least one NA or all NA.<ul>
+<li>‘any’ : If any NA values are present, drop that row or column.</li>
+<li>‘all’ : If all values are NA, drop that row or column.</li>
+</ul>
+</li>
+<li>thresh: int, optional<br><strong>Remove columns or rows with # of NAs more than thresh</strong></li>
+<li>subset: array-like, optional<br>Labels along other axis to consider, e.g. if you are dropping rows these would be a list of columns to include. <strong>Only NA in this subset are in focus.</strong></li>
+</ul>
+</li>
+<li><p>.fillna</p>
+<ul>
+<li>value: scalar, dict, Series, or DataFrame<br>Value to use to fill holes (e.g. 0), alternately a dict/Series/DataFrame of values specifying which value to use for each index (for a Series) or column (for a DataFrame). Values not in the dict/Series/DataFrame will not be filled. This value cannot be a list.</li>
+<li>method: {‘backfill’, ‘bfill’, ‘pad’, ‘ffill’, None}, default None<br>Method to use for filling holes in reindexed Series <ul>
+<li>pad / ffill: propagate last valid observation forward to next valid</li>
+<li>backfill / bfill: use next valid observation to fill gap.</li>
+</ul>
+</li>
+<li>axis: {0 or ‘index’, 1 or ‘columns’}<br>Axis along which to fill missing values.</li>
+<li>inplace: bool, default False<br>If True, fill in-place. Note: <strong>this will modify any other views on this object</strong> (e.g., a no-copy slice for a column in a DataFrame).</li>
+</ul>
+</li>
+</ol>
+<p>Returns DataFrame or None Object with missing values filled or <strong>None if inplace=True</strong>.</p>
+<h3 id="Conversion"><a href="#Conversion" class="headerlink" title="Conversion"></a>Conversion</h3><ul>
+<li><p>.astype(self, dtype, copy=True, errors)  </p>
+<ul>
+<li>dtype: data type, or dict of {column name: data type}</li>
+<li><p><strong>copy: bool, default True </strong><br>Return a copy when copy=True (<strong>be very careful setting copy=False as changes to values then may propagate to other pandas objects</strong>).</p>
+</li>
+<li><p>errors{‘raise’, ‘ignore’}, default ‘raise’<br>Control raising of exceptions on invalid data for provided dtype. raise : allow exceptions to be raised; ignore : suppress exceptions. On error return original object.</p>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li><p>.convert_dtypes():<br>return copy of input object with new dtype. won’t change original df.</p>
+<ul>
+<li>infer_objects: bool, default True<br>Whether object dtypes should be converted to the best possible types.</li>
+<li>convert_string: bool, default True<br>Whether object dtypes should be converted to StringDtype().</li>
+<li>convert_integer: bool, default True<br>Whether, if possible, conversion can be done to integer extension types.</li>
+</ul>
+</li>
+<li><p>.copy(self, <strong>deep=True</strong>)<br>Make a copy of this object’s indices and data.</p>
+<ul>
+<li>When deep=True (default), a new object will be created with a copy of the calling object’s data and indices. Modifications to the data or indices of the copy will not be reflected in the original object</li>
+<li>When deep=False, a new object will be created without copying the calling object’s data or index (only references to the data and index are copied). <strong>Any changes to the data of the original will be reflected in the shallow copy (and vice versa)</strong><h3 id="Indexing-iteration"><a href="#Indexing-iteration" class="headerlink" title="Indexing, iteration"></a>Indexing, iteration</h3><strong>You should never modify something you are iterating over.</strong></li>
+</ul>
+</li>
+<li><p>.head(n): Return the first n rows.</p>
+</li>
+<li>.tail(n): Return the last n rows.</li>
+<li><strong>.get</strong>(column name or list of column names):</li>
+<li><strong>.drop</strong>(labels=None, axis=0, index=None, columns=None, level=None, inplace=False, errors=’raise’):<br>Drop specified labels from rows or columns. Remove rows or columns by specifying label names and corresponding axis, or by specifying directly index or column names. <ul>
+<li>labels: single label or list-like<br>Index or column labels to drop.</li>
+<li>axis: {0 or ‘index’, 1 or ‘columns’}, default 0<br>Whether to drop labels from the index (0 or ‘index’) or columns (1 or ‘columns’).</li>
+<li>level: int or level name, optional<br>For MultiIndex, level from which the labels will be removed.</li>
+</ul>
+</li>
+<li>.items(): Iterate over (column name, column Series) pairs.</li>
+<li>.iterrows(): Iterate over DataFrame rows as (index, row Series) pairs. </li>
+<li>.itertuples(index=True, name=’Pandas’)： Iterate over DataFrame rows as <strong>namedtuples</strong>.<ul>
+<li>index： bool, default True<br>If True, return the index as the first element of the tuple.</li>
+<li>name： str or None, default “Pandas”<br>The name of the returned namedtuples or None to return regular tuples.</li>
+</ul>
+</li>
+<li><p><strong>.lookup</strong>(self, row_labels, col_labels)：   Label-based “fancy indexing” function for DataFrame. Given equal-length arrays of row and column labels, return <strong>an array of the values corresponding to each (row, col) pair</strong>.</p>
+<p> Notes:   </p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">result = [df.get_value(row, col) </span><br><span class="line"><span class="keyword">for</span> row, col <span class="keyword">in</span> zip(row_labels, col_labels)</span><br></pre></td></tr></table></figure>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame([</span><br><span class="line">		[<span class="string">'1990'</span>, <span class="string">'a'</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">2</span>], </span><br><span class="line">		[<span class="string">'1991'</span>, <span class="string">'c'</span>, <span class="number">10</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">0</span>],</span><br><span class="line">		[<span class="string">'1992'</span>, <span class="string">'d'</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">12</span>],</span><br><span class="line">		[<span class="string">'1993'</span>, <span class="string">'a'</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">11</span>, <span class="number">6</span>]], </span><br><span class="line">		columns=(<span class="string">'Date'</span>, <span class="string">'best'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>))</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>best</th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1990</td>
+      <td>a</td>
+      <td>5</td>
+      <td>4</td>
+      <td>7</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1991</td>
+      <td>c</td>
+      <td>10</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1992</td>
+      <td>d</td>
+      <td>2</td>
+      <td>1</td>
+      <td>4</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1993</td>
+      <td>a</td>
+      <td>5</td>
+      <td>8</td>
+      <td>11</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'value'</span>] = df.lookup(df.index, df[<span class="string">'best'</span>])</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>best</th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1990</td>
+      <td>a</td>
+      <td>5</td>
+      <td>4</td>
+      <td>7</td>
+      <td>2</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1991</td>
+      <td>c</td>
+      <td>10</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1992</td>
+      <td>d</td>
+      <td>2</td>
+      <td>1</td>
+      <td>4</td>
+      <td>12</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1993</td>
+      <td>a</td>
+      <td>5</td>
+      <td>8</td>
+      <td>11</td>
+      <td>6</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="function-amp-map"><a href="#function-amp-map" class="headerlink" title="function &amp; map:"></a>function &amp; map:</h3><ul>
+<li>.apply(func): Apply a function to DataFrame <strong>Row or column wise</strong>.<ul>
+<li>func: function<br>Function to apply to each column or row.</li>
+<li>axis: {0 or ‘index’, 1 or ‘columns’}, default 0<br>Axis along which the function is applied:<ul>
+<li>0 or ‘index’: apply function to each column.</li>
+<li>1 or ‘columns’: apply function to each row.</li>
+</ul>
+</li>
+<li>raw: bool, default False<br>Determines if row or column is passed as a Series or ndarray object:  <ul>
+<li>False : passes each row or column as a Series to the function.</li>
+<li>True : the passed function will receive ndarray objects instead. If you are just applying a NumPy reduction function this will achieve much better performance.</li>
+</ul>
+</li>
+<li>args:tuple Positional arguments to pass to func in addition to the array/series.</li>
+<li>**kwds: Additional keyword arguments to pass as keywords arguments to func.</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>.applymap(func): Apply a function to a Dataframe <strong>elementwise</strong>.</li>
+<li>.pipe(func): Apply a function to a Dataframe <strong>tablewise</strong>. </li>
+<li><p><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.aggregate.html#pandas.DataFrame.aggregate" target="_blank" rel="noopener">.aggregate(func)</a>: Aggregate using one or more operations over the specified axis.</p>
+<ul>
+<li>func: function, str, list or dict<br>Function to use for aggregating the data. If a function, must either work when passed a DataFrame or when passed to DataFrame.apply.Accepted combinations are:<ul>
+<li>function</li>
+<li>string function name</li>
+<li>list of functions and/or function names, e.g. [np.sum, ‘mean’]</li>
+<li>dict of axis labels -&gt; functions, function names or list of such.</li>
+</ul>
+</li>
+<li><p>axis: {0 or ‘index’, 1 or ‘columns’}, default 0<br>If 0 or ‘index’: apply function to each column. If 1 or ‘columns’: apply function to each row.</p>
+<p>Returns: scalar, Series or DataFrame</p>
+</li>
+<li><p>scalar : when Series.agg is called with single function  </p>
+</li>
+<li>Series : when DataFrame.agg is called with a single function  </li>
+<li>DataFrame : when DataFrame.agg is called with several functions</li>
+</ul>
+</li>
+<li><p>.transform<br> Returns: DataFrame<br> A DataFrame that must have the same length as self.<br> <strong>Raises: ValueError<br> If the returned DataFrame has a different length than self.</strong></p>
+</li>
+<li><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.groupby.html#pandas.DataFrame.groupby" target="_blank" rel="noopener">.groupby()</a><ul>
+<li>by: mapping, function, label, or list of labels<br>Used to determine the groups for the groupby. If by is a function, it’s called on each value of the object’s index. If a dict or Series is passed, the Series or dict VALUES will be used to determine the groups (the Series’ values are first aligned; see .align() method). If an ndarray is passed, the values are used as-is determine the groups. <strong>A label or list of labels may be passed to group by the columns in self.</strong> Notice that <strong>a tuple is interpreted as a (single) key</strong>.</li>
+<li>axis: {0 or ‘index’, 1 or ‘columns’}, default 0<br>Split along rows (0) or columns (1).</li>
+<li>level: int, level name, or sequence of such, default None<br>If the axis is a MultiIndex (hierarchical), group by a particular level or levels.</li>
+</ul>
+</li>
+</ol>
+<pre><code>Returns: DataFrameGroupBy  
+Returns a groupby object that contains information about the groups.
+</code></pre><ol>
+<li>.rolling</li>
+</ol>
+<h3 id="Merging"><a href="#Merging" class="headerlink" title="Merging"></a>Merging</h3><ul>
+<li>.join(other)<ul>
+<li>other: DataFrame, Series, or list of DataFrame<br>Index should be similar to one of the columns in this one. If a Series is passed, its name attribute must be set, and that will be used as the column name in the resulting joined DataFrame.</li>
+<li>on: str, list of str, optional<br>Column or index level name(s) in the <strong>caller</strong> to <strong>join on the index in other</strong>, <strong>otherwise joins index-on-index</strong>.<br>+how: {‘left’, ‘right’, ‘outer’, ‘inner’}, default ‘left’</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>.merge(right)<br>Merge DataFrame or named Series objects with a database-style join.<ul>
+<li>right: DataFrame or named Series<br>Object to merge with.</li>
+<li>how: {‘left’, ‘right’, ‘outer’, ‘inner’}, default ‘inner’</li>
+<li>on: label or list<br>Column or index level names to join on. These <strong>must be found in both DataFrames</strong>. If on is None and not merging on indexes then this defaults to the intersection of the columns in both DataFrames.</li>
+<li>left_on: label or list, or array-like<br>Column or index level names to join on in the left DataFrame.</li>
+<li>right_on: label or list, or array-like<br>Column or index level names to join on in the right DataFrame.</li>
+<li>left_index: bool, default False<br>Use the index from the left DataFrame as the join key(s). If it is a MultiIndex, the number of keys in the other DataFrame (either the index or a number of columns) must match the number of levels.</li>
+<li>right_index: bool, default False<br>Use the index from the right DataFrame as the join key. Same caveats as left_index.</li>
+</ul>
+</li>
+<li><p>.append(other)<br>Append rows of other to the end of caller, returning a new object.</p>
+<ul>
+<li>other: DataFrame or Series/dict-like object, or list of these<br>The data to append.</li>
+<li><p>ignore_index: bool, default False<br>If True, do not use the index labels of ‘other’. Columns in other that are not in the caller are added as new columns.</p>
+<p>Similar to <strong>pd.concat</strong>()</p>
+</li>
+</ul>
+</li>
+<li><p>.update(other)<br>Modify in place using non-NA values from another DataFrame. <strong>Overwrite the items in ‘self’ with items in ‘other’.</strong> There is no return value.</p>
+<ul>
+<li>other: DataFrame, or object coercible into a DataFrame<br>Should have at least one matching index/column label with the original DataFrame. If a Series is passed, its name attribute must be set, and that will be used as the column name to align with the original DataFrame.</li>
+<li>overwrite: bool, default True<br><strong>How to handle non-NA values</strong> for overlapping keys:<ul>
+<li>True: overwrite original DataFrame’s values with values from other.</li>
+<li>False: only update values that are NA in the original DataFrame.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>.pivot(index,columns,values)</li>
+</ul>
+<h3 id="Plottting"><a href="#Plottting" class="headerlink" title="Plottting"></a>Plottting</h3><ol>
+<li><p>.plot()</p>
+<ul>
+<li>x: label or position, default None  </li>
+<li><p>y: label, position or list of label, positions, default None<br>Allows plotting of one column versus another. Only used if data is a DataFrame.</p>
+</li>
+<li><p>kind:The kind of plot to produce:</p>
+<ul>
+<li><p>‘line’ : line plot (default)</p>
+</li>
+<li><p>‘bar’ : vertical bar plot</p>
+</li>
+<li><p>‘barh’ : horizontal bar plot</p>
+</li>
+<li><p>‘hist’ : histogram</p>
+</li>
+<li><p>‘box’ : boxplot</p>
+</li>
+<li><p>‘kde’ : Kernel Density Estimation plot</p>
+</li>
+<li><p>‘density’ : same as ‘kde’</p>
+</li>
+<li><p>‘area’ : area plot</p>
+</li>
+<li><p>‘pie’ : pie plot</p>
+</li>
+<li><p>‘scatter’ : scatter plot</p>
+</li>
+<li><p>‘hexbin’ : hexbin plot.</p>
+</li>
+</ul>
+</li>
+<li><p>figsize: a tuple <strong>(width, height)</strong> in inches</p>
+</li>
+<li>title: str or list<br>Title to use for the plot. If a string is passed, print the string at the top of the figure. If a list is passed and subplots is True, print each item in the list above the corresponding subplot.</li>
+<li>xticks: sequence<br>Values to use for the xticks.</li>
+<li>yticks: sequence<br>Values to use for the yticks.</li>
+<li>xlim: 2-tuple/list</li>
+<li>ylim: 2-tuple/list</li>
+</ul>
+</li>
+</ol>
+<h2 id="function"><a href="#function" class="headerlink" title="function"></a>function</h2><ol>
+<li><p>pd.pivot()<br>Return reshaped DataFrame organized by given index / column values. <strong>Reshape data (produce a “pivot” table) based on column values.</strong> Uses unique values from specified index / columns to form axes of the resulting DataFrame. <strong>This function does not support data aggregation</strong>, multiple values will result in a MultiIndex in the columns.</p>
+<ul>
+<li>data: DataFrame</li>
+<li>index:str or object, optional<br>Column to use to make new frame’s index. If None, uses existing index.</li>
+<li>columns: str or object<br>Column to use to make new frame’s columns.</li>
+<li>values: str, object or a list of the previous, optional<br>Column(s) to use for populating new frame’s values. If not specified, all remaining columns will be used and the result will have hierarchically indexed columns.</li>
+</ul>
+</li>
+<li>pd.melt()<br><strong>Unpivot</strong> a DataFrame from wide to long format, optionally leaving identifiers set.<br>This function is useful to massage a DataFrame into a format where <strong>one or more columns are identifier variables (id_vars)</strong>, while <strong>all other columns, considered measured variables (value_vars)</strong>, are “unpivoted” to the row axis, leaving just two non-identifier columns, ‘variable’ and ‘value’.<ul>
+<li>id_vars: tuple, list, or ndarray, optional<br>Column(s) to use as identifier variables.</li>
+<li>value_varstuple, list, or ndarray, optional<br>Column(s) to unpivot. If not specified, uses all columns that are not set as id_vars.</li>
+<li>var_name: scalar<br>Name to use for the ‘variable’ column.</li>
+<li>value_name: scalar, default ‘value’<br>Name to use for the ‘value’ column.</li>
+</ul>
+</li>
+<li>pd.pivot_table()</li>
+<li>pd.merge()</li>
+<li>pd.get_dummies()</li>
+<li>pd.factorize()</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/02/02/changba/" rel="next" title="Scraping Changba data with python + selenium">
+                  <i class="fa fa-chevron-left"></i> Scraping Changba data with python + selenium
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2020/03/19/SAS/" rel="prev" title="SAS DATA notes">
+                  SAS DATA notes <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Create-a-new-DataDrame-object"><span class="nav-number">1.</span> <span class="nav-text">Create a new DataDrame object</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#from-a-csv-file-pandas-read-csv-filepath-or-buffer"><span class="nav-number">1.1.</span> <span class="nav-text">from a csv file: pandas.read_csv(filepath_or_buffer)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#from-an-Excel-read-excel-io-sheet-name-0"><span class="nav-number">1.2.</span> <span class="nav-text">from an Excel: read_excel(io, sheet_name=0)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#from-clipboard-pandas-read-clipboard"><span class="nav-number">1.3.</span> <span class="nav-text">from clipboard: pandas.read_clipboard</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#from-dict-pandas-DataFrame-from-dict"><span class="nav-number">1.4.</span> <span class="nav-text">from dict: pandas.DataFrame.from_dict</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#from-records-pandas-DataFrame-from-records"><span class="nav-number">1.5.</span> <span class="nav-text">from records: pandas.DataFrame.from_records</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Access-attributes-and-methods-of-a-DataFrame-object"><span class="nav-number">2.</span> <span class="nav-text">Access attributes and methods of a DataFrame object</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Attribute"><span class="nav-number">2.1.</span> <span class="nav-text">Attribute</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Methods"><span class="nav-number">2.2.</span> <span class="nav-text">Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#missing-values"><span class="nav-number">2.2.1.</span> <span class="nav-text">missing values:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conversion"><span class="nav-number">2.2.2.</span> <span class="nav-text">Conversion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Indexing-iteration"><span class="nav-number">2.2.3.</span> <span class="nav-text">Indexing, iteration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#function-amp-map"><span class="nav-number">2.2.4.</span> <span class="nav-text">function &amp; map:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Merging"><span class="nav-number">2.2.5.</span> <span class="nav-text">Merging</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Plottting"><span class="nav-number">2.2.6.</span> <span class="nav-text">Plottting</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#function"><span class="nav-number">2.3.</span> <span class="nav-text">function</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="Jiaxin Zhang"
+    src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Jiaxin Zhang</p>
+  <div class="site-description" itemprop="description">Curious, Open-eyed, Humble, Prepared, Sensitive.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiaxin Zhang</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

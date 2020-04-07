@@ -203,6 +203,1483 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/06/SQL-Norm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jiaxin Zhang">
+      <meta itemprop="description" content="Curious, Open-eyed, Humble, Prepared, Sensitive.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jiaxin Zhang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/06/SQL-Norm/" class="post-title-link" itemprop="url">SQL-Norm</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-04-06 23:02:00 / Modified: 23:15:24" itemprop="dateCreated datePublished" datetime="2020-04-06T23:02:00-06:00">2020-04-06</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1NF-First-Normal-Form-Rules"><a href="#1NF-First-Normal-Form-Rules" class="headerlink" title="1NF (First Normal Form) Rules"></a>1NF (First Normal Form) Rules</h1><ul>
+<li>Each table cell should contain a single value.</li>
+<li>Each record needs to be unique.</li>
+</ul>
+<h1 id="2NF-Second-Normal-Form-Rules"><a href="#2NF-Second-Normal-Form-Rules" class="headerlink" title="2NF (Second Normal Form) Rules"></a>2NF (Second Normal Form) Rules</h1><ul>
+<li>Be in 1NF</li>
+<li><strong>Single Column Primary Key</strong></li>
+</ul>
+<p>A primary is a single column value used to identify a database record uniquely.</p>
+<p>It has following attributes</p>
+<ul>
+<li>A primary key cannot be NULL</li>
+<li>A primary key value must be unique</li>
+<li>The primary key values should rarely be changed</li>
+<li>The primary key must be given a value when a new record is inserted.</li>
+</ul>
+<p>A composite key is <strong>a primary key composed of multiple columns</strong> used to identify a record uniquely</p>
+<p>Foreign Key references the primary key of another Table! It helps connect your Tables</p>
+<h1 id="3NF-Third-Normal-Form-Rules"><a href="#3NF-Third-Normal-Form-Rules" class="headerlink" title="3NF (Third Normal Form) Rules"></a>3NF (Third Normal Form) Rules</h1><ul>
+<li>Be in 2NF</li>
+<li>Has <strong>no transitive functional dependencies</strong></li>
+</ul>
+<p><em>A transitive functional dependency is when changing a non-key column, might cause any of the other non-key columns to change</em></p>
+<h1 id="BCNF-Boyce-Codd-Normal-Form"><a href="#BCNF-Boyce-Codd-Normal-Form" class="headerlink" title="BCNF (Boyce-Codd Normal Form)"></a>BCNF (Boyce-Codd Normal Form)</h1><p>Even when a database is in 3rd Normal Form, still there would be anomalies resulted if it has more than one Candidate Key.</p>
+<p>Sometimes is BCNF is also referred as 3.5 Normal Form.</p>
+<h1 id="4NF-Fourth-Normal-Form-Rules"><a href="#4NF-Fourth-Normal-Form-Rules" class="headerlink" title="4NF (Fourth Normal Form) Rules"></a>4NF (Fourth Normal Form) Rules</h1><p>If no database table instance <strong>contains two or more, independent and multivalued data describing the relevant entity</strong>, then it is in 4th Normal Form.</p>
+<h1 id="5NF-Fifth-Normal-Form-Rules"><a href="#5NF-Fifth-Normal-Form-Rules" class="headerlink" title="5NF (Fifth Normal Form) Rules"></a>5NF (Fifth Normal Form) Rules</h1><p>A table is in 5th Normal Form only if it is in 4NF and it <strong>cannot be decomposed into any number of smaller tables without loss of data</strong>.</p>
+<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><ul>
+<li>Database designing is critical to the successful implementation of a database management system that meets the data requirements of an enterprise system.</li>
+<li>Normalization helps produce database systems that are cost-effective and have better security models.</li>
+<li>Functional dependencies are a very important component of the normalize data process</li>
+<li>Most database systems are normalized database up to the <strong>third normal forms</strong>.</li>
+<li>A primary key uniquely identifies are record in a Table and cannot be null</li>
+<li>A foreign key helps connect table and references a primary key</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/03/XML/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jiaxin Zhang">
+      <meta itemprop="description" content="Curious, Open-eyed, Humble, Prepared, Sensitive.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jiaxin Zhang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/03/XML/" class="post-title-link" itemprop="url">XML</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-04-03 15:15:24 / Modified: 16:06:43" itemprop="dateCreated datePublished" datetime="2020-04-03T15:15:24-06:00">2020-04-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>XML stands for <strong>eXtensible Markup Language</strong>.</p>
+<p>XML was designed to <strong>store and transport</strong> data. Maybe it is a little hard to understand, but XML <strong>does not DO anything</strong>. XML is just information wrapped in tags.</p>
+<pre><code>&lt;note&gt;
+  &lt;to&gt;Tove&lt;/to&gt;
+  &lt;from&gt;Jani&lt;/from&gt;
+  &lt;heading&gt;Reminder&lt;/heading&gt;
+  &lt;body&gt;Don&#39;t forget me this weekend!&lt;/body&gt;
+&lt;/note&gt;
+</code></pre><p>XML and HTML were designed with different goals:</p>
+<ul>
+<li>XML was designed to carry data - with focus on what data is</li>
+<li>HTML was designed to display data - with focus on how data looks</li>
+<li>XML tags <strong>are not predefined</strong> like HTML tags are</li>
+</ul>
+<p>Most XML applications will work as expected even if new data is added (or removed).</p>
+<pre><code>&lt;note&gt;
+  &lt;date&gt;2015-09-01&lt;/date&gt;
+  &lt;hour&gt;08:30&lt;/hour&gt;
+  &lt;to&gt;Tove&lt;/to&gt;
+  &lt;from&gt;Jani&lt;/from&gt;
+  &lt;body&gt;Don&#39;t forget me this weekend!&lt;/body&gt;
+&lt;/note&gt;
+</code></pre><p>XML stores data in plain text format. This provides a software- and hardware-independent way of storing, transporting, and sharing data.</p>
+<p>XML also makes it easier to expand or upgrade to new operating systems, new applications, or new browsers, without losing data.</p>
+<p>With XML, data can be available to all kinds of “reading machines” like people, computers, voice machines, news feeds, etc.</p>
+<h1 id="XML-Tree-Structure"><a href="#XML-Tree-Structure" class="headerlink" title="XML Tree Structure"></a>XML Tree Structure</h1><p>XML documents are formed as element trees.</p>
+<p>An XML tree starts at a root element and branches from the root to child elements.</p>
+<p>All elements can have sub elements (child elements):</p>
+<pre><code>&lt;root&gt;
+  &lt;child&gt;
+    &lt;subchild&gt;.....&lt;/subchild&gt;
+  &lt;/child&gt;
+&lt;/root&gt; 
+</code></pre><p>The terms parent, child, and sibling are used to describe the relationships between elements.</p>
+<p>Parents have children. Children have parents. Siblings are children on the same level (brothers and sisters).</p>
+<p>All elements can have <strong>text content</strong> (Everyday Italian) and <strong>attributes</strong> (lang=”en”), the attribute values must <strong>always be quoted</strong>. </p>
+<pre><code>&lt;title lang=&quot;en&quot;&gt;Everyday Italian&lt;/title&gt;
+&lt;author&gt;Giada De Laurentiis&lt;/author&gt;
+&lt;year&gt;2005&lt;/year&gt;
+&lt;price&gt;30.00&lt;/price&gt;
+</code></pre><p>Take a look at these examples:</p>
+<pre><code>&lt;person gender=&quot;female&quot;&gt;
+  &lt;firstname&gt;Anna&lt;/firstname&gt;
+  &lt;lastname&gt;Smith&lt;/lastname&gt;
+&lt;/person&gt;
+
+&lt;person&gt;
+  &lt;gender&gt;female&lt;/gender&gt;
+  &lt;firstname&gt;Anna&lt;/firstname&gt;
+  &lt;lastname&gt;Smith&lt;/lastname&gt;
+&lt;/person&gt;
+</code></pre><p>In the first example gender is an attribute. In the last, gender is an element. Both examples provide the same information. There are <strong>no rules about when to use attributes or when to use elements in XML</strong>.</p>
+<p>Some things to consider when using attributes are:</p>
+<ul>
+<li>attributes cannot contain <strong>multiple values</strong> (elements can)</li>
+</ul>
+<ul>
+<li>attributes <strong>cannot contain tree structures</strong> (elements can)</li>
+<li>attributes are not easily expandable (for future changes)</li>
+</ul>
+<p>In XML, it is illegal to omit the closing tag. <strong>All elements must have a closing tag</strong></p>
+<p>XML documents <strong>must contain one root element</strong> that is the parent of all other elements.</p>
+<p>XML tags are <strong>case sensitive</strong>. The tag <Letter> is different from the tag <letter>.</p>
+<p>Opening and closing tags must be written with the same case.</p>
+<p>This line is called the XML prolog:</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+</code></pre><p>The XML prolog is <strong>optional</strong>. If it exists, it must come first in the document.</p>
+<p>The syntax for writing comments in XML is similar to that of HTML:</p>
+<pre><code>&lt;!-- This is a comment --&gt;
+</code></pre><h2 id="Name-Conflicts"><a href="#Name-Conflicts" class="headerlink" title="Name Conflicts"></a>Name Conflicts</h2><p>In XML, element names are defined by the developer. This often results in a conflict when trying to mix XML documents from different XML applications.</p>
+<pre><code>This XML carries HTML table information:
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Apples&lt;/td&gt;
+    &lt;td&gt;Bananas&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre><p>This XML carries information about a table (a piece of furniture):</p>
+<pre><code>&lt;table&gt;
+  &lt;name&gt;African Coffee Table&lt;/name&gt;
+  &lt;width&gt;80&lt;/width&gt;
+  &lt;length&gt;120&lt;/length&gt;
+&lt;/table&gt;
+</code></pre><p>If these XML fragments were added together, there would be a name conflict. Both contain a <table> element, but the elements have different content and meaning.</p>
+<p>Name conflicts in XML can easily be avoided using a name prefix.</p>
+<p>This XML carries information about an HTML table, and a piece of furniture:</p>
+<pre><code>&lt;h:table&gt;
+  &lt;h:tr&gt;
+    &lt;h:td&gt;Apples&lt;/h:td&gt;
+    &lt;h:td&gt;Bananas&lt;/h:td&gt;
+  &lt;/h:tr&gt;
+&lt;/h:table&gt;
+
+&lt;f:table&gt;
+  &lt;f:name&gt;African Coffee Table&lt;/f:name&gt;
+  &lt;f:width&gt;80&lt;/f:width&gt;
+  &lt;f:length&gt;120&lt;/f:length&gt;
+&lt;/f:table&gt; 
+</code></pre><p>When using prefixes in XML, a <strong>namespace</strong> for the prefix must be defined.</p>
+<p>The namespace can be defined by an <strong>xmlns attribute</strong> in the start tag of an element.</p>
+<p>The namespace declaration has the following syntax. xmlns:prefix=”URI” (A Uniform Resource Identifier (URI) is a string of characters which identifies an Internet Resource.).</p>
+<pre><code>&lt;root&gt;
+&lt;h:table xmlns:h=&quot;http://www.w3.org/TR/html4/&quot;&gt;
+  &lt;h:tr&gt;
+    &lt;h:td&gt;Apples&lt;/h:td&gt;
+    &lt;h:td&gt;Bananas&lt;/h:td&gt;
+  &lt;/h:tr&gt;
+&lt;/h:table&gt;
+
+&lt;f:table xmlns:f=&quot;https://www.w3schools.com/furniture&quot;&gt;
+  &lt;f:name&gt;African Coffee Table&lt;/f:name&gt;
+  &lt;f:width&gt;80&lt;/f:width&gt;
+  &lt;f:length&gt;120&lt;/f:length&gt;
+&lt;/f:table&gt;
+
+&lt;/root&gt; 
+</code></pre><p>When a namespace is defined for an element, all child elements with the same prefix are associated with the same namespace.</p>
+<p>Namespaces can also be declared in the XML root element:</p>
+<root xmlns:h="http://www.w3.org/TR/html4/"
+xmlns:f="https://www.w3schools.com/furniture">
+
+    <h:table>
+      <h:tr>
+        <h:td>Apples</h:td>
+        <h:td>Bananas</h:td>
+      </h:tr>
+    </h:table>
+
+    <f:table>
+      <f:name>African Coffee Table</f:name>
+      <f:width>80</f:width>
+      <f:length>120</f:length>
+    </f:table>
+
+    </root> 
+
+<p><em>The purpose of using an URI is to give the namespace a <strong>unique name</strong>. However, companies often use the namespace as a pointer to a web page containing namespace information.</em></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/19/SAS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jiaxin Zhang">
+      <meta itemprop="description" content="Curious, Open-eyed, Humble, Prepared, Sensitive.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jiaxin Zhang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/19/SAS/" class="post-title-link" itemprop="url">SAS DATA notes</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-03-19 15:34:53" itemprop="dateCreated datePublished" datetime="2020-03-19T15:34:53-06:00">2020-03-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-29 18:15:48" itemprop="dateModified" datetime="2020-03-29T18:15:48-06:00">2020-03-29</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>A SAS program consists of two parts: DATA and PROC; </p>
+<h1 id="Read-your-dataset-with-DATA"><a href="#Read-your-dataset-with-DATA" class="headerlink" title="Read your dataset with DATA"></a>Read your dataset with DATA</h1><p>It <strong>reads, and modify data</strong>. DATA steps starts with ‘’DATA’’ and is followed by a name that you make up for a SAS dataset.</p>
+<p><strong>DATA STEPS EXECUTE OBSERVATION BY OBSERVATION AND THEN LINE BY LINE</strong>. i.e. for a dataset containing observations 1,2,3, and DATA step with 4 statements a, b,c,d, it takes observation 1 first to run a, b,c,d sequentially and then takes observation 2 to run a, b,c,d again.</p>
+<h2 id="Data-types"><a href="#Data-types" class="headerlink" title="Data types"></a>Data types</h2><p>In SAS there are just two data types: numeric and character.</p>
+<ul>
+<li>Numeric: Standard numeric data contain<br>only numerals, decimal points, plus and minus signs, and E for scientific notation. <strong>Numbers with embedded commas or dates, for example, are not standard.</strong></li>
+<li>Char: must be char if it contains letters or special characters, can be char if it only contains numbers</li>
+<li>Missing data: missing char is represented by <strong>blank</strong> and numeric is by a <strong>single period</strong> ‘.’</li>
+</ul>
+<h2 id="What-data-to-read"><a href="#What-data-to-read" class="headerlink" title="What data to read:"></a>What data to read:</h2><h3 id="INPUT"><a href="#INPUT" class="headerlink" title="INPUT"></a>INPUT</h3><pre><code>INPUT Name $ Age Height;
+</code></pre><p>This statement tells SAS to read three data values (Name, Age, Height) per observation/line. <strong>The $ after Name indicates that it is a character variable</strong>, whereas the Age and Height variables are both numeric.</p>
+<h2 id="Where-to-find-your-data"><a href="#Where-to-find-your-data" class="headerlink" title="Where to find your data:"></a>Where to find your data:</h2><h3 id="DATALINES"><a href="#DATALINES" class="headerlink" title="DATALINES:"></a>DATALINES:</h3><p>loading internal dataset</p>
+<pre><code>DATA uspresidents;
+    INPUT president $ Party $ number;
+    DATALINES;
+adams F 2
+lincoln R 16
+grant R 18
+kennedy D 35
+    ;
+RUN;
+</code></pre><h3 id="INFILE-path"><a href="#INFILE-path" class="headerlink" title="INFILE path:"></a>INFILE path:</h3><p>loading external dataset</p>
+<pre><code>DATA uspresidents;
+    INFILE &#39;C:\MyRawData\President.dat&#39;;
+    INPUT president $ Party $ number;
+RUN;
+</code></pre><h4 id="LRECL"><a href="#LRECL" class="headerlink" title="LRECL"></a>LRECL</h4><p>SAS assumes external files have a record length of 256 or less.If your data lines are long, and it looks like <strong>SAS is not reading all your data</strong>, then use the LRECL= option in the INFILE statement to specify a record length at least as long as the longest record in your data file.</p>
+<pre><code>DATA uspresidents;
+    INFILE &#39;C:\MyRawData\President.dat&#39; LRECL=2000;
+    INPUT president $ Party $ number;
+RUN;
+</code></pre><h2 id="How-to-read-data"><a href="#How-to-read-data" class="headerlink" title="How to read data"></a>How to read data</h2><h3 id="Data-Separated-by-Spaces-List-style"><a href="#Data-Separated-by-Spaces-List-style" class="headerlink" title="Data Separated by Spaces (List style)"></a>Data Separated by Spaces (List style)</h3><p>If the values in your raw data file are all <strong>separated by at least one space</strong>, then using <strong>list input</strong> (also called free formatted input) to read the data may be appropriate.</p>
+<pre><code>DATA toads;
+    INFILE &#39;c:\MyRawData\ToadJump.dat&#39;;
+    INPUT ToadName $ Weight Jump1 Jump2 Jump3;
+RUN;
+</code></pre><ul>
+<li>You must read all the data in a record—no skipping over unwanted values.</li>
+<li>Any missing data must be indicated with a period.</li>
+<li>Character data, if present, must be simple: <strong>no embedded spaces</strong>, and <strong>no values greater than 8 characters in length</strong></li>
+<li><p>If the data file contains <strong>dates or other values which need special treatment</strong>, then list input may not be appropriate.</p>
+<h3 id="Data-Arranged-in-Columns-Column-style"><a href="#Data-Arranged-in-Columns-Column-style" class="headerlink" title="Data Arranged in Columns (Column style)"></a>Data Arranged in Columns (Column style)</h3><p>If each of the variable’s values is always found in the same place in the data line, then you can use column input as long as all the values are character or standard numeric.</p>
+<p>  DATA sales;</p>
+<pre><code>  INFILE &#39;c:\MyRawData\OnionRing.dat&#39;;
+  INPUT VisitingTeam $ 1-20 ConcessionSales 21-24 BleacherSales 25-28
+  OurHits 29-31 TheirHits 32-34 OurRuns 35-37 TheirRuns 38-40;
+</code></pre><p>  RUN;</p>
+</li>
+</ul>
+<p>The variable VisitingTeam is character (indicated by a $) and reads the visiting team’s name in columns 1 through 20. The variables ConcessionSales and BleacherSales read the concession and bleacher sales in columns 21 through 24 and 25 through 28, respectively.</p>
+<h3 id="Data-Not-in-Standard-Format-Informats"><a href="#Data-Not-in-Standard-Format-Informats" class="headerlink" title="Data Not in Standard Format (Informats)"></a>Data Not in Standard Format (Informats)</h3><p>Sometimes raw data are not straightforward numeric or character. For example, we humans easily read the number 1,000,001 as one million and one, but your trusty computer sees it as a character string since it includes commas. In SAS, <strong>informats</strong> are<br>used to tell the computer how to interpret these types of data.</p>
+<p>There are three general types of informats: character, numeric, and date. </p>
+<ul>
+<li>Character $<em>informat</em>w. </li>
+<li>Numeric <em>informat</em>w.d</li>
+<li>Date <em>informat</em>w.</li>
+</ul>
+<p>The $ indicates character informats, <em>informat</em> is the name of the informat, <strong>w is the total width</strong>, and <strong>d is the number of decimal places</strong> (numeric informats only).</p>
+<pre><code>DATA contest;
+    INFILE &#39;c:\MyRawData\Pumpkin.dat&#39;;
+    INPUT Name $16. Age 3. +1 Type $1. +1 Date MMDDYY10.
+    (Score1 Score2 Score3 Score4 Score5) (4.1);
+RUN;
+</code></pre><p>The variable Name has an informat of $16., meaning that it is a character variable 16 columns wide. Variable Age has an informat of 3, is numeric, three columns wide, and has no decimal places. <strong>The +1 skips over one column.</strong> Variable Type is character, and it is one column wide. Variable Date has<br>an informat MMDDYY10. and reads dates in the form 10-31-2013 or 10/31/2013, each 10 columns wide. The remaining variables, Score1 through Score5, all require the same informat, 4.1. By putting the variables and the informat in separate sets of parentheses, you only have to list the<br>informat once.</p>
+<h3 id="Mixing-Input-Styles"><a href="#Mixing-Input-Styles" class="headerlink" title="Mixing Input Styles"></a>Mixing Input Styles</h3><p>List style is the easiest; column<br>style is a bit more work; and formatted style is the hardest of the three. However, <strong>column and formatted styles</strong> do not require spaces (or other delimiters) between variables and can <strong>read embedded blanks</strong>. Formatted style can read <strong>special data such as dates</strong>. SAS is so flexible that you can <strong>mix and match any of the input styles</strong> for your own convenience.</p>
+<pre><code>DATA nationalparks;
+    INFILE &#39;c:\MyRawData\NatPark.dat&#39;;
+    INPUT ParkName $ 1-22 State $ Year @40 Acreage COMMA9.;
+RUN;
+</code></pre><p>Notice that the variable ParkName is read with column style input, State and Year are read with list style input, and Acreage is read with formatted style input.</p>
+<h3 id="Messy-Raw-Data-Column-Pointer"><a href="#Messy-Raw-Data-Column-Pointer" class="headerlink" title="Messy Raw Data (Column Pointer)"></a>Messy Raw Data (Column Pointer)</h3><p>With list style input, SAS automatically scans to the next non-blank field and starts<br>reading. With column style input, SAS starts reading in the exact column you specify. But with formatted input, SAS just starts reading—wherever the pointer is, that is where SAS reads.</p>
+<h4 id="n"><a href="#n" class="headerlink" title="@n"></a>@n</h4><p>Sometimes you need to move the pointer explicitly, and you can do that by using the column pointer, @n, where <strong>n is the number of the column SAS should move to</strong>.</p>
+<pre><code>DATA nationalparks;
+    INFILE &#39;c:\MyRawData\NatPark.dat&#39;;
+    INPUT ParkName $ 1-22 State $ Year @40 Acreage COMMA9.;
+RUN;
+</code></pre><p>The column pointer, @n, has other uses, too, and can be used anytime you want SAS to skip<br>backwards or forwards within a data line. You could use it, for example, to skip over unneeded data, or to read a variable twice using different informats.</p>
+<h4 id="’character’"><a href="#’character’" class="headerlink" title="@’character’"></a>@’character’</h4><p>Sometimes you don’t know the starting column of the data, but you do know that it always comes after a particular character or word. For these types of situations, you can use the @’character’ column pointer.</p>
+<p>For example, suppose you have a data file that has information about dog ownership. Nothing in the file lines up, but you know that the breed of the dog always follows the word Breed:. You could read the dog’s breed using the following INPUT statement:</p>
+<pre><code>INPUT @&#39;Breed:&#39; DogBreed $;
+</code></pre><h4 id="The-colon-modifier"><a href="#The-colon-modifier" class="headerlink" title="The colon modifier"></a>The colon modifier</h4><p>If you only want SAS to <strong>read until it encounters a space or the end of the data line</strong>, then you can use a colon modifier on the informat. To use a colon modifier, simply put a colon (:) before the informat (such as :$20. instead of $20.).</p>
+<p>For example, given this line of raw data,</p>
+<pre><code>My dog Sam Breed: Rottweiler Vet Bills: $478
+</code></pre><p>the following table shows the results you would get using different INPUT statements:</p>
+<pre><code>Statements                         Value of variable DogBreed
+INPUT @&#39;Breed: &#39; DogBreed $;     Rottweil
+INPUT @&#39;Breed: &#39; DogBreed $20.; Rottweiler Vet Bill
+INPUT @&#39;Breed: &#39; DogBreed :$20.; Rottweiler
+</code></pre><h3 id="Multiple-Lines-of-Raw-Data-per-Observation-Line-pointers"><a href="#Multiple-Lines-of-Raw-Data-per-Observation-Line-pointers" class="headerlink" title="Multiple Lines of Raw Data per Observation (Line pointers)"></a>Multiple Lines of Raw Data per Observation (Line pointers)</h3><p>SAS will automatically<br>go to the next line if it runs out of data before it has read all the<br>variables in an INPUT statement</p>
+<ul>
+<li><p>slash (/) To read more than one line of raw data for a single observation, you simply insert a slash into your<br>INPUT statement when you want to skip to the next line of raw data.</p>
+</li>
+<li><p>pound-n (#n) The #n line pointer performs the same action except that you specify the line number. The n in #n stands for the number of the line of raw data for that observation; so #2 means to go to the second line for that observation, and #4 means go to the fourth line. You can even go backwards using the #n line pointer, reading from line 4 and then from line 3</p>
+</li>
+</ul>
+<p>See the example below. The INPUT statement reads the values for City and State from the first line of data. Then the slash tells SAS to move to column 1 of the next line of data before reading NormalHigh and NormalLow. Likewise, the #3 tells SAS to move to column 1 of the third line of data for that observation before reading RecordHigh and RecordLow.</p>
+<pre><code>DATA highlow;
+    INFILE &#39;c:\MyRawData\Temperature.dat&#39;;
+    INPUT City $ State $
+            / NormalHigh NormalLow
+            #3 RecordHigh RecordLow;
+RUN;
+</code></pre><h3 id="Multiple-Observations-per-Line"><a href="#Multiple-Observations-per-Line" class="headerlink" title="Multiple Observations per Line"></a>Multiple Observations per Line</h3><p>When you have multiple observations per line of raw data, you can use double trailing at signs(@@) at the end of your INPUT statement.</p>
+<p>The raw data look like this:</p>
+<pre><code>Nome AK 2.5 15 Miami FL 6.75
+18 Raleigh NC . 12
+</code></pre><p>Notice that in this data file the first line stops in the middle of the second observation. The following program reads these data from a file named Precipitation.dat and uses an @@ so SAS does not automatically go to a new line of raw data for each observation:</p>
+<pre><code>DATA rainfall;
+    INFILE &#39;c:\MyRawData\Precipitation.dat&#39;;
+    INPUT City $ State $ NormalRain MeanDaysRain @@;
+RUN;
+</code></pre><h3 id="Part-of-a-Raw-Data-File-IF-condition"><a href="#Part-of-a-Raw-Data-File-IF-condition" class="headerlink" title="Part of a Raw Data File (IF condition)"></a>Part of a Raw Data File (IF condition)</h3><p>Luckily, you don’t have to read all the data before you tell SAS whether to keep an observation. Instead, you can read just enough variables to decide whether to keep the current observation, then end the INPUT statement with an at sign (@), called a trailing at. This tells SAS to hold that line of raw data. While the trailing @ holds that line, you can test the observation with an IF statement to see if it’s one you want to keep. If it is, then you can read data for the remaining variables with a second INPUT statement. Without the trailing @, SAS would automatically start reading the next line of raw data with each INPUT statement.</p>
+<p>Here are the raw data:</p>
+<pre><code>freeway 408                             3684 3459
+surface Martin Luther King Jr. Blvd.     1590 1234
+surface Broadway                         1259 1290
+surface Rodeo Dr.                         1890 2067
+freeway 608                             4583 3860
+freeway 808                             2386 2518
+surface Lake Shore Dr.                     1590 1234
+surface Pennsylvania Ave.                 1259 1290
+</code></pre><p>Suppose you want to see only the freeway data at this point so you read the raw data file,<br>Traffic.dat, with this program:</p>
+<pre><code>DATA freeways;
+    INFILE &#39;c:\MyRawData\Traffic.dat&#39;;
+    INPUT Type $ @;
+        IF Type = &#39;surface&#39; THEN DELETE;
+    INPUT Name $ 9-38 AMTraffic PMTraffic;
+RUN;
+</code></pre><h3 id="INFILE-options"><a href="#INFILE-options" class="headerlink" title="INFILE options"></a>INFILE options</h3><ul>
+<li><p>FIRSTOBS=<br>The FIRSTOBS= option tells SAS at what line to begin reading data. This is useful<br>if you have a data file that contains descriptive text or header information at the beginning, and you want to skip over these lines to begin reading the data.</p>
+</li>
+<li><p>OBS=<br>The OBS= option can be used anytime you want to read only a part of your data file. It tells SAS to stop reading when it gets to that line in the raw data file. Note that it does not necessarily correspond to the number of observations.</p>
+</li>
+<li><p>MISSOVER<br><strong>By default, SAS will go to the next data line to read more data if SAS has reached<br>the end of the data line and there are still more variables in the INPUT statement that have not been assigned values.</strong> The MISSOVER option tells SAS that if it runs out of data, don’t go to the next data line. Instead, assign missing values to any remaining variables.</p>
+</li>
+<li><p>TRUNCOVER<br>If a variable’s field extends past the<br>end of the data line, then, by default, SAS will go to the next line to start reading the variable’s value. This option tells SAS to read data for the variable until it reaches the end of the data line, or the last column specified in the format or column range, whichever comes first.</p>
+</li>
+<li><p>DLM=<br>If you read your data using list input, the DATA step expects your file to<br>have spaces between your data values. The DELIMITER=, or DLM=, option in the INFILE<br>statement allows you to read data files with other delimiters such as comma ‘,’ and tab characters ‘09’X.</p>
+</li>
+<li><p>DSD<br>The DSD (Delimiter-Sensitive Data) option for the INFILE statement does<br>three things for you. </p>
+<ul>
+<li>First, it <strong>ignores delimiters in data values enclosed in quotation marks</strong>.</li>
+<li>Second, it <strong>does not read quotation marks as part of the data value</strong>. </li>
+<li>Third, it treats <strong>two delimiters in a row as a missing value</strong>.</li>
+</ul>
+</li>
+<li><p>MISSOVER<br>It is also prudent, when<br>using the DSD option, to add the MISSOVER option if there is any chance that you have missing data at the end of your data lines. The MISSOVER option tells SAS that if it runs out of data, don’t go to the next data line to continue reading.</p>
+</li>
+</ul>
+<h3 id="IMPORT-Procedure"><a href="#IMPORT-Procedure" class="headerlink" title="IMPORT Procedure"></a>IMPORT Procedure</h3><p>PROC IMPORT will scan your data file (the first 20 rows by default) and automatically<br>determine the variable types (character or numeric), will assign lengths to the character variables, and can recognize some date formats.</p>
+<p>PROC IMPORT will treat two consecutive delimiters in your data file as a missing value, will read values enclosed by quotation marks, and assign missing values to variables when it runs out of data on a line.</p>
+<p>Also, if you want, you can use the first line in your data file for the variable names.</p>
+<p>The general form of the IMPORT procedure is</p>
+<pre><code>PROC IMPORT DATAFILE = &#39;filename&#39; OUT = data-set;
+</code></pre><p>OPTIONS:</p>
+<pre><code>PROC IMPORT DATAFILE = &#39;filename&#39; OUT = data-set
+DBMS = identifier REPLACE;
+</code></pre><ul>
+<li>OUT = name</li>
+<li><p>DBMS=  identifier<br><strong>If your file does not have the proper extension, or your file is of type DLM, then you must use the DBMS = option</strong> in the PROC IMPORT statement</p>
+<ul>
+<li>.csv: CSV</li>
+<li>.txt: TAB</li>
+<li>.xls: XLS</li>
+<li>.xlsx: XLSX</li>
+<li>all types of Excel files: EXCEL</li>
+<li>Delimiters other than commas or tabs: DLM</li>
+</ul>
+</li>
+<li><p>REPLACE<br>if you already have<br>a SAS data set with the name you specified in the OUT= option, and you want to overwrite it.</p>
+</li>
+</ul>
+<p>Optional statements:</p>
+<ul>
+<li>DATAROWS = n;<br>start reading data in row n. Default is 1.</li>
+<li>DELIMITER = ‘delimiter-character’;<br>delimiter for DLM files. Default is space.</li>
+<li>GETNAMES = NO;<br>do not get variable names from the first line of input file. <strong>Default is YES.</strong> If NO, then variables are named VAR1, VAR2, VAR3, and so on.</li>
+<li>GUESSINGROWS = n;<br>use n rows to determine variable types.<br>Default is 20.</li>
+<li>SHEET = “sheet-name”;</li>
+<li>RANGE = “sheet-name$UL:LR”;</li>
+</ul>
+<h2 id="Temporary-versus-Permanent-SAS-Data-Sets"><a href="#Temporary-versus-Permanent-SAS-Data-Sets" class="headerlink" title="Temporary versus Permanent SAS Data Sets"></a>Temporary versus Permanent SAS Data Sets</h2><p>SAS data sets are available in two varieties: temporary and permanent. A temporary SAS data set is one that exists only during the current job or session and is automatically erased by SAS when you<br>finish. If a SAS data set is permanent, that doesn’t mean that it lasts for eternity, just that it remains when the job or session is finished. In general, if you use a data set more than once, it is more efficient to save it as a permanent SAS data set than to create a new temporary SAS data set every<br>time you want to use the data.</p>
+<h3 id="SAS-data-set-names"><a href="#SAS-data-set-names" class="headerlink" title="SAS data set names"></a>SAS data set names</h3><p>All SAS data sets have a two-level name: <em>libref</em>.<em>membername</em>. Both the libref and member name follow the standard rules for valid SAS names. They must start with a letter or underscore and contain only letters, numerals, or underscores. However, <strong>librefs cannot be longer than 8 characters</strong> while member names can be up to 32 characters long.</p>
+<p>You never explicitly tell SAS to make a data set temporary or permanent, it is just implied by the name you give the data set when you create it. <strong>If you specify a two-level name (and the libref is something other than WORK), then your data set will be permanent.</strong> If you specify just one level of the data set name (as we have in most of the examples in this book), then your data set will be temporary. SAS will use your one-level name as the member name and automatically append the libref WORK. By definition, <strong>any SAS data set with a libref of WORK is a temporary data set and will be<br>erased by SAS</strong> at the end of your job or session.</p>
+<p>Most data sets are created in DATA steps, but PROC steps can also create data sets. </p>
+<h3 id="Using-Permanent-SAS-Data-Sets-with-LIBNAME-Statements"><a href="#Using-Permanent-SAS-Data-Sets-with-LIBNAME-Statements" class="headerlink" title="Using Permanent SAS Data Sets with LIBNAME Statements"></a>Using Permanent SAS Data Sets with LIBNAME Statements</h3><p>A libref is a nickname that corresponds to the location of a SAS data library. The basic form of the LIBNAME statement is:</p>
+<pre><code>LIBNAME libref &#39;your-SAS-data-library&#39;;
+</code></pre><p>Here is an example of creating permanent dataset:</p>
+<pre><code>LIBNAME plants &#39;c:\MySASLib&#39;;
+DATA plants.magnolia;
+    INFILE &#39;c:\MyRawData\Mag.dat&#39;;
+    INPUT ScientificName $ 1-14 CommonName $ 16-32 MaximumHeight
+    AgeBloom Type $ Color $;
+RUN;
+</code></pre><p>To use a permanent SAS data set, you can include a LIBNAME statement in your program and refer to the data set by its two-level name.</p>
+<pre><code>LIBNAME example &#39;c:\MySASLib&#39;;
+PROC PRINT DATA = example.magnolia;
+    TITLE &#39;Magnolias&#39;;
+RUN;
+</code></pre><h3 id="Using-Permanent-SAS-Data-Sets-by-Direct-Referencing"><a href="#Using-Permanent-SAS-Data-Sets-by-Direct-Referencing" class="headerlink" title="Using Permanent SAS Data Sets by Direct Referencing"></a>Using Permanent SAS Data Sets by Direct Referencing</h3><p>If you don’t want to be bothered with setting up librefs and defining SAS libraries, but you still<br>want to use permanent SAS data sets, then you can use direct referencing.</p>
+<p>Using direct referencing is easy. Just take your operating environment’s name for a file, enclose it quotation marks, and put it in your program.<strong> The quotation marks tell SAS that this is a permanent SAS data set.</strong></p>
+<pre><code>DATA &#39;drive:\directory\filename&#39;;
+</code></pre><p>For directory-based operating environments, if you leave out the directory or path, then SAS uses the current working directory. For example, this statement would create a permanent SAS data set named TREES in your current working directory.</p>
+<pre><code>DATA &#39;trees&#39;;
+</code></pre><h2 id="Listing-the-Contents-of-a-SAS-Data-Set"><a href="#Listing-the-Contents-of-a-SAS-Data-Set" class="headerlink" title="Listing the Contents of a SAS Data Set"></a>Listing the Contents of a SAS Data Set</h2><p>there is an easy way to get a description<br>of a SAS data set; you simply run the CONTENTS procedure. <strong>PROC CONTENTS</strong> is a simple procedure. You just type the keywords PROC CONTENTS and<br>specify the data set you want with the DATA= option:</p>
+<pre><code>PROC CONTENTS DATA = data-set;
+</code></pre><p>The LABEL= data set option gives a label for the entire data set while the LABEL<br>statement assigns labels to individual variables. For variables, if you specify a LABEL statement in a DATA step, then the<br>descriptions will be stored in the data set and will be printed by PROC CONTENTS. You can also<br>use LABEL statements in PROC steps to customize your reports, but then the labels apply only for<br>the duration of the PROC step and are not stored in the data set.</p>
+<p>Just as informats give SAS special<br>instructions for reading a variable, formats give SAS special instructions for writing a variable.If you specify an INFORMAT or FORMAT statement in a DATA step, then the name of that informat or format will be saved in the data set and printed by PROC CONTENTS. FORMAT statements, like LABEL statements, can be used in PROC steps to customize your reports, but then<br>the name of the format is not stored in the data set</p>
+<h1 id="Transform-your-data"><a href="#Transform-your-data" class="headerlink" title="Transform your data"></a>Transform your data</h1><h2 id="Creating-and-Redefining-Variables"><a href="#Creating-and-Redefining-Variables" class="headerlink" title="Creating and Redefining Variables"></a>Creating and Redefining Variables</h2><p>You create and redefine variables with assignment statements using<br>this basic form:</p>
+<pre><code>variable = expression;
+</code></pre><p>When deciding how to interpret your expression, SAS follows the standard mathematical rules of precedence: SAS performs exponentiation (**) first, then multiplication(*) and division(/), followed by addition (+) and subtraction(-). You can use parentheses ( ( ) ) to override that order.</p>
+<h2 id="Using-SAS-Functions"><a href="#Using-SAS-Functions" class="headerlink" title="Using SAS Functions"></a>Using SAS Functions</h2><p>Functions perform a calculation on, or a transformation of, the arguments given in parentheses following the function name. SAS functions have the following general form:</p>
+<pre><code>function-name(argument, argument, ...)
+</code></pre><p>All functions must have parentheses even if they don’t require any arguments.</p>
+<p>Arguments are separated by commas and can be variable names, constant values such as numbers or characters enclosed in quotation marks, or expressions.</p>
+<h3 id="some-Char-function"><a href="#some-Char-function" class="headerlink" title="some Char function"></a>some Char function</h3><ul>
+<li>ANYALNUM(arg,start)</li>
+<li>ANYALPHA(arg,start)</li>
+<li>ANYDIGIT(arg,start)</li>
+<li>ANYSPACE(arg,start)</li>
+<li>CAT(arg-1,arg-2,…arg-n)</li>
+<li>COMPRESS(arg, ‘char’=’ ‘)</li>
+<li>INDEX(arg, ‘string’)</li>
+<li>LENGTH(arg): Returns the length of an argument <strong>not counting trailing blanks</strong>(missing values have a length of 1)</li>
+<li>TRANSLATE(source, to-1, from-1, …to-n, from-n): Replaces from characters in source with to characters (one to one replacement only—you can’t replace one<br>character with two, for example)</li>
+<li>TRANWRD(source,from,to): Replaces from character string in source with to<br>character string</li>
+<li>UPCASE(arg)</li>
+<li>PROPCASE(arg): Converts first character in word to uppercase and<br>remaining characters to lowercase</li>
+<li>TRIM(arg): Removes trailing blanks from character expression</li>
+</ul>
+<h3 id="some-Numeric-function"><a href="#some-Numeric-function" class="headerlink" title="some Numeric function"></a>some Numeric function</h3><ul>
+<li>INT(arg)</li>
+<li>LOG(arg)</li>
+<li>LOG10(arg)</li>
+<li>MAX(arg-1,arg-2,…arg-n)</li>
+<li>MEAN(arg-1,arg-2,…arg-n)</li>
+<li>MIN(arg-1,arg-2,…arg-n)</li>
+<li>SUM(arg-1,arg-2,…arg-n)</li>
+<li>N(arg-1,arg-2,…arg-n)</li>
+<li>NMISS(arg-1,arg-2,…arg-n)</li>
+<li>ROUND(arg, round-off-unit)</li>
+</ul>
+<h3 id="some-date-Function"><a href="#some-date-Function" class="headerlink" title="some date Function"></a>some date Function</h3><ul>
+<li>DAY(date)</li>
+<li>MONTH(date)</li>
+<li>YEAR(date)</li>
+<li>QTR(date): Returns the yearly quarter (1–4) from a SAS date value</li>
+<li>WEEKDAY(date): Returns day of week (1=Sunday) from SAS date value</li>
+<li>MDY(month,day,year): Returns a SAS date value from month, day, and year values</li>
+<li>TODAY()</li>
+<li>YRDIF(start-date,end-date,’AGE’): YeaR Difference.</li>
+</ul>
+<h2 id="IF-THEN-ELSE-Statements"><a href="#IF-THEN-ELSE-Statements" class="headerlink" title="IF-THEN/ELSE Statements"></a>IF-THEN/ELSE Statements</h2><p>IF-THEN/ELSE logic takes this basic form:</p>
+<pre><code>IF condition THEN action;
+    ELSE IF condition THEN action;
+    ELSE IF condition THEN action;
+    ELSE action;
+</code></pre><p>The condition is an expression comparing one thing to another, and the action is what SAS should do when the expression is true, often an assignment statement.</p>
+<p>Operators in condition:</p>
+<ul>
+<li>EQ =</li>
+<li>NE ~=, ^=</li>
+<li>GT &gt;</li>
+<li>LT &lt;</li>
+<li>GE &gt;=</li>
+<li>LE &lt;=</li>
+<li>IN: IN compares the value of a variable to a list of values.</li>
+<li>AND &amp;</li>
+<li>OR !,|</li>
+</ul>
+<p>You can also specify multiple conditions with the keywords AND and OR:</p>
+<pre><code>IF condition AND condition THEN action;
+</code></pre><p>A single IF-THEN statement can only have one action. If you add the keywords DO and END, then you can execute more than one action.</p>
+<pre><code>IF condition THEN DO; 
+    action; 
+    action; 
+END;
+</code></pre><p>The DO statement causes all SAS statements coming after it to be treated as a unit until a matching END statement appears. Together, the DO statement, the END statement, and all the statements in<br>between are called a DO group.</p>
+<p>Often programmers find that they want to use some of the observations in a<br>data set and exclude the rest. The most common way to do this is with a<br>subsetting IF statement in a DATA step. The basic form of a subsetting IF is</p>
+<pre><code>IF expression;
+</code></pre><p>At first subsetting IF statements may seem odd. People naturally ask, “IF Sex = ‘f’, then what?” The subsetting IF looks incomplete, as if a careless typist pressed the delete key too long. But it is really a special case of the standard IF-THEN statement.</p>
+<p>If you don’t like subsetting IFs, there is another alternative, the DELETE statement. DELETE statements do the opposite of subsetting IFs. <strong>While the subsetting IF statement tells SAS which observations to include, the DELETE statement tells SAS which observations to exclude</strong>:</p>
+<pre><code>IF expression THEN DELETE;
+</code></pre><p>Generally, you <strong>use the subsetting IF when it is easier to specify a condition for including observations</strong>, and <strong>use the DELETE statement when it is easier to specify a condition for excluding observations</strong>.</p>
+<h2 id="RETAIN-and-Sum-statement"><a href="#RETAIN-and-Sum-statement" class="headerlink" title="RETAIN and Sum statement"></a>RETAIN and Sum statement</h2><p>RETAIN statement Use the RETAIN statement when you want SAS to preserve a variable’s value from the previous iteration of the DATA step. The RETAIN statement can appear <strong>anywhere in the DATA step</strong> and has the following form, where all variables to be retained are listed after the RETAIN keyword:</p>
+<pre><code>RETAIN variable-list;
+</code></pre><p>You can also specify an initial value, instead of missing, for the variables. All variables listed before an initial value will start the first iteration of the DATA step with that value: </p>
+<pre><code>RETAIN variable-list initial-value;
+</code></pre><p>A sum statement also retains values from the previous iteration of the DATA step, but you use it for the special cases where you simply want to cumulatively add the value of an expression to a variable. A sum statement, like an assignment statement, <strong>contains no keywords</strong>. It has the following form:</p>
+<pre><code>variable + expression;
+</code></pre><p>This statement adds the value of the expression to the variable while retaining the variable’s value from one iteration of the DATA step to the next. <strong>The variable must be numeric and has the initial value of zero.</strong> This statement can be re-written<br>using the RETAIN statement and SUM function as follows:</p>
+<pre><code>RETAIN variable 0;
+variable = SUM(variable, expression);
+</code></pre><h2 id="ARRAY"><a href="#ARRAY" class="headerlink" title="ARRAY"></a>ARRAY</h2><p>In SAS, an array is a group of variables. You can define an array to be any<br>group of variables you like, as long as they are either all numeric or all character. The variables can be ones that already exist in your data set, or they can be new variables that you want to create.</p>
+<p>Arrays are defined using the ARRAY statement in the DATA step. The ARRAY statement has the following general form:</p>
+<pre><code>ARRAY name (n) $ variable-list;
+</code></pre><p>In this statement, name is a name you give to the array, and n is the number of variables in the array. Following the (n) is a list of variable names. The number of variables in the list must equal the number given in parentheses. (You may use { } or [ ] instead of parentheses if you like.) This iscalled an explicit array, where you explicitly state the number of variables in the array. <strong>The $ is needed if the variables are character, and is only necessary if the variables have not previously been defined.</strong> The array itself is not stored with the data set;<strong> it is defined only for the duration of the DATA step</strong>. You can give the array any name, as long as it does not match any of the variable names in your data set or any SAS keywords.</p>
+<p>To reference a variable using the array name, give the array name and the subscript for that variable. The first variable in the variable list has subscript 1, the second has subscript 2, and so forth.</p>
+<p>So if you have an array defined as</p>
+<pre><code>ARRAY store (4) Macys Penneys Sears Target;
+</code></pre><p>STORE(1) is the variable Macys, STORE(2) is the variable Penneys, STORE(3) is the variable Sears, and STORE(4) is the variable Target.</p>
+<p>DO loop: </p>
+<pre><code>DO i = start TO end;
+    action;
+END;
+</code></pre><h2 id="Shortcuts-for-Lists-of-Variable-Names"><a href="#Shortcuts-for-Lists-of-Variable-Names" class="headerlink" title="Shortcuts for Lists of Variable Names"></a>Shortcuts for Lists of Variable Names</h2><p>You can use an <strong>abbreviated list</strong> of variable names almost anywhere you can use a regular variable list. <strong>In functions, abbreviated lists must be preceded by the keyword OF (for example, SUM(OF Cat8 - Cat12)).</strong> Otherwise, you simply replace the regular list with the abbreviated one.</p>
+<h3 id="Numbered-range-lists"><a href="#Numbered-range-lists" class="headerlink" title="Numbered range lists"></a>Numbered range lists</h3><p>Variables which <strong>start with the same characters</strong> and end with<br><strong>consecutive numbers</strong> can be part of a numbered range list. The numbers can start and end anywhere as long as the number sequence between is <strong>complete</strong>.</p>
+<p>Variable list： </p>
+<pre><code>INPUT Cat8 Cat9 Cat10 Cat11 Cat12; 
+</code></pre><p>Abbreviated list</p>
+<pre><code>INPUT Cat8 - Cat12;
+</code></pre><h3 id="Name-range-lists"><a href="#Name-range-lists" class="headerlink" title="Name range lists"></a>Name range lists</h3><p>Name range lists depend on the <strong>internal order</strong>, or position, of the variables<br>in the SAS data set. This is <strong>determined by the order of appearance of the variables in the DATA step</strong>.<br>For example, given the following DATA step, the internal variable order would be<br>Y A C H R B:</p>
+<pre><code>DATA example;
+    INPUT y a c h r;
+    b = c + r;
+RUN;
+</code></pre><p>To specify a name range list, put the first variable, then two hyphens, then the last variable. The following PUT statements show the variable list and its abbreviated form using a named range:<br>Variable list </p>
+<pre><code>PUT y a c h r b; 
+</code></pre><p>Abbreviated list</p>
+<pre><code>PUT y -- b;
+</code></pre><p>If you are not sure of the internal order, you can find out using PROC CONTENTS with the POSITION option.</p>
+<pre><code>LIBNAME mydir &#39;c:\MySASLib&#39;;
+PROC CONTENTS DATA = mydir.distance POSITION;
+RUN;
+</code></pre><h3 id="Name-prefix-lists"><a href="#Name-prefix-lists" class="headerlink" title="Name prefix lists"></a>Name prefix lists</h3><p>Variables which start with the same characters can be part of a name prefix<br>list, and can be used in some SAS statements and functions.</p>
+<p>Variable list </p>
+<pre><code>DogBills = SUM(DogVet,DogFood,Dog_Care);
+</code></pre><p>Abbreviated list</p>
+<pre><code>DogBills = SUM(OF Dog:);
+</code></pre><h3 id="Special-SAS-name-lists"><a href="#Special-SAS-name-lists" class="headerlink" title="Special SAS name lists"></a>Special SAS name lists</h3><ul>
+<li>_ALL_： all the variables</li>
+<li>_CHARACTER_： all the character variables</li>
+<li>_NUMERIC_： all the numeric variables</li>
+</ul>
+<p>These name lists are useful when you want to do something like compute the mean of all the numeric variables for an observation (MEAN(OF _NUMERIC_)), or list the values of all variables in an observation (PUT _ALL_;)</p>
+<h1 id="PROC"><a href="#PROC" class="headerlink" title="PROC"></a>PROC</h1><h2 id="Statements"><a href="#Statements" class="headerlink" title="Statements"></a>Statements</h2><pre><code>PROC statement 
+DATA=  ;
+BY ;
+TITLE  ; FOOTNOTE  ;
+LABEL;
+</code></pre><h3 id="PROC-statement"><a href="#PROC-statement" class="headerlink" title="PROC statement"></a>PROC statement</h3><p>All procedures start with the keyword PROC followed by the name of the procedure, such as PRINT or CONTENTS. Options, if there are any, follow the procedure name.</p>
+<p>The DATA= option tells SAS which data set to use as input for that procedure. The DATA= option is, of course, optional. If you skip it, then SAS will use the most recently created data set, which is not necessarily the same as the most recently used.</p>
+<h3 id="TITLE-and-FOOTNOTE-statements"><a href="#TITLE-and-FOOTNOTE-statements" class="headerlink" title="TITLE and FOOTNOTE statements"></a>TITLE and FOOTNOTE statements</h3><p>You have seen TITLE statements many times in<br>this book. FOOTNOTE works the same way, but prints at the bottom of the page. <strong>You can put them anywhere in your program</strong>, but<br>since they apply to the procedure output it generally makes sense to put them with the procedure. </p>
+<p>Titles and footnotes stay in effect until you replace them with new ones or cancel them with a null<br>statement.</p>
+<h3 id="LABEL-statement"><a href="#LABEL-statement" class="headerlink" title="LABEL statement"></a>LABEL statement</h3><p>By default, SAS uses variable names to label your output, but with the LABEL statement you can <strong>create more descriptive labels, up to 256 characters long</strong>, for each variable.</p>
+<h3 id="BY-statement"><a href="#BY-statement" class="headerlink" title="BY statement"></a>BY statement</h3><p>The BY statement is required for only one procedure, PROC SORT. In PROC<br>SORT the BY statement tells SAS how to arrange the observations. In all other procedures, the BY statement is optional, and<strong> tells SAS to perform a separate analysis for each combination of values of the BY variables</strong> rather than treating all observations as one group. </p>
+<p><strong>All procedures, except PROC SORT, assume that your data are already sorted by the variables in your BY statement.</strong> If your observations are not already sorted, then use PROC SORT to do the job.</p>
+<h4 id="SORT-BY"><a href="#SORT-BY" class="headerlink" title="SORT BY"></a>SORT BY</h4><p>The basic form of this procedure is</p>
+<pre><code>PROC SORT;
+BY variable-list;
+</code></pre><p><strong>There are two statements!</strong><br>With one BY variable, SAS sorts the data based on the values of that variable. With more than one variable, <strong>SAS sorts observations by the first variable, then by the second variable within categories of the first</strong>, and so on. <strong>BY group is all the observations that have the same values of BY variables.</strong></p>
+<p>options:</p>
+<ul>
+<li>DATA=option<br>specify the input</li>
+<li>OUT=option<br>specify the output</li>
+<li>NODUPKEY<br>eliminate any duplicate observations that have the same values for the BY variables</li>
+<li>DUPOUT=option<br>put the deleted observations in that data set</li>
+<li><p>DESCENDING option<br>To have your data sorted in the opposite order, <strong>add the keyword DESCENDING<br>to the BY statement before each variable that should be sorted in reverse order</strong>. This statement tells SAS to sort first by State (from A to Z) and then by City (from Z to A) within State:</p>
+<p>  BY State City;<br>  BY State DESCENDING City;</p>
+</li>
+</ul>
+<h3 id="WHERE"><a href="#WHERE" class="headerlink" title="WHERE"></a>WHERE</h3><p>One optional statement for any PROC that reads a SAS data set is the WHERE statement. The WHERE statement tells a procedure to use a subset of the data. Unlike subsetting in a DATA step, <strong>using a WHERE statement in a procedure does not create a new data set</strong>. That is one of the reasons why <strong>WHERE statements are sometimes more efficient than other ways of subsetting.</strong></p>
+<p>The basic form of a WHERE statement is</p>
+<pre><code>WHERE condition;
+</code></pre><p>extra operators than IF:</p>
+<ul>
+<li>IS NOT MISSING</li>
+<li>BETWEEN <em>char_1</em> AND <em>char_2</em></li>
+<li>CONTAINS</li>
+</ul>
+<h3 id="PRINT"><a href="#PRINT" class="headerlink" title="PRINT"></a>PRINT</h3><p>The PRINT procedure requires just one statement:</p>
+<pre><code>PROC PRINT;
+</code></pre><p>By default, SAS uses the SAS data set created most recently. If you do not want to print the most recent data set, then use the DATA= option to specify the data set. We recommend always using the DATA= option for clarity in your programs as it is not always easy to quickly determine which data set was created last.</p>
+<pre><code>PROC PRINT DATA = data-set;
+</code></pre><p>options:</p>
+<ul>
+<li>NOOBS<br>SAS prints the observation numbers along with the variables’ values. If you don’t want observation numbers, use the NOOBS option.</li>
+<li>LABEL<br>If you define variable<br>labels with a LABEL statement, and you want to print the labels instead of the variable names</li>
+</ul>
+<p>optional <strong>statements</strong>:</p>
+<ul>
+<li>BY variable-list;<br>The BY statement starts a new section in the <strong>output for each new value of the BY variables</strong> and prints the values of the BY<br>variables at the top of each section. The <strong>data must be presorted by the BY variables</strong>.</li>
+<li>ID variable-list;<br>When you use the ID statement, the observation numbers are not printed. Instead, the variables in the ID variable list appear on the <strong>left-hand side of the page</strong>.</li>
+<li>SUM variable-list;<br>The sum statement prints sums for the variables in the list.</li>
+<li>VAR variable-list;<br>The VAR statement specifies <strong>which variables to print and the order</strong>. Without a VAR statement, all variables in the SAS data set are printed in the order that they occur in the data set.</li>
+<li><p>FORMAT<br>You can associate formats with variables in a FORMAT statement. The FORMAT statement starts with the keyword FORMAT, followed by the variable name (or names if more than one variable is to be associated with the same format), followed by the format. For<br>example, the following FORMAT statement associates the DOLLAR8.2 format with the variables Profit and Loss and associates the MMDDYY8. format with the variable SaleDate:</p>
+<pre><code>  FORMAT Profit Loss DOLLAR8.2 SaleDate MMDDYY8.;
+</code></pre><p>FORMAT statements can go in either DATA steps or PROC steps. <strong>If the FORMAT statement is in a DATA step, then the format association is permanent and is stored with the SAS data set. If the FORMAT statement is in a PROC step, then it is temporary—affecting only the results from that<br>procedure.</strong><br>At some time you will probably want to create your own custom formats—especially if you use a lot of coded data. The FORMAT procedure creates formats that will later be associated with variables in a FORMAT statement. The procedure starts with the statement PROC FORMAT and continues with one or more VALUE statements (other optional statements are available):</p>
+<pre><code>  PROC FORMAT;
+      VALUE name     range-1 = &#39;formatted-text-1&#39;
+                  range-2 = &#39;formatted-text-2&#39;
+                  .
+                  .
+                  .
+                  range-n = &#39;formatted-text-n&#39;;
+</code></pre><p>The name in the VALUE statement is the name of the format you are creating. If the format is for character data, the name must start with a $.<br>example:</p>
+<pre><code>  DATA carsurvey;
+      INFILE &#39;c:\MyRawData\Cars.dat&#39;;
+      INPUT Age Sex Income Color $;
+  PROC FORMAT;
+      VALUE gender     1 = &#39;Male&#39;
+                      2 = &#39;Female&#39;;
+      VALUE agegroup     13 -&lt; 20 = &#39;Teen&#39;
+                      20 -&lt; 65 = &#39;Adult&#39;
+                      65 - HIGH = &#39;Senior&#39;;
+      VALUE $col         &#39;W&#39; = &#39;Moon White&#39;
+                      &#39;B&#39; = &#39;Sky Blue&#39;
+                      &#39;Y&#39; = &#39;Sunburst Yellow&#39;
+                      &#39;G&#39; = &#39;Rain Cloud Gray&#39;;
+  * Print data using user-defined and standard (DOLLAR8.) formats;
+  PROC PRINT DATA = carsurvey;
+      FORMAT Sex gender. Age agegroup. Color $col. Income DOLLAR8.;
+      TITLE &#39;Survey Results Printed with User-Defined Formats&#39;;
+  RUN;
+</code></pre><p>This program creates <strong>two numeric formats: GENDER. for the variable Sex and AGEGROUP. for the variable Age</strong>. The program creates a character format, $COL., for the variable Color. Notice that the<br>format names do not end with periods in the VALUE statement, but they do in the FORMAT<br>statement.</p>
+</li>
+<li><p>PUT<br>You can also use formats in PUT statements when writing raw data files or reports. Place a format after each variable name, as in the following example:</p>
+<pre><code>  PUT Profit DOLLAR8.2 Loss DOLLAR8.2 SaleDate MMDDYY8.;
+</code></pre></li>
+</ul>
+<h2 id="Report"><a href="#Report" class="headerlink" title="Report"></a>Report</h2><h3 id="MEANS"><a href="#MEANS" class="headerlink" title="MEANS"></a>MEANS</h3><p>The MEANS procedure provides simple statistics for numeric variables. The MEANS procedure starts with the keywords PROC MEANS, followed by options:</p>
+<pre><code>PROC MEANS options;
+</code></pre><p>options:</p>
+<ul>
+<li>MAXDEC = n<br>specifies the number of decimal places to be displayed </li>
+<li>MISSING<br>treats missing values as valid summary groups</li>
+<li>Other options request specific summary statistics : MAX maximum value;<br>MIN minimum value;<br>MEAN mean;<br>MEDIAN median;<br>MODE mode;<br>N number of non-missing values;<br>NMISS number of missing values;<br>RANGE range;<br>STDDEV standard deviation;<br>SUM sum; </li>
+</ul>
+<p>If you do not specify any summary statistics, SAS will print the number of non-missing values, the<br>mean, the standard deviation, and the minimum and maximum values for each variable.</p>
+<p>optional statements:</p>
+<ul>
+<li><p>BY variable-list;<br>The BY statement performs separate analyses for each levelof the variables in the list. The data <strong>must first be sorted by these variables</strong>. (You can use PROC SORT to do this.)</p>
+</li>
+<li><p>CLASS variable-list;<br>The CLASS statement also performs separate analyses for each level of the variables in the list, but its output is more compact than with the BY statement, and <strong>the data do not have to be sorted first</strong>.</p>
+</li>
+<li><p>VAR variable-list;<br>The VAR statement specifies which numeric variables to use in the analysis. <strong>If it is absent, then SAS uses all numeric<br>variables.</strong></p>
+</li>
+<li><p>OUTPUT = data-set output-statistic-list;<br>Here, data-set is the name of the SAS data set which will contain the results (this can be either temporary or permanent), and output-statistic-list defines which statistics you want and the associated variable names. <strong>You can have more than one OUTPUT statement and multiple output<br>statistic lists.</strong><br>The following is one of the possible forms for output-statistic-list:</p>
+<pre><code>  statistic(variable-list) = name-list
+</code></pre><p>Here, statistic can be any of the statistics available in PROC MEANS (SUM, N, MEAN, for<br>example), variable-list defines which of the variables in the VAR statement you want to output, and <strong>name-list defines the new variable names for the statistics</strong>. The new variable names must be in the same order as their corresponding variables in variable-list.<br>The SAS data set created in the OUTPUT statement will contain all the variables defined in the output-statistic-list; any variables listed in a BY or CLASS statement; plus two new variables, <em>TYPE</em> and <em>FREQ</em>. If there is no BY or CLASS statement, then the data set will have just one<br>observation. <strong>If there is a BY statement, then the data set will have one observation for each level of the BY group.</strong> <strong>CLASS statements produce one observation for each level of interaction of the class variables.</strong> The value of the <em>TYPE</em> variable depends on the level of interaction. <strong>The observation where <em>TYPE</em> has a value of zero is the grand total.</strong></p>
+</li>
+</ul>
+<h3 id="FREQ-TABLES"><a href="#FREQ-TABLES" class="headerlink" title="FREQ TABLES"></a>FREQ TABLES</h3><p>The most obvious reason for using PROC FREQ is to create tables showing the<br>distribution of categorical data values, but PROC FREQ can also reveal irregularities<br>in your data. You could get dizzy proofreading a large data set, but data entry errors<br>are often glaringly obvious in a frequency table. The basic form of PROC FREQ is</p>
+<pre><code>PROC FREQ DATA=option;
+TABLES variable-combinations;
+</code></pre><p>To produce a one-way frequency table, just list the variable name. This statement produces a frequency table listing the number of observations for each value of YearsEducation:</p>
+<pre><code>TABLES YearsEducation;
+</code></pre><p>To produce a cross-tabulation, list the variables separated by an asterisk. This statement produces a cross-tabulation showing the number of observations for each combination of Sex by YearsEducation:</p>
+<pre><code>TABLES Sex * YearsEducation;
+</code></pre><p>You can specify any number of table requests in a single TABLES statement, and you can have as many TABLES statements as you wish.</p>
+<pre><code>TABLES YearsEducation Sex * YearsEducation;
+</code></pre><p>options:</p>
+<ul>
+<li>LIST<br>prints cross-tabulations in list format rather than grid </li>
+<li>MISSPRINT<br>includes missing values in frequencies but not in percentages</li>
+<li>MISSING<br>includes missing values in frequencies and in percentages</li>
+<li>NOCOL<br>suppresses printing of column percentages in cross-tabulations</li>
+<li>NOPERCENT<br>suppresses printing of percentages</li>
+<li>NOROW<br>suppresses printing of row percentages in cross-tabulations</li>
+<li>OUT = data-set<br>writes a data set containing frequencies</li>
+</ul>
+<h3 id="TABULATE"><a href="#TABULATE" class="headerlink" title="TABULATE"></a>TABULATE</h3><p>Every summary statistic the TABULATE procedure computes can also be produced<br>by other procedures such as PRINT, MEANS, and FREQ, but PROC TABULATE is popular because <strong>its reports are pretty</strong>.</p>
+<p>PROC TABULATE is so powerful that entire books have been written about it, but it<br>is also so concise that you may feel like you’re reading hieroglyphics. If you find the syntax of PROC TABULATE a little hard to get used to, that may be because it has<br>roots outside of SAS. PROC TABULATE is based in part on the Table Producing Language.</p>
+<p>The general form of PROC TABULATE is</p>
+<pre><code>PROC TABULATE;
+    CLASS classification-variable-list;
+    TABLE page-dimension, row-dimension, column-dimension;
+</code></pre><p>The CLASS statement tells SAS <strong>which variables contain categorical data to be used for dividing observations into groups</strong>, while the TABLE statement tells SAS how to organize your table and <strong>what numbers to compute</strong>.</p>
+<p><strong>Each TABLE statement defines only one table</strong>, but you may have multiple TABLE statements. If a variable is listed in a CLASS statement, then, by default, PROC TABULATE produces simple counts of the number of observations in each category of that variable.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/02/pd-df/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jiaxin Zhang">
+      <meta itemprop="description" content="Curious, Open-eyed, Humble, Prepared, Sensitive.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jiaxin Zhang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/02/pd-df/" class="post-title-link" itemprop="url">pandas DataDrame</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-03-02 15:44:07" itemprop="dateCreated datePublished" datetime="2020-03-02T15:44:07-07:00">2020-03-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-01 11:32:53" itemprop="dateModified" datetime="2020-04-01T11:32:53-06:00">2020-04-01</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Create-a-new-DataDrame-object"><a href="#Create-a-new-DataDrame-object" class="headerlink" title="Create a new DataDrame object"></a>Create a new DataDrame object</h1><h2 id="from-a-csv-file-pandas-read-csv-filepath-or-buffer"><a href="#from-a-csv-file-pandas-read-csv-filepath-or-buffer" class="headerlink" title="from a csv file: pandas.read_csv(filepath_or_buffer)"></a>from a csv file: <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html#pandas.read_csv" target="_blank" rel="noopener">pandas.read_csv</a>(filepath_or_buffer)</h2><p>common usage:</p>
+<ul>
+<li><p>filepath_or_buffer: str, path object or fie-like object</p>
+<ul>
+<li><p>str<br>Any valid string path is acceptable. The string could be a URL. Valid URL schemes include http, ftp, <strong>s3</strong>, and file. For file URLs, a host is expected.</p>
+<p><code>df= pd.read_csv(&#39;file://localhost/path/to/table.csv&#39;)</code></p>
+</li>
+<li><p>path object or fie-like object<br>If you want to pass in a path object, pandas accepts any os.PathLike. By file-like object, we refer to objects with a read() method, such as a file handler (e.g. via builtin open function) or StringIO.</p>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>sep: str, default ‘,’ Delimiter to use.</li>
+<li><p>header: int, list of int, default ‘infer’<br>Default behavior is to infer the column names: if no names are passed the behavior is identical to header=0 and <strong>column names are inferred from the first line of the file</strong></p>
+</li>
+<li><p>dtype: Type name or dict of column -&gt; type, optional</p>
+</li>
+<li><p>na_values: scalar, str, list-like, or dict, optional<br>Additional strings to recognize as NA/NaN. If dict passed, specific per-column NA values. By default the following values are interpreted as NaN: ‘’, ‘#N/A’, ‘#N/A N/A’, ‘#NA’, ‘-1.#IND’, ‘-1.#QNAN’, ‘-NaN’, ‘-nan’, ‘1.#IND’, ‘1.#QNAN’, ‘<NA>’, ‘N/A’, ‘NA’, ‘NULL’, ‘NaN’, ‘n/a’, ‘nan’, ‘null’.</p>
+</li>
+<li><p>na_filter: bool, default True<br>Detect missing value markers (empty strings and the value of na_values). In data without any NAs, <strong>passing na_filter=False can improve the performance of reading a large file</strong>.</p>
+</li>
+<li><p>comment: str, optional</p>
+<p> Indicates remainder of line should not be parsed. <strong>If found at the beginning of a line, the line will be ignored altogether.</strong> <strong>This parameter must be a single character.</strong> Like empty lines (as long as skip_blank_lines=True), fully commented lines are ignored by the parameter header but not by skiprows. For example, if comment=’#’, parsing #empty\na,b,c\n1,2,3 with header=0 will result in ‘a,b,c’ being treated as the header.</p>
+</li>
+<li><p>pandas.read_table: similar to read_csv but sep: str, default ‘\t’ (tab-stop)</p>
+</li>
+</ol>
+<h2 id="from-an-Excel-read-excel-io-sheet-name-0"><a href="#from-an-Excel-read-excel-io-sheet-name-0" class="headerlink" title="from an Excel: read_excel(io, sheet_name=0)"></a>from an Excel: read_excel(io, sheet_name=0)</h2><ul>
+<li>io: str, bytes, ExcelFile, xlrd.Book, path object, or file-like object  </li>
+</ul>
+<ol>
+<li>sheet_name: str, int, list, or None, default 0<ul>
+<li>Defaults to 0: 1st sheet as a DataFrame</li>
+<li>1: 2nd sheet as a DataFrame</li>
+<li>“Sheet1”: Load sheet with name “Sheet1”</li>
+<li>[0, 1, “Sheet5”]: Load first, second and sheet named “Sheet5” as a <strong>dict of DataFrame</strong></li>
+<li><strong>None: All sheets</strong> Return a dict of DataFrame with keys being sheet names. </li>
+</ul>
+</li>
+<li>usecols: int, str, list-like, or callable default None  <ul>
+<li>If None(default), then parse all columns.</li>
+<li>If str, then indicates comma separated list of Excel column letters and column ranges (<strong>e.g. “A:E” or “A,C,E:F”</strong>). Ranges are inclusive of both sides.</li>
+<li>If list of int, then indicates list of column numbers to be parsed.</li>
+</ul>
+</li>
+</ol>
+<h2 id="from-clipboard-pandas-read-clipboard"><a href="#from-clipboard-pandas-read-clipboard" class="headerlink" title="from clipboard: pandas.read_clipboard"></a>from clipboard: pandas.read_clipboard</h2><p>Read text from clipboard and pass to <strong>read_csv</strong>.</p>
+<ul>
+<li>sep: str, default ‘s+’ A string or regex delimiter. The default of ‘s+’ denotes one or more whitespace characters.</li>
+</ul>
+<h2 id="from-dict-pandas-DataFrame-from-dict"><a href="#from-dict-pandas-DataFrame-from-dict" class="headerlink" title="from dict: pandas.DataFrame.from_dict"></a>from dict: pandas.DataFrame.from_dict</h2><p>Construct DataFrame from dict of array-like or dicts.</p>
+<ul>
+<li>data: dict of the form {field : array-like} or {field : dict}.</li>
+</ul>
+<ol>
+<li>orient{‘columns’, ‘index’}, default ‘columns’<br>The “orientation” of the data. If the keys of the passed dict should be the columns of the resulting DataFrame, pass ‘columns’ (default). Otherwise <strong>if the keys should be rows, pass ‘index’</strong>.</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data=&#123;<span class="number">1</span>:&#123;<span class="string">'A'</span>:<span class="number">1</span>,<span class="string">'C'</span>:<span class="number">3</span>&#125;,<span class="number">2</span>:&#123;<span class="string">'A'</span>:<span class="number">2</span>,<span class="string">'B'</span>:<span class="number">2</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.DataFrame(data)</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1</th>
+      <th>2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>3.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>NaN</td>
+      <td>2.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.DataFrame.from_dict(data,orient=<span class="string">'index'</span>)</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>C</th>
+      <th>B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>3.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>NaN</td>
+      <td>2.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.DataFrame.from_dict(data,orient=<span class="string">'index'</span>,columns=(<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'D'</span>))</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>NaN</td>
+      <td>3.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="from-records-pandas-DataFrame-from-records"><a href="#from-records-pandas-DataFrame-from-records" class="headerlink" title="from records: pandas.DataFrame.from_records"></a>from records: pandas.DataFrame.from_records</h2><ul>
+<li>data: ndarray (structured dtype), list of tuples, dict, or DataFrame</li>
+</ul>
+<ol>
+<li>index: None(default), str, list of fields, array-like</li>
+<li>nrows: int, default None. Number of rows to read if data is an iterator.</li>
+<li>coerce_float: bool, default False<br>Attempt to convert values of non-string, non-numeric objects (like decimal.Decimal) to floating point, useful for <strong>SQL result sets</strong>.</li>
+</ol>
+<h1 id="Access-attributes-and-methods-of-a-DataFrame-object"><a href="#Access-attributes-and-methods-of-a-DataFrame-object" class="headerlink" title="Access attributes and methods of a DataFrame object"></a>Access attributes and methods of a DataFrame object</h1><h2 id="Attribute"><a href="#Attribute" class="headerlink" title="Attribute"></a>Attribute</h2><ul>
+<li>.T    Transpose index and columns.</li>
+</ul>
+<ol>
+<li>.at/loc[index, column]    Access a single value for a row/column label pair.</li>
+<li>.iat/iloc[row_num, column_num] Access a single value for a row/column pair by integer position.</li>
+<li>.columns    The column labels of the DataFrame.</li>
+<li>.dtypes    Return the dtypes in the DataFrame.</li>
+<li>.shape    Return a tuple representing the dimensionality of the DataFrame.</li>
+<li>.values    Return a Numpy representation of the DataFrame.</li>
+</ol>
+<h2 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h2><h3 id="missing-values"><a href="#missing-values" class="headerlink" title="missing values:"></a>missing values:</h3><ul>
+<li>.isna</li>
+</ul>
+<ol>
+<li>.isnull</li>
+<li>.notna</li>
+<li>.notnull</li>
+<li><p>.dropna(): Remove missing values.  </p>
+<ul>
+<li>axis: {0 or ‘index’, 1 or ‘columns’}, default 0<br>Determine if rows or columns which contain missing values are removed.<ul>
+<li>0, or ‘index’ : Drop rows which contain missing values.</li>
+<li>1, or ‘columns’ : Drop columns which contain missing value.</li>
+</ul>
+</li>
+<li>how: {‘any’, ‘all’}, default ‘any’<br>Determine if row or column is removed from DataFrame, when we have at least one NA or all NA.<ul>
+<li>‘any’ : If any NA values are present, drop that row or column.</li>
+<li>‘all’ : If all values are NA, drop that row or column.</li>
+</ul>
+</li>
+<li>thresh: int, optional<br><strong>Remove columns or rows with # of NAs more than thresh</strong></li>
+<li>subset: array-like, optional<br>Labels along other axis to consider, e.g. if you are dropping rows these would be a list of columns to include. <strong>Only NA in this subset are in focus.</strong></li>
+</ul>
+</li>
+<li><p>.fillna</p>
+<ul>
+<li>value: scalar, dict, Series, or DataFrame<br>Value to use to fill holes (e.g. 0), alternately a dict/Series/DataFrame of values specifying which value to use for each index (for a Series) or column (for a DataFrame). Values not in the dict/Series/DataFrame will not be filled. This value cannot be a list.</li>
+<li>method: {‘backfill’, ‘bfill’, ‘pad’, ‘ffill’, None}, default None<br>Method to use for filling holes in reindexed Series <ul>
+<li>pad / ffill: propagate last valid observation forward to next valid</li>
+<li>backfill / bfill: use next valid observation to fill gap.</li>
+</ul>
+</li>
+<li>axis: {0 or ‘index’, 1 or ‘columns’}<br>Axis along which to fill missing values.</li>
+<li>inplace: bool, default False<br>If True, fill in-place. Note: <strong>this will modify any other views on this object</strong> (e.g., a no-copy slice for a column in a DataFrame).</li>
+</ul>
+</li>
+</ol>
+<p>Returns DataFrame or None Object with missing values filled or <strong>None if inplace=True</strong>.</p>
+<h3 id="Conversion"><a href="#Conversion" class="headerlink" title="Conversion"></a>Conversion</h3><ul>
+<li><p>.astype(self, dtype, copy=True, errors)  </p>
+<ul>
+<li>dtype: data type, or dict of {column name: data type}</li>
+<li><p><strong>copy: bool, default True </strong><br>Return a copy when copy=True (<strong>be very careful setting copy=False as changes to values then may propagate to other pandas objects</strong>).</p>
+</li>
+<li><p>errors{‘raise’, ‘ignore’}, default ‘raise’<br>Control raising of exceptions on invalid data for provided dtype. raise : allow exceptions to be raised; ignore : suppress exceptions. On error return original object.</p>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li><p>.convert_dtypes():<br>return copy of input object with new dtype. won’t change original df.</p>
+<ul>
+<li>infer_objects: bool, default True<br>Whether object dtypes should be converted to the best possible types.</li>
+<li>convert_string: bool, default True<br>Whether object dtypes should be converted to StringDtype().</li>
+<li>convert_integer: bool, default True<br>Whether, if possible, conversion can be done to integer extension types.</li>
+</ul>
+</li>
+<li><p>.copy(self, <strong>deep=True</strong>)<br>Make a copy of this object’s indices and data.</p>
+<ul>
+<li>When deep=True (default), a new object will be created with a copy of the calling object’s data and indices. Modifications to the data or indices of the copy will not be reflected in the original object</li>
+<li>When deep=False, a new object will be created without copying the calling object’s data or index (only references to the data and index are copied). <strong>Any changes to the data of the original will be reflected in the shallow copy (and vice versa)</strong><h3 id="Indexing-iteration"><a href="#Indexing-iteration" class="headerlink" title="Indexing, iteration"></a>Indexing, iteration</h3><strong>You should never modify something you are iterating over.</strong></li>
+</ul>
+</li>
+<li><p>.head(n): Return the first n rows.</p>
+</li>
+<li>.tail(n): Return the last n rows.</li>
+<li><strong>.get</strong>(column name or list of column names):</li>
+<li><strong>.drop</strong>(labels=None, axis=0, index=None, columns=None, level=None, inplace=False, errors=’raise’):<br>Drop specified labels from rows or columns. Remove rows or columns by specifying label names and corresponding axis, or by specifying directly index or column names. <ul>
+<li>labels: single label or list-like<br>Index or column labels to drop.</li>
+<li>axis: {0 or ‘index’, 1 or ‘columns’}, default 0<br>Whether to drop labels from the index (0 or ‘index’) or columns (1 or ‘columns’).</li>
+<li>level: int or level name, optional<br>For MultiIndex, level from which the labels will be removed.</li>
+</ul>
+</li>
+<li>.items(): Iterate over (column name, column Series) pairs.</li>
+<li>.iterrows(): Iterate over DataFrame rows as (index, row Series) pairs. </li>
+<li>.itertuples(index=True, name=’Pandas’)： Iterate over DataFrame rows as <strong>namedtuples</strong>.<ul>
+<li>index： bool, default True<br>If True, return the index as the first element of the tuple.</li>
+<li>name： str or None, default “Pandas”<br>The name of the returned namedtuples or None to return regular tuples.</li>
+</ul>
+</li>
+<li><p><strong>.lookup</strong>(self, row_labels, col_labels)：   Label-based “fancy indexing” function for DataFrame. Given equal-length arrays of row and column labels, return <strong>an array of the values corresponding to each (row, col) pair</strong>.</p>
+<p> Notes:   </p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">result = [df.get_value(row, col) </span><br><span class="line"><span class="keyword">for</span> row, col <span class="keyword">in</span> zip(row_labels, col_labels)</span><br></pre></td></tr></table></figure>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame([</span><br><span class="line">		[<span class="string">'1990'</span>, <span class="string">'a'</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">2</span>], </span><br><span class="line">		[<span class="string">'1991'</span>, <span class="string">'c'</span>, <span class="number">10</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">0</span>],</span><br><span class="line">		[<span class="string">'1992'</span>, <span class="string">'d'</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">12</span>],</span><br><span class="line">		[<span class="string">'1993'</span>, <span class="string">'a'</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">11</span>, <span class="number">6</span>]], </span><br><span class="line">		columns=(<span class="string">'Date'</span>, <span class="string">'best'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>))</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>best</th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1990</td>
+      <td>a</td>
+      <td>5</td>
+      <td>4</td>
+      <td>7</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1991</td>
+      <td>c</td>
+      <td>10</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1992</td>
+      <td>d</td>
+      <td>2</td>
+      <td>1</td>
+      <td>4</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1993</td>
+      <td>a</td>
+      <td>5</td>
+      <td>8</td>
+      <td>11</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'value'</span>] = df.lookup(df.index, df[<span class="string">'best'</span>])</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>best</th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1990</td>
+      <td>a</td>
+      <td>5</td>
+      <td>4</td>
+      <td>7</td>
+      <td>2</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1991</td>
+      <td>c</td>
+      <td>10</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1992</td>
+      <td>d</td>
+      <td>2</td>
+      <td>1</td>
+      <td>4</td>
+      <td>12</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1993</td>
+      <td>a</td>
+      <td>5</td>
+      <td>8</td>
+      <td>11</td>
+      <td>6</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="function-amp-map"><a href="#function-amp-map" class="headerlink" title="function &amp; map:"></a>function &amp; map:</h3><ul>
+<li>.apply(func): Apply a function to DataFrame <strong>Row or column wise</strong>.<ul>
+<li>func: function<br>Function to apply to each column or row.</li>
+<li>axis: {0 or ‘index’, 1 or ‘columns’}, default 0<br>Axis along which the function is applied:<ul>
+<li>0 or ‘index’: apply function to each column.</li>
+<li>1 or ‘columns’: apply function to each row.</li>
+</ul>
+</li>
+<li>raw: bool, default False<br>Determines if row or column is passed as a Series or ndarray object:  <ul>
+<li>False : passes each row or column as a Series to the function.</li>
+<li>True : the passed function will receive ndarray objects instead. If you are just applying a NumPy reduction function this will achieve much better performance.</li>
+</ul>
+</li>
+<li>args:tuple Positional arguments to pass to func in addition to the array/series.</li>
+<li>**kwds: Additional keyword arguments to pass as keywords arguments to func.</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>.applymap(func): Apply a function to a Dataframe <strong>elementwise</strong>.</li>
+<li>.pipe(func): Apply a function to a Dataframe <strong>tablewise</strong>. </li>
+<li><p><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.aggregate.html#pandas.DataFrame.aggregate" target="_blank" rel="noopener">.aggregate(func)</a>: Aggregate using one or more operations over the specified axis.</p>
+<ul>
+<li>func: function, str, list or dict<br>Function to use for aggregating the data. If a function, must either work when passed a DataFrame or when passed to DataFrame.apply.Accepted combinations are:<ul>
+<li>function</li>
+<li>string function name</li>
+<li>list of functions and/or function names, e.g. [np.sum, ‘mean’]</li>
+<li>dict of axis labels -&gt; functions, function names or list of such.</li>
+</ul>
+</li>
+<li><p>axis: {0 or ‘index’, 1 or ‘columns’}, default 0<br>If 0 or ‘index’: apply function to each column. If 1 or ‘columns’: apply function to each row.</p>
+<p>Returns: scalar, Series or DataFrame</p>
+</li>
+<li><p>scalar : when Series.agg is called with single function  </p>
+</li>
+<li>Series : when DataFrame.agg is called with a single function  </li>
+<li>DataFrame : when DataFrame.agg is called with several functions</li>
+</ul>
+</li>
+<li><p>.transform<br> Returns: DataFrame<br> A DataFrame that must have the same length as self.<br> <strong>Raises: ValueError<br> If the returned DataFrame has a different length than self.</strong></p>
+</li>
+<li><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.groupby.html#pandas.DataFrame.groupby" target="_blank" rel="noopener">.groupby()</a><ul>
+<li>by: mapping, function, label, or list of labels<br>Used to determine the groups for the groupby. If by is a function, it’s called on each value of the object’s index. If a dict or Series is passed, the Series or dict VALUES will be used to determine the groups (the Series’ values are first aligned; see .align() method). If an ndarray is passed, the values are used as-is determine the groups. <strong>A label or list of labels may be passed to group by the columns in self.</strong> Notice that <strong>a tuple is interpreted as a (single) key</strong>.</li>
+<li>axis: {0 or ‘index’, 1 or ‘columns’}, default 0<br>Split along rows (0) or columns (1).</li>
+<li>level: int, level name, or sequence of such, default None<br>If the axis is a MultiIndex (hierarchical), group by a particular level or levels.</li>
+</ul>
+</li>
+</ol>
+<pre><code>Returns: DataFrameGroupBy  
+Returns a groupby object that contains information about the groups.
+</code></pre><ol>
+<li>.rolling</li>
+</ol>
+<h3 id="Merging"><a href="#Merging" class="headerlink" title="Merging"></a>Merging</h3><ul>
+<li>.join(other)<ul>
+<li>other: DataFrame, Series, or list of DataFrame<br>Index should be similar to one of the columns in this one. If a Series is passed, its name attribute must be set, and that will be used as the column name in the resulting joined DataFrame.</li>
+<li>on: str, list of str, optional<br>Column or index level name(s) in the <strong>caller</strong> to <strong>join on the index in other</strong>, <strong>otherwise joins index-on-index</strong>.<br>+how: {‘left’, ‘right’, ‘outer’, ‘inner’}, default ‘left’</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>.merge(right)<br>Merge DataFrame or named Series objects with a database-style join.<ul>
+<li>right: DataFrame or named Series<br>Object to merge with.</li>
+<li>how: {‘left’, ‘right’, ‘outer’, ‘inner’}, default ‘inner’</li>
+<li>on: label or list<br>Column or index level names to join on. These <strong>must be found in both DataFrames</strong>. If on is None and not merging on indexes then this defaults to the intersection of the columns in both DataFrames.</li>
+<li>left_on: label or list, or array-like<br>Column or index level names to join on in the left DataFrame.</li>
+<li>right_on: label or list, or array-like<br>Column or index level names to join on in the right DataFrame.</li>
+<li>left_index: bool, default False<br>Use the index from the left DataFrame as the join key(s). If it is a MultiIndex, the number of keys in the other DataFrame (either the index or a number of columns) must match the number of levels.</li>
+<li>right_index: bool, default False<br>Use the index from the right DataFrame as the join key. Same caveats as left_index.</li>
+</ul>
+</li>
+<li><p>.append(other)<br>Append rows of other to the end of caller, returning a new object.</p>
+<ul>
+<li>other: DataFrame or Series/dict-like object, or list of these<br>The data to append.</li>
+<li><p>ignore_index: bool, default False<br>If True, do not use the index labels of ‘other’. Columns in other that are not in the caller are added as new columns.</p>
+<p>Similar to <strong>pd.concat</strong>()</p>
+</li>
+</ul>
+</li>
+<li><p>.update(other)<br>Modify in place using non-NA values from another DataFrame. <strong>Overwrite the items in ‘self’ with items in ‘other’.</strong> There is no return value.</p>
+<ul>
+<li>other: DataFrame, or object coercible into a DataFrame<br>Should have at least one matching index/column label with the original DataFrame. If a Series is passed, its name attribute must be set, and that will be used as the column name to align with the original DataFrame.</li>
+<li>overwrite: bool, default True<br><strong>How to handle non-NA values</strong> for overlapping keys:<ul>
+<li>True: overwrite original DataFrame’s values with values from other.</li>
+<li>False: only update values that are NA in the original DataFrame.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>.pivot(index,columns,values)</li>
+</ul>
+<h3 id="Plottting"><a href="#Plottting" class="headerlink" title="Plottting"></a>Plottting</h3><ol>
+<li><p>.plot()</p>
+<ul>
+<li>x: label or position, default None  </li>
+<li><p>y: label, position or list of label, positions, default None<br>Allows plotting of one column versus another. Only used if data is a DataFrame.</p>
+</li>
+<li><p>kind:The kind of plot to produce:</p>
+<ul>
+<li><p>‘line’ : line plot (default)</p>
+</li>
+<li><p>‘bar’ : vertical bar plot</p>
+</li>
+<li><p>‘barh’ : horizontal bar plot</p>
+</li>
+<li><p>‘hist’ : histogram</p>
+</li>
+<li><p>‘box’ : boxplot</p>
+</li>
+<li><p>‘kde’ : Kernel Density Estimation plot</p>
+</li>
+<li><p>‘density’ : same as ‘kde’</p>
+</li>
+<li><p>‘area’ : area plot</p>
+</li>
+<li><p>‘pie’ : pie plot</p>
+</li>
+<li><p>‘scatter’ : scatter plot</p>
+</li>
+<li><p>‘hexbin’ : hexbin plot.</p>
+</li>
+</ul>
+</li>
+<li><p>figsize: a tuple <strong>(width, height)</strong> in inches</p>
+</li>
+<li>title: str or list<br>Title to use for the plot. If a string is passed, print the string at the top of the figure. If a list is passed and subplots is True, print each item in the list above the corresponding subplot.</li>
+<li>xticks: sequence<br>Values to use for the xticks.</li>
+<li>yticks: sequence<br>Values to use for the yticks.</li>
+<li>xlim: 2-tuple/list</li>
+<li>ylim: 2-tuple/list</li>
+</ul>
+</li>
+</ol>
+<h2 id="function"><a href="#function" class="headerlink" title="function"></a>function</h2><ol>
+<li><p>pd.pivot()<br>Return reshaped DataFrame organized by given index / column values. <strong>Reshape data (produce a “pivot” table) based on column values.</strong> Uses unique values from specified index / columns to form axes of the resulting DataFrame. <strong>This function does not support data aggregation</strong>, multiple values will result in a MultiIndex in the columns.</p>
+<ul>
+<li>data: DataFrame</li>
+<li>index:str or object, optional<br>Column to use to make new frame’s index. If None, uses existing index.</li>
+<li>columns: str or object<br>Column to use to make new frame’s columns.</li>
+<li>values: str, object or a list of the previous, optional<br>Column(s) to use for populating new frame’s values. If not specified, all remaining columns will be used and the result will have hierarchically indexed columns.</li>
+</ul>
+</li>
+<li>pd.melt()<br><strong>Unpivot</strong> a DataFrame from wide to long format, optionally leaving identifiers set.<br>This function is useful to massage a DataFrame into a format where <strong>one or more columns are identifier variables (id_vars)</strong>, while <strong>all other columns, considered measured variables (value_vars)</strong>, are “unpivoted” to the row axis, leaving just two non-identifier columns, ‘variable’ and ‘value’.<ul>
+<li>id_vars: tuple, list, or ndarray, optional<br>Column(s) to use as identifier variables.</li>
+<li>value_varstuple, list, or ndarray, optional<br>Column(s) to unpivot. If not specified, uses all columns that are not set as id_vars.</li>
+<li>var_name: scalar<br>Name to use for the ‘variable’ column.</li>
+<li>value_name: scalar, default ‘value’<br>Name to use for the ‘value’ column.</li>
+</ul>
+</li>
+<li>pd.pivot_table()</li>
+<li>pd.merge()</li>
+<li>pd.get_dummies()</li>
+<li>pd.factorize()</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/02/changba/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1277,527 +2754,12 @@ L(\mu_k,\Sigma_k,\alpha_k|\mathbf{D})=&\prod_{i=1}^n p(\mathbf{x}|\mu_{\cdot},\S
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/23/Ensemble/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Jiaxin Zhang">
-      <meta itemprop="description" content="Curious, Open-eyed, Humble, Prepared, Sensitive.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jiaxin Zhang">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/23/Ensemble/" class="post-title-link" itemprop="url">Ensemble learning</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-12-23 22:22:08" itemprop="dateCreated datePublished" datetime="2019-12-23T22:22:08-07:00">2019-12-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-01-13 16:18:26" itemprop="dateModified" datetime="2020-01-13T16:18:26-07:00">2020-01-13</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>In statistics and machine learning, <a href="https://en.wikipedia.org/wiki/Ensemble_learning" target="_blank" rel="noopener">Ensemble method</a> use <strong>multiple learning algorithms</strong> to obtain better predictive performance than could be obtained from any of the constituent learning algorithms alone.<br>This post is mainly about the theory behind these big names. </p>
-<h1 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h1><ul>
-<li>data<br>$\mathcal{X}$ input space ($p$ dimensions) $\mathcal{Y}$ output space<br>$\mathbf{x}$ input variable $\mathbf{x} \in \mathcal{X}$<br>$n$ train sample size<br>$\mathbf{x}_i, y_i$ training input and output, $i= 1, \dots, n$<br>$w_i$ weight for sample $\mathbf{x}_i, y_i$<br>$\mathbf{D}=(\mathbf{X},\mathbf{y})$ is the design matrix $(\mathbf{x}_1,\dots, \mathbf{x}_n)^T$ and output vector $(y_1,\dots, y_n)^T$<br>$\mathcal{RC}(D)$ random choice from dataset $D$ <strong>with no replacement</strong><br>$\mathcal{RS}(D)$ random sampling from dataset $D$ <strong>with replacement</strong></li>
-<li>learners<br>$f: \mathcal{X} \to \mathcal{Y}$ arbitrary function<br>$\mathcal{H}$ base learner space<br>$g: \mathcal{X} \to \mathcal{Y}$ and $g \in \mathcal{H}$ a base learner.<br>$g(\mathbf{x}|\mathbf{D})$ a base learner trained with \mathbf{D}<br>$K$ number of base learners<br>$\alpha_k$ weight for $g_k$, $k=1,\dots, K$</li>
-<li>ensemble<br>$f_{*}^t: \mathcal{X} \to \mathcal{Y}$ The * ensemble with first $t$ base learners</li>
-<li>loss function<br>$L(y,\hat{y})$ loss function comparing $y,\hat{y}$<br>$\mathbf{L}(*|\mathbf{D})$ loss target for * given $\mathbf{D}$<br>$\Omega(f)$ regularization function on $f$</li>
-<li>CART<br>$R_j^t$ the j-th region partitioned by CART $g_t$<br>$J_t$ the total number of partitions  by CART $g_t$</li>
-</ul>
-<img src="/2019/12/23/Ensemble/Notation.jpg" class="" width="500" title="notation for figs">
-<hr>
-<p>Given training data $\mathbf{D}$, regression task aims to find a regression function </p>
-<script type="math/tex; mode=display">y=g(\mathbf{x}|\mathbf{D})</script><p>when $\mathcal{Y} = \mathbf{R}$. Similarly, classification results in a multivariate function that estimate the probabilities (or equivalent) of a given input belonging to every class when $\mathcal{Y}$ is a finite set of categories and returns the category with largest prob.</p>
-<script type="math/tex; mode=display">y=\arg max_y P(\mathbf{x}|y,\mathbf{D}) = which\ max \mathcal{P}(\mathbf{x}|\mathbf{D})</script><p>, $\mathcal{P}(\mathbf{x}|\mathbf{D})=(P(\mathbf{x}|1,\mathbf{D}),\dots, P(\mathbf{x}||\mathcal{Y}|,\mathbf{D}))^T$ denoted as $g(\mathbf{x}|\mathbf{D})$ which returns the vector of probs for all categories $1,\dots,|\mathcal{Y}|$. Hense, classification task can also be taken as multi-variate linear regression where the response variable is $\mathcal{P}(\mathbf{x}|\mathbf{D})$.</p>
-<p>Either for regression or classification, we build multiple models and these models (weak tho) are called base learner. Ensemble learning integrated these base learner by taking a linear additive combination of $g_k(\mathbf{x}|D_k)$.</p>
-<script type="math/tex; mode=display">f_{ensemble}=\sum_{k=1}^{K}\alpha_kg_k(\mathbf{x}|D_k)</script><img src="/2019/12/23/Ensemble/Ensemble.jpg" class="" width="400" title="ensemble">
-<h1 id="Hard-amp-soft-voting"><a href="#Hard-amp-soft-voting" class="headerlink" title="Hard &amp; soft voting"></a>Hard &amp; soft voting</h1><p>Voting is an idea specific for classification. Every base learner is trained on the <strong>whole dataset</strong> $D_k=\mathbf{D}$ and averaged with <strong>equal weight</strong> $\alpha_k=1/k$.</p>
-<script type="math/tex; mode=display">f_{voting}=\sum_{k=1}^{K}\frac{1}{K}g_k(\mathbf{x}|\mathbf{D})=mean(g_k(\mathbf{x}|\mathbf{D}))</script><p>The soft voting is directly taking the average of prob vectors</p>
-<script type="math/tex; mode=display">g_k(\mathbf{x})=\mathcal{P}(\mathbf{x}|\mathbf{D})</script><p>while the hard voting instead takes the average of one-hot vector transformed from probs vectors.</p>
-<script type="math/tex; mode=display">g_k(\mathbf{x})=\mathbf{1}(\mathcal{P}(\mathbf{x}|\mathbf{D})==\max(\mathcal{P}(\mathbf{x}|\mathbf{D}))</script><p>For example, in one binary classification task we ensemble three classifiers, the prob that an observation belongs to class 1 equal (0.45, 0.45, 0.9). With soft voting the average prob is (0.45 + 0.45 + 0.9)/3 = 0.6 while hard voting will return the average prob equal (0 + 0 + 1)/3 = 0.33.</p>
-<h1 id="Bagging"><a href="#Bagging" class="headerlink" title="Bagging"></a>Bagging</h1><p>Bootstrap aggregating, often abbreviated as bagging, have each base learner in the ensemble vote with <strong>equal weight</strong> $\alpha_k=1/k$. In order to promote model variance, bagging trains each model in the ensemble using a randomly drawn <strong>subset of the training set</strong> $D_k=\mathcal{RS}(\mathbf{D})$. (In statistics, bootstrapping is any test or metric that relies on <strong>random sampling with replacement</strong>.)</p>
-<script type="math/tex; mode=display">f_{bagging}=mean(g_k(\mathbf{x}|\mathcal{RS}(\mathbf{D})))</script><h2 id="OOB-score"><a href="#OOB-score" class="headerlink" title="OOB score??"></a>OOB score??</h2><img src="/2019/12/23/Ensemble/bagging.jpg" class="" width="400" title="bagging">
-<h2 id="Random-forest"><a href="#Random-forest" class="headerlink" title="Random forest"></a>Random forest</h2><p>Random forest consists of more randomness. With <strong>base learner space $\mathcal{H}$ being CART</strong>(classification and regression tree), not only is <strong>training set randomly sampled</strong> piece by piece, but also a <strong>features subset is selected randomly</strong> </p>
-<script type="math/tex; mode=display">D_k=\mathcal{RS}((\mathbf{X}_{:,\mathcal{RC}(1\dots,p)},\mathbf{y}))</script><img src="/2019/12/23/Ensemble/rf.jpg" class="" width="500" title="random forrest">
-<h1 id="Boosting"><a href="#Boosting" class="headerlink" title="Boosting"></a>Boosting</h1><p>Boosting involves <strong>incrementally</strong> building an ensemble by training each new model instance to <strong><del>emphasize</del> correct the training instances mis-classified by previous models</strong>. In some cases, boosting has been shown to yield better accuracy than bagging, but it also tends to be more likely to over-fit the training data.<br>Target is to reduce the Loss function</p>
-<script type="math/tex; mode=display">\mathbf{L}(f|\mathbf{D}) = \sum_i^{n}L(y_i,f(\mathbf{x}_i))</script><script type="math/tex; mode=display">f_{boost}=\arg \min \mathbf{L}(\mathbf{\alpha},\mathbf{g}|\mathbf{D}) = \arg \min_{\mathbf{\alpha},\mathbf{g}}\sum_i^{n}L(y_i,\sum_{k=1}^{K}\alpha_kg_k(\mathbf{x}_i))</script><p>It is computationally impossible to optimize the target function with $K$ learners <script type="math/tex">g_k</script> and weights $\alpha_k$ at the same time. Hence, we take the idea of <strong>greedy approach</strong> and optimize the target function <strong>sequentially</strong>. We start from training a weak learner $g_1$ and add more learners one by one to further reduce the loss function. </p>
-<p>Given first $t-1$ learners ensemble optimized <script type="math/tex">f_{boost}^{t-1}=\sum_{k=1}^{t-1}\alpha_k g_k(X)</script>, the k-th learner can be obtained by optimizing:</p>
-<script type="math/tex; mode=display">\min_{\alpha_t}\sum_i^{n}(y_i,f_{boost}^{t-1}(\mathbf{x}_i)+\alpha_tg_t(\mathbf{x}_i))</script><script type="math/tex; mode=display">\alpha_t, g_t = \arg \min_{\alpha, g} \sum_i^{n}(y_i,f_{boost}^{t-1}(\mathbf{x}_i)+\alpha g(\mathbf{x}_i))</script><h2 id="Gradient-Boosting"><a href="#Gradient-Boosting" class="headerlink" title="Gradient Boosting"></a>Gradient Boosting</h2><p>The idea of gradient boosting is to apply a <strong>steepest descent</strong> step to this minimization problem. For arbitrary <strong>differentiable loss function</strong> $L$, </p>
-<script type="math/tex; mode=display">\frac{\partial L(y,\hat{y})}{\partial \hat{y}}|_{\hat{y}=f_{boost}^{t-1}} = f(y,f_{boost}^{t-1}(\mathbf{x})) \doteq r^t</script><p>This gradient value is called pseudo-residuals <script type="math/tex">r^t</script> and it can be calculated for every sample $r_i^t$. In regression task, when loss function is MSE, pseudo-residual is actually real residual.</p>
-<script type="math/tex; mode=display">L(y,g)=(y-g)^2 \\ \frac{\partial L(y,g)}{\partial g} = -2(y-g)</script><p>In classification task,</p>
-<script type="math/tex; mode=display">?</script><p>Let the t-th learner <script type="math/tex">g_t = - r_i^t</script>, adding $g_t$ to must reduce the loss function</p>
-<script type="math/tex; mode=display">\sum_i^{n}(y_i,f_{boost}^{t-1}(\mathbf{x}_i)) \ge \sum_i^{n}(y_i,f_{boost}^{t-1}(\mathbf{x}_i)- \alpha_t r_i^t)</script><p>Ideally we wish to find a learner such that <script type="math/tex">g_t = - r_i^t</script> is true every where, but this is even not possible for all observed samples or worthwhile since this is just a intermediate step during iterations. However, we can still use pseudo-residuals to guide the training of <script type="math/tex">g_t</script>. More concretely, we take pseudo-residuals of <script type="math/tex">f_{boost}^{t-1}</script> as response variable.</p>
-<script type="math/tex; mode=display">D_t=\{(\mathbf{x}_i, r_i^t)\}</script><p>After training $g_k$ we still need to determine a good weight $\alpha_k$ for it. It might be impossible to find a closed form of optimal solution but there are still ways to find one good enough. Line search is one of the basic ways.</p>
-<img src="/2019/12/23/Ensemble/gb.jpg" class="" width="500"> 
-<p>In general, Gradient Boosting includes two stages in each iteration: </p>
-<ol>
-<li>k-th learner <script type="math/tex">g_t</script> is trained by pseudo-residuals (training set <script type="math/tex">D_t=\{(\mathbf{x}_i, r_i^t)\}</script>) </li>
-<li>Line search <script type="math/tex">\alpha_t = \arg \min_{\alpha} \sum_i^{n}(y_i,f_{GB}^{t-1}+\alpha g_t)</script></li>
-</ol>
-<h3 id="Gradient-Boosting-Decision-Tree-GBDT"><a href="#Gradient-Boosting-Decision-Tree-GBDT" class="headerlink" title="Gradient Boosting Decision Tree (GBDT)"></a>Gradient Boosting Decision Tree (GBDT)</h3><p>Take decision tree (CART) being weak learner space as example. For this special case, Friedman proposes a modification to gradient boosting method which improves the quality of fit of each base learner. (by introducing <strong>leaf-wise weight</strong> on base tree learner) Recall that CART <script type="math/tex">g_t</script> partitions the input space into <script type="math/tex">J_{t}</script> disjoint regions <script type="math/tex">R_{1}^t,\ldots ,R_{J_{t}}^t</script> and predicts a constant value in each region. Using the indicator notation, the output of <script type="math/tex">g_t</script> for input <script type="math/tex">\mathbf{x}</script> can be written as the sum: </p>
-<script type="math/tex; mode=display">g_t(\mathbf{x})=\sum_{j=1}^{J_t}b_j^t\mathbf {1} _{R_j^t}(\mathbf{x})</script><p>where $b_j^t$ is the value predicted in the region $R_j^t$. (The partitions for different tree $g_t$ should be distinct otherwise there is no potential to improve the boosting function.) Then Line search </p>
-<script type="math/tex; mode=display">\alpha_t = \arg \min_{\alpha} \sum_i^n L(y_i,f_{GB}^{t-1}+\alpha g_t)</script><p>Friedman proposes to modify this algorithm so that it chooses a separate optimal value $ \alpha_j^t$ for each of the tree($g_t$)`s regions $R_j^t$, rather than a single $\alpha_t$ for the whole tree. He calls the modified algorithm “TreeBoost”. This is equivalent to training the leaves weight $b_j^t$ according to the overall loss function rather than taking the average or voting result as weight (what CARTs do). However, the <strong>partition of $R_j^t$ is still determined by rules used in CART, which is irrelevant to loss function</strong>.</p>
-<script type="math/tex; mode=display">\alpha = \arg \min_{\alpha} \sum_j^{J_t} \sum_{\mathbf{x}_i \in \mathbf{R}_j^t} L(y_i,f_{GB}^{t-1}+\alpha_j^t (\mathbf {1} _{R_j^t}(\mathbf{x}_i)))</script><h3 id="Stochastic-Gradient-Boosting-SGB"><a href="#Stochastic-Gradient-Boosting-SGB" class="headerlink" title="Stochastic Gradient Boosting (SGB)"></a>Stochastic Gradient Boosting (SGB)</h3><p>Friedman proposed a minor modification to the algorithm, motivated by bootstrap aggregation (“bagging”) method at each iteration of the algorithm, a base learner should be fit on a <strong>subsample of the training set</strong> drawn at random without replacement. It not only introduces randomness into the algorithm and help <strong>prevent overfitting</strong>, but also makes <strong>training faster</strong>, because regression trees have to be fit to smaller datasets at each iteration. He obtained that 0.5 ≤ f ≤ 0.8  leads to good results for small and moderate sized training sets. Therefore, f is typically set to 0.5, meaning that one half of the training set is used to build each base learner.</p>
-<h2 id="XGboost"><a href="#XGboost" class="headerlink" title="XGboost"></a>XGboost</h2><p><a href="https://xgboost.readthedocs.io/en/latest/tutorials/model.html" target="_blank" rel="noopener">XGBoost</a> stands for Extreme Gradient Boosting; it is a specific implementation of the Gradient Boosting method which uses more accurate approximations to find the best <strong>tree </strong>model. It employs a number of nifty tricks that make it exceptionally successful, particularly with structured data. </p>
-<ul>
-<li>computing second-order gradients, i.e. second partial derivatives of the loss function (similar to Newton’s method), which provides more information about the direction of gradients and how to get to the minimum of our loss function.</li>
-<li>advanced regularization (L1 &amp; L2), which improves model generalization.</li>
-<li>training is very fast and can be parallelized / distributed across clusters.</li>
-</ul>
-<h3 id="Regularization-on-Model-Complexity"><a href="#Regularization-on-Model-Complexity" class="headerlink" title="Regularization on Model Complexity"></a>Regularization on Model Complexity</h3><p>Recall that CART <script type="math/tex">g_t</script> partitions the input space into <script type="math/tex">J_{t}</script> disjoint regions <script type="math/tex">R_{1}^t,\ldots ,R_{J_{t}}^t</script> and predicts a constant value in each region</p>
-<script type="math/tex; mode=display">g(\mathbf{x})=\sum_{j=1}^{J}b_j\mathbf {1} _{R_j}(\mathbf{x})</script><p>In XGBoost, we define the complexity as</p>
-<script type="math/tex; mode=display">\Omega(g)=\eta J+\frac{1}{2}\lambda \sum_{j=1}^{J}b_j^2</script><p>First term $\eta J$ is the penalty on the number of leaves $J$, which is one source of complexity, and $\eta$ is a hyper-parameter to control the strength of this penalty. Complexity also comes from $b_j$ and the second term is the $L_2$ regularization on $b_j$, which is quite similar to Ridge regression. </p>
-<p>Of course, there is more than one way to define the complexity, but this one works well in practice. The regularization is one part most tree packages treat less carefully, or simply ignore. This was because the traditional treatment of tree learning only emphasized improving impurity, while the complexity control was left to heuristics. </p>
-<p>The objective function for boosting at each iteration can be modified as below</p>
-<script type="math/tex; mode=display">\min_{\alpha_t, g_t}\sum_i^{n}L(y_i,f_{boost}^{t-1}(\mathbf{x}_i)+\alpha_tg_t(\mathbf{x}_i)) + \Omega(\alpha_tg_t)</script><p>A CART $g_t$ weighted by $\alpha_t$ is still a CART,</p>
-<script type="math/tex; mode=display">\alpha_tg_t(\mathbf{x})=\sum_{j=1}^{J}\alpha_tb_j^t\mathbf {1} _{R_j^t}(\mathbf{x})</script><p><strong>Since in following Steps, we do not train a CART by information gain rule or any principle independent from loss function, we can cancel the weight $\alpha_t$</strong></p>
-<script type="math/tex; mode=display">\min_{g_t}\sum_i^{n}L(y_i,f_{boost}^{t-1}(\mathbf{x}_i)+g_t(\mathbf{x}_i)) + \Omega(g_t)</script><h3 id="Tayler-expansion-approximation"><a href="#Tayler-expansion-approximation" class="headerlink" title="Tayler expansion approximation"></a>Tayler expansion approximation</h3><p>One key specialty of XGboost is that it approximates this loss function by taking Taylor expansion of the loss function up to the second order to make <script type="math/tex">\alpha_t,g_t</script> independent from <script type="math/tex">f_{boost}^{t-1}</script></p>
-<script type="math/tex; mode=display">
-\mathbf{L}(\mathbf{g_t|\mathbf{D}}) \approx \sum_i^{n}L(y_i,f_{boost}^{t-1}(\mathbf{x}_i)) + L^1g_t(\mathbf{x}_i) +\frac{1}{2}L^2(g_t(\mathbf{x}_i))^2 + \Omega(g_t)</script><p>where <script type="math/tex">L^1=\frac{\partial L(y,\hat{y})}{\partial \hat{y}}|_{\hat{y}=f_{boost}^{t-1}(\mathbf{x}_i)}</script> and <script type="math/tex">L^2=\frac{\partial L(y,\hat{y})}{\partial \hat{y}^2}|_{\hat{y}=f_{boost}^{t-1}(\mathbf{x}_i)}</script>. </p>
-<p>As observed the first term is a constant, we can remove it.</p>
-<script type="math/tex; mode=display">
-\mathbf{L}(\mathbf{g_t|\mathbf{D}}) =\sum_i^{n} L^1g_t(\mathbf{x}_i) +\frac{1}{2}L^2(g_t(\mathbf{x}_i))^2 + \Omega(g_t)</script><p>One important advantage of this approximation is that the value of the objective function only depends on $L^1$ and $L^2$. This is how XGBoost <strong>supports custom loss functions</strong>. We can optimize every loss function, including logistic regression and pairwise ranking, using exactly the same solver that takes $L^1$ and $L^2$ as input!</p>
-<h3 id="Gradient-Tree-Boosting"><a href="#Gradient-Tree-Boosting" class="headerlink" title="Gradient Tree Boosting"></a>Gradient Tree Boosting</h3><p>Given a known partitions ${R_j^t,\ j=1,\dots,J_t}$ of a CART $g_t$, take $g_t$ and $\Omega(g_t)$ in loss function above, we have</p>
-<script type="math/tex; mode=display">\mathbf{L}(b_j^t|\mathbf{D},R_j^t) =\sum_{j=1}^{J_t}( b_j^t \sum_{\mathbf{x}_i \in R_j^t} L^1 +  (b_j^t)^2 \sum_{\mathbf{x}_i \in R_j^t}\frac{1}{2}L^2 + (b_j^t)^2\frac{1}{2}\lambda) + \eta J</script><p>This is a quadratic form with respect to $b_j^t$, and we can compute the optimal<br>weight $b_j^t$ of region $j$ in $g_t$</p>
-<script type="math/tex; mode=display">b_j^t = -\frac{\sum_{\mathbf{x}_i \in R_j^t} L^1}{\lambda+ \sum_{\mathbf{x}_i \in R_j^t}L^2}</script><p>Once we know the partition, we can always find the best weights by the formula above. If we take it back into the loss function, we can have</p>
-<script type="math/tex; mode=display">\mathbf{L}(R_j^t|\mathbf{D}) = -\frac{1}{2} \frac{(\sum_{\mathbf{x}_i \in R_j^t} L^1)^2}{\lambda+ \sum_{\mathbf{x}_i \in R_j^t}L^2} +\eta J_t</script><p>This is a function only replies on partition. This function(score) is like the impurity score for evaluating decision trees, except that <strong>it is derived for a wider range of objective functions (as long as we can have first and second order derivative)</strong>. </p>
-<p>Now let`s go talk about the partition <script type="math/tex">\{R_j^t,\ j=1,\dots,J_t\}</script>. Similar to information gain rule in CART, <strong>we can use this score as impurity i.e. indicator for greedy approach to determine a split on region</strong> (leaf split). </p>
-<p>For binary tree, assume that <script type="math/tex">R_{left}</script> and <script type="math/tex">R_{right}</script> are the instance sets of left and right nodes after the split <script type="math/tex">R_{parent}= R_{left}\cup R_{right}</script>. Then the loss reduction after the split is given by</p>
-<script type="math/tex; mode=display">\mathbf{L}_{split}=  \frac{1}{2} [ \frac{(\sum_{\mathbf{x}_i \in R_{left}} L^1)^2}{\lambda+ \sum_{\mathbf{x}_i \in R_{left}}L^2} + \frac{(\sum_{\mathbf{x}_i \in R_{left}} L^1)^2}{\lambda+ \sum_{\mathbf{x}_i \in R_{left}}L^2} -  \frac{(\sum_{\mathbf{x}_i \in R_{parent}} L^1)^2}{\lambda+ \sum_{\mathbf{x}_i \in R_{parent}}L^2}] - \eta</script><p>This also makes XGboost different from GBDT, <strong>not only the leaf of weight but also the partition of regions (leaves) are relevant to loss function</strong>.</p>
-<img src="/2019/12/23/Ensemble/xgb.jpg" class="" width="500">
-<h2 id="Adaptive-Boosting-Adaboost"><a href="#Adaptive-Boosting-Adaboost" class="headerlink" title="Adaptive Boosting (Adaboost)"></a>Adaptive Boosting (Adaboost)</h2><p>Adaboost was initially proposed for classification. In binary classification task where $y_i \in \lbrace -1,1 \rbrace$ and $\hat{y}=sign(g(\mathbf{x}_i))$, $g:\mathcal{X} \to [-1,1] $ . It sets loss function as</p>
-<script type="math/tex; mode=display">L(y,\hat{y})=\exp(-y\hat{y})</script><p>which means higher loss for mis-classification and versus (only valid for binary case). For each iteration training k-th learner, the empirical loss function is</p>
-<script type="math/tex; mode=display">\begin{aligned}
-\mathbf{L}(\alpha_t,g_t|\mathbf{D})=&\sum_{i=1}^{n}\exp(-y_i(f_{boost}^{t-1}(\mathbf{x}_i)+\alpha_t g_t(\mathbf{x}_i)))\\
-=&\sum_{i=1}^{n}w_i^t\exp(-y_i\alpha_tg_t(\mathbf{x}_i))\\
-=&\exp(-\alpha_t)\sum_{y_i=g_t(\mathbf{x}_i)}w_i^t +\exp(\alpha_t)\sum_{y_i\ne g_t(\mathbf{x}_i)}w_i^t
-\end{aligned}</script><p>where <script type="math/tex">w_i^t=\exp(-y_i(f_{boost}^{t-1}(\mathbf{x}_i))</script>, which measures the performance of first $t-1$ ensemble on instance $i$. </p>
-<h3 id="Calculate-alpha-t"><a href="#Calculate-alpha-t" class="headerlink" title="Calculate $\alpha_t$"></a>Calculate $\alpha_t$</h3><p>As observed, the effect of <script type="math/tex">\alpha_t</script> and <script type="math/tex">f_{boost}^{t-1}</script> to loss function is independent. Take the first order derivative we have</p>
-<script type="math/tex; mode=display">\begin{aligned}
-\frac{\partial \mathbf{L}(\alpha_t,g_t|\mathbf{D})}{\partial \alpha_t}
-=&-\exp(-\alpha_t)\sum_{y_i=g_t(\mathbf{x}_i)}w_i^t + \exp(\alpha_t) \sum_{y_i\ne g_t(\mathbf{x}_i)}w_i^t
-\end{aligned}</script><p>Set <script type="math/tex">\frac{\partial \mathbf{L}(y,g_t)}{\partial \alpha_t}=0</script> we have</p>
-<script type="math/tex; mode=display">\begin{aligned}
-\alpha_t
-&=\frac{1}{2}\log(\frac{\sum_{y_i=g_t(\mathbf{x}_i)}w_i^t}{\sum_{y_i\ne g_t(\mathbf{x}_i)}w_i^t})\\
-&=\frac{1}{2}\log(\frac{1-e_t}{e_t})
-\end{aligned}</script><p>where $e_t$ is the <strong>weighted training error rate</strong> for $g_t$.</p>
-<script type="math/tex; mode=display">e_t=\frac{\sum_{i=1}^{n}w_i^t\mathbf{1}(y_i=g_t(\mathbf{x}_i))}{\sum_{i=1}^{n}w_i^t}</script><p>Hense, if we know <script type="math/tex">g_t</script> we can get the <strong>closed form</strong> of optimal <script type="math/tex">\alpha_t</script>  directly and discard line searching. </p>
-<h3 id="Weight-Update"><a href="#Weight-Update" class="headerlink" title="Weight Update"></a>Weight Update</h3><p>Once we add update the ensemble, we should update the weight for the next learner <script type="math/tex">g_{t+1}</script> as well. And as the formula shows, it only matters with the last update and the newly added learner performance which can save computation in practice.</p>
-<script type="math/tex; mode=display">\begin{aligned}
-f_{Adaboost}^{t}&=f_{Adaboost}^{t-1} + \alpha_tg_t(\mathbf{x})\\
-w_i^{t+1}&=\exp(-y_if_{Adaboost}^{t})\\
-&=\exp(-y_i(f_{Adaboost}^{t-1} + \alpha_tg_t))\\
-&=w_i^{t}\times\exp(-y_i\alpha_tg_t(\mathbf{x}_i))\end{aligned}</script><h3 id="Train-g-k"><a href="#Train-g-k" class="headerlink" title="Train $g_k$"></a>Train $g_k$</h3><p>In practice, the weak learner may be an algorithm that can use the weights $w_i^t$ on the training examples. Alternatively, when this is not possible, a subset of the training examples can be sampled according to $w_i^t$, and these (unweighted) resampled examples can be used to train the weak learner. [<a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;uact=8&amp;ved=2ahUKEwi0nvyBxd7mAhWNIjQIHeGdD9AQFjAAegQIBhAI&amp;url=https%3A%2F%2Fcseweb.ucsd.edu%2F~yfreund%2Fpapers%2FIntroToBoosting.pdf&amp;usg=AOvVaw21X5ZIA1LN2tzNBYDnISDR" target="_blank" rel="noopener">reference</a>]</p>
-<p>Algorithms that can use weights:???</p>
-<p>Compared with all previous algorithms, one special thing is we <strong>change the weight of training sample</strong> at each iteration of training weak leaner. In general, we assign more wight to samples mis-classified by last weak learner and versus. (<del>Q: Why weighting samples works?</del>A: cuz it was derived and reflected in loss function.)</p>
-<img src="/2019/12/23/Ensemble/ada.jpg" class="" width="500">
-<h3 id="Classification"><a href="#Classification" class="headerlink" title="Classification"></a>Classification</h3><ol>
-<li>Initialize: all training instance have equal sample weight <script type="math/tex">w_i^1=1/N_{train}</script></li>
-<li><p>for t in 1 to K:<br> 2.1 train the learner $g_t$ with sample weighted by <script type="math/tex">w_i^t</script><br> 2.2 </p>
-<ul>
-<li>get the weighted training error rate $e_t$ (<del>mis-classification rate</del>) </li>
-<li>calculate the weight for this learner <script type="math/tex; mode=display">\alpha_t=\frac{1}{2}\log(\frac{1-e_t}{e_t})</script></li>
-</ul>
-<p>2.3 update sample weight</p>
-<script type="math/tex; mode=display">
-w_i^{t+1}=\left\{
-\begin{aligned}
-w_i^t e^{\alpha_i \times -1}, &\ if\ g_t(\mathbf{x}_i)=y_i\\
-w_i^t e^{\alpha_i \times 1}, &\ else\\
-\end{aligned}
-\right.</script><p> if $\mathbf{x}_i$ is correctly classified by $g_t$ the weight should be shrunk by $e^{\alpha_i \times -1}$ otherwise we should emphasize this sample by multiplying $e^{\alpha_i \times 1}$ , else $w_i^t=w_i^{t-1}e^{\alpha_i \times 1}$<br> and then normalize the weight <script type="math/tex">w_i^{t+1}=w_i^{t+1}/ \sum_i w_i^{t+1}</script> </p>
-</li>
-<li>get weighted average of all learners<script type="math/tex; mode=display">g_{Adaboost}=\sum_{t=1}^{K}\alpha_tg_t(X)</script></li>
-</ol>
-<h3 id="Regression-R2"><a href="#Regression-R2" class="headerlink" title="Regression (R2)"></a>Regression (R2)</h3><ol>
-<li>Initialize: all training instance have equal sample weight <script type="math/tex">w_i^1=1/N_{train}</script></li>
-<li>for t in 1 to K:<br> 2.1 train the learner <script type="math/tex">g_t</script> sample weighted by <script type="math/tex">w_i^t</script> and<br> 2.2 <ul>
-<li>get the residuals <script type="math/tex">r_i^t = g_t((\mathbf{x}_i))-y_i</script> and the maximum abs value <script type="math/tex">r_{max}</script> </li>
-<li>calculate the relative error <script type="math/tex">R_i^k = r_i^t/r_{max}</script> or <script type="math/tex">(r_i^t/r_{max})^2</script> or <script type="math/tex">1- \exp(- r_i^t/r_{max})</script> and take the weighted average as error rate <script type="math/tex; mode=display">e_t=\sum_i w_i^tR_i^t</script></li>
-<li>Then calculate the weight<script type="math/tex; mode=display">\alpha_t=e_t/(1-e_t)</script>2.3 Update weights $w_i^{t+1}=w_i^k(\alpha_t)^{1-e_i^t}$ and normalize the weight  <script type="math/tex; mode=display">w_i^{k+1}=w_i^{t+1}/ \sum_i w_i^{t+1}</script></li>
-</ul>
-</li>
-<li>get weighted average of all learners<script type="math/tex; mode=display">g_{Adaboost}=\sum_{t=1}^{K}\alpha_tg_t(\mathbf{x})</script></li>
-</ol>
-<p>Basically the process of training classification or regression model is same (at each iteration $t$, train $g_t$, calculate error rate $e_t$, calculate weight $\alpha_t$ for $g_t$ and update sample weights according to $g_t$). The only difference lies in how to calculate the error rate and weights. </p>
-<h3 id="Regularization"><a href="#Regularization" class="headerlink" title="Regularization"></a>Regularization</h3><p>In order to avoid over-fitting, Adaboost also introduced regularization term, which is a shrinkage multiplier on base leaner weight</p>
-<script type="math/tex; mode=display">\alpha_t=v\alpha_t</script><p>where $v\in (0,1)$. This shrinkage multiplier $v$ is also called learning rate.</p>
-<h2 id="Boosting-Tree-Summary"><a href="#Boosting-Tree-Summary" class="headerlink" title="Boosting Tree Summary"></a>Boosting Tree Summary</h2><p>Briefly speaking, there are three types of boosting tree introduced above. All three use greedy approach to train a sequence of decision trees.</p>
-<ul>
-<li>GBDT(SGBDT)<ul>
-<li>first order Taylor approximation on loss function</li>
-<li>training with <strong>pseudo-residuals from predecessor</strong></li>
-<li>training leaf weight according to loss function but requires <strong>line search</strong></li>
-<li>training partition independently</li>
-<li>introduced stochastic sampling as regularization</li>
-</ul>
-</li>
-<li>XGboost<ul>
-<li>A second order Taylor approximation is imposed on loss function</li>
-<li>training with original data</li>
-<li><strong>calculating </strong>leaf weight with a closed form (relevant to loss function)</li>
-<li>training partition is dependent on loss function (first and second order derivative)</li>
-<li>flexibility on regularization</li>
-</ul>
-</li>
-<li>Adaboost<ul>
-<li>fixed loss function that only makes sense in binary classification</li>
-<li>training with <strong>weighted</strong> data</li>
-<li>training leaf weight <strong>semi</strong> according to loss function ($\alpha_k^t$ is relevant to loss function)</li>
-<li>training partition independently</li>
-<li>introduced shrinkage parameter (learning rate) as regularization</li>
-</ul>
-</li>
-</ul>
-<p>In summary, only XGboost contains no independent training step. Independence of GBDT lies in partition while Adaboost also has independent leaves weight training. More flexibility on regularization can be achieved in XGboost as they emphasized in their paper (most boosting methods did not pay enough attention on regularization)</p>
-<h2 id="LightBGM"><a href="#LightBGM" class="headerlink" title="LightBGM"></a>LightBGM</h2><h2 id="Catboost"><a href="#Catboost" class="headerlink" title="Catboost"></a>Catboost</h2>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/28/Entropy/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Jiaxin Zhang">
-      <meta itemprop="description" content="Curious, Open-eyed, Humble, Prepared, Sensitive.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jiaxin Zhang">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/11/28/Entropy/" class="post-title-link" itemprop="url">Gini Index vs Entropy</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-11-28 19:34:18" itemprop="dateCreated datePublished" datetime="2019-11-28T19:34:18-07:00">2019-11-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-01-07 22:14:43" itemprop="dateModified" datetime="2020-01-07T22:14:43-07:00">2020-01-07</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>Gini Index</strong> and <strong>Entropy</strong> are two types of measure of <strong>impurity $I$</strong> (dispersion, inequality or variance) of <strong>categorical</strong> distribution which is used in information-gain rules in decision tree. Given $k$ categories and corresponding probability $p_k$, <strong>Gini Index</strong> (also called <a href="https://en.wikipedia.org/wiki/Gini_coefficient" target="_blank" rel="noopener">Gini coefficient</a>) is defined as below :</p>
-<script type="math/tex; mode=display">I_{Gini}(p) = \sum_{i=1}^{k}p_i(1-p_i) = 1-\sum_{i=1}^{k}p_i^2 \in (0,1-\frac{1}{k})</script><p>while <strong>Entropy</strong> is defined as below:</p>
-<script type="math/tex; mode=display">I_{Entropy}(p) = -\sum_{i=1}^{k}p_i\log(p_i) \in (0,1)</script><h1 id="Similarity"><a href="#Similarity" class="headerlink" title="Similarity"></a>Similarity</h1><ul>
-<li>formula</li>
-<li>relationship with impurity: The more impurity the distribution is, the larger either measure is.</li>
-</ul>
-<h1 id="Difference"><a href="#Difference" class="headerlink" title="Difference"></a>Difference</h1><ul>
-<li>computing efficiency: Entropy is more computationally heavy due to the log in the equation. </li>
-<li>sensitivity to tiny prob: Entropy is more sensitive to small prob (<0.2) and less sensitive to large prob (>0.2), which means <strong>sensitivity to noise</strong> at the same time.</li>
-</ul>
-<h1 id="Information-gain-rule"><a href="#Information-gain-rule" class="headerlink" title="Information-gain rule"></a>Information-gain rule</h1><p>Decision tree consists of sequence of decision nodes. In decision tree training algorithm, we recursively determine the decision nodes with respect to </p>
-<ul>
-<li>which feature or variable we use</li>
-<li>where the decision boundary(s) for children nodes, i.e. where to split</li>
-</ul>
-<p>Information-gain rule is the guide for determining the decision nodes. <strong>Information-gain</strong> is defined as the difference of information (impurity) between all children nodes and their parent node. In other words, <strong>it measures how much information the splitting carries</strong>. Given the parent node $a$ is split into several children nodes $c_i$ by a splitting $T$, the Information-gain is defined as</p>
-<script type="math/tex; mode=display">IG(T,a) = I(p(a)) - \sum_{i}\frac{|c_i|}{|p|}I(p(c_i))</script><p>where $|a|$ means the number of samples in node $a$ and $p(a)$ means the distribution of node $a$.</p>
-<p>The idea of <strong>Information-gain rule</strong> is greedy algorithm. For each node, without other constrains(max depth, nothing to split), we use the splitting that results in <strong>maximum information gain</strong> and we recursively repeat layer by layer, node by node until all nodes contains no information (impurity is 0). It might stop early if there is constrain on the number of layers (max depth). For regression tree where the target variable is continuous, the impurity is measured by <strong>MSE</strong></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/03/SSC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Jiaxin Zhang">
-      <meta itemprop="description" content="Curious, Open-eyed, Humble, Prepared, Sensitive.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jiaxin Zhang">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/11/03/SSC/" class="post-title-link" itemprop="url">SSC</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2019-11-03 17:25:03 / Modified: 19:34:03" itemprop="dateCreated datePublished" datetime="2019-11-03T17:25:03-07:00">2019-11-03</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> random <span class="keyword">as</span> rd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> matplotlib.image <span class="keyword">as</span> mpimg</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.chdir(<span class="string">"C:\\Users\\jason\\Desktop\\SSC2019CaseStudy"</span>)</span><br><span class="line"><span class="keyword">import</span> utils</span><br><span class="line"><span class="keyword">import</span> warnings</span><br><span class="line">warnings.filterwarnings(<span class="string">'ignore'</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="Explore-the-cell-images"><a href="#Explore-the-cell-images" class="headerlink" title="Explore the cell images"></a>Explore the cell images</h1><h2 id="load-train-dataset"><a href="#load-train-dataset" class="headerlink" title="load train dataset"></a>load train dataset</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df=pd.read_csv(<span class="string">'train_label.csv'</span>,index_col=<span class="string">'image_name'</span>)</span><br><span class="line">df.head()</span><br></pre></td></tr></table></figure>
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>image_name</th>
-      <th>count</th>
-      <th>blur</th>
-      <th>stain</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>A01_C1_F1_s01_w2.TIF</th>
-      <td>1</td>
-      <td>1</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>A01_C1_F1_s02_w1.TIF</th>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>A01_C1_F1_s02_w2.TIF</th>
-      <td>1</td>
-      <td>1</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>A01_C1_F1_s03_w2.TIF</th>
-      <td>1</td>
-      <td>1</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>A01_C1_F1_s04_w2.TIF</th>
-      <td>1</td>
-      <td>1</td>
-      <td>2</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">n=<span class="number">2</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">    plt.subplot(<span class="number">1</span>,n,i+<span class="number">1</span>)</span><br><span class="line">    img_name=rd.choice(df.index)</span><br><span class="line">    im = Image.open(<span class="string">'train/'</span>+img_name)</span><br><span class="line">    im=np.array(im)</span><br><span class="line">    plt.imshow(im,cmap=<span class="string">'gray'</span>)</span><br><span class="line">    plt.title(img_name)</span><br><span class="line">    plt.axis(<span class="string">'off'</span>)</span><br></pre></td></tr></table></figure>
-<img src="/2019/11/03/SSC/output_3_0.png" class="" title="This is an image">
-<h2 id="compare-img-with-different-cell-count"><a href="#compare-img-with-different-cell-count" class="headerlink" title="compare img with different cell count"></a>compare img with different cell count</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">img_name=[<span class="string">'A01_C1_F1_s13_w1.TIF'</span>,</span><br><span class="line">   <span class="string">'A02_C5_F1_s09_w1.TIF'</span>,</span><br><span class="line">    <span class="string">'A16_C66_F1_s04_w1.TIF'</span>]</span><br><span class="line">n=len(img_name)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">    im = Image.open(<span class="string">'train/'</span>+img_name[i])</span><br><span class="line">    im=np.array(im)</span><br><span class="line">    plt.subplot(n,<span class="number">2</span>,<span class="number">2</span>*i+<span class="number">1</span>)</span><br><span class="line">    plt.imshow(im,cmap=<span class="string">'gray'</span>)</span><br><span class="line">    plt.title(<span class="string">'count = '</span>+ str(df.loc[img_name[i],<span class="string">'count'</span>]))</span><br><span class="line">    plt.axis(<span class="string">'off'</span>)</span><br><span class="line">    plt.subplot(n,<span class="number">2</span>,<span class="number">2</span>*i+<span class="number">2</span>)</span><br><span class="line">    plt.hist(im.reshape(<span class="number">-1</span>,<span class="number">1</span>),bins=range(<span class="number">0</span>,<span class="number">256</span>,<span class="number">1</span>))</span><br><span class="line">    plt.yscale(<span class="string">'log'</span>)</span><br><span class="line">    plt.xlabel(<span class="string">'gray scale'</span>)</span><br></pre></td></tr></table></figure>
-<img src="/2019/11/03/SSC/output_5_0.png" class="" title="This is an image">
-<h2 id="compare-img-with-different-level-of-F-and-w"><a href="#compare-img-with-different-level-of-F-and-w" class="headerlink" title="compare img with different level of F and w"></a>compare img with different level of F and w</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">img_name = df.filter(like=<span class="string">'C14'</span>,axis=<span class="number">0</span>).filter(like=<span class="string">'s11'</span>,axis=<span class="number">0</span>).index</span><br><span class="line">n=len(img_name)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">    im = Image.open(<span class="string">'train/'</span>+img_name[i])</span><br><span class="line">    im=np.array(im)</span><br><span class="line">    plt.subplot(n,<span class="number">2</span>,<span class="number">2</span>*i+<span class="number">1</span>)</span><br><span class="line">    plt.imshow(im,cmap=<span class="string">'gray'</span>)</span><br><span class="line">    plt.title(<span class="string">'count = '</span>+ str(df.loc[img_name[i],<span class="string">'count'</span>]))</span><br><span class="line">    plt.axis(<span class="string">'off'</span>)</span><br><span class="line">    plt.subplot(n,<span class="number">2</span>,<span class="number">2</span>*i+<span class="number">2</span>)</span><br><span class="line">    plt.hist(im.reshape(<span class="number">-1</span>,<span class="number">1</span>),bins=range(<span class="number">0</span>,<span class="number">256</span>,<span class="number">1</span>))</span><br><span class="line">    plt.yscale(<span class="string">'log'</span>)</span><br><span class="line">    plt.xlabel(<span class="string">'gray scale'</span>)</span><br></pre></td></tr></table></figure>
-<img src="/2019/11/03/SSC/output_7_0.png" class="" title="This is an image">
-<h1 id="Linear-regression-with-grey-scale"><a href="#Linear-regression-with-grey-scale" class="headerlink" title="Linear regression with grey scale"></a>Linear regression with grey scale</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Regression <span class="keyword">import</span> PoolRegressor</span><br><span class="line"><span class="keyword">import</span> utils</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> KFold</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error</span><br><span class="line"><span class="keyword">from</span> sklearn.utils <span class="keyword">import</span> shuffle</span><br></pre></td></tr></table></figure>
-<h2 id="For-F1-w1-images"><a href="#For-F1-w1-images" class="headerlink" title="For F1 w1 images"></a>For F1 w1 images</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">F = <span class="string">'F1'</span></span><br><span class="line">w = <span class="string">'w1'</span></span><br><span class="line">X, df = utils.read_imgset(csv_path=<span class="string">'train_label.csv'</span>,train=<span class="literal">True</span>, F=F, w=w, hist = <span class="literal">True</span>)</span><br><span class="line">X, df = shuffle(X, df, random_state=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="cross-validation"><a href="#cross-validation" class="headerlink" title="cross validation"></a>cross validation</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">kf = KFold(n_splits=<span class="number">10</span>)</span><br><span class="line">fit=PoolRegressor(pool= <span class="literal">False</span>)</span><br><span class="line">mse_train=[]</span><br><span class="line">mse_test=[]</span><br><span class="line">df[<span class="string">'pred'</span>]=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> train, test <span class="keyword">in</span> kf.split(X):</span><br><span class="line">    ytrain= df[<span class="string">'count'</span>][train]</span><br><span class="line">    fit.train(X[train,], df[<span class="string">'count'</span>][train])</span><br><span class="line">    ypred=fit.predict(X[train,])</span><br><span class="line">    mse_train.append( mean_squared_error(y_pred=ypred,y_true=df[<span class="string">'count'</span>][train]))</span><br><span class="line">    ypred=fit.predict(X[test,])</span><br><span class="line">    df[<span class="string">'pred'</span>][test]=ypred</span><br><span class="line">    mse_test.append(mean_squared_error(y_pred=ypred,y_true=df[<span class="string">'count'</span>][test]))</span><br><span class="line">print(<span class="string">'train mse = '</span>,np.mean(mse_train),<span class="string">'+/-'</span>, np.std(mse_train))</span><br><span class="line">print(<span class="string">'test mse = '</span>,np.mean(mse_test),<span class="string">'+/-'</span>, np.std(mse_test))</span><br></pre></td></tr></table></figure>
-<pre><code>train mse =  0.09604340485504105 +/- 0.006622262312150045
-test mse =  2.389303273614496 +/- 0.33634267102092574
-</code></pre><p>train mse is way smaller than test mse, <strong>overfitting alert</strong>!</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">residual = np.array(df[<span class="string">'count'</span>]) - np.array(df[<span class="string">'pred'</span>])</span><br><span class="line">fig, ax = plt.subplots(figsize=(<span class="number">6</span>,<span class="number">2.5</span>))</span><br><span class="line">_ = ax.scatter(np.array(df[<span class="string">'count'</span>]),residual)</span><br><span class="line">plt.xlabel(<span class="string">'true count'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'residuals'</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>Text(0, 0.5, &#39;residuals&#39;)
-</code></pre><img src="/2019/11/03/SSC/output_15_1.png" class="" title="This is an image">
-<p>The error increase when more cells in the image</p>
-<h2 id="pooling"><a href="#pooling" class="headerlink" title="pooling"></a>pooling</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">img_name=[<span class="string">'A01_C1_F1_s13_w1.TIF'</span>,</span><br><span class="line">   <span class="string">'A02_C5_F1_s09_w1.TIF'</span>,</span><br><span class="line">    <span class="string">'A16_C66_F1_s04_w1.TIF'</span>]</span><br><span class="line">n=len(img_name)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">    im = Image.open(<span class="string">'train/'</span>+img_name[i])</span><br><span class="line">    im=np.array(im)</span><br><span class="line">    plt.subplot(n,<span class="number">3</span>,<span class="number">3</span>*i+<span class="number">1</span>)</span><br><span class="line">    plt.imshow(im,cmap=<span class="string">'gray'</span>)</span><br><span class="line">    plt.title(<span class="string">'count = '</span>+ str(df.loc[img_name[i],<span class="string">'count'</span>]))</span><br><span class="line">    plt.axis(<span class="string">'off'</span>)</span><br><span class="line">    plt.subplot(n,<span class="number">3</span>,<span class="number">3</span>*i+<span class="number">2</span>)</span><br><span class="line">    plt.hist(im.reshape(<span class="number">-1</span>,<span class="number">1</span>),bins=range(<span class="number">0</span>,<span class="number">256</span>,<span class="number">1</span>))</span><br><span class="line">    plt.yscale(<span class="string">'log'</span>)</span><br><span class="line">    plt.xlabel(<span class="string">'gray scale'</span>)</span><br><span class="line">    plt.subplot(n,<span class="number">3</span>,<span class="number">3</span>*i+<span class="number">3</span>)</span><br><span class="line">    plt.hist(im.reshape(<span class="number">-1</span>,<span class="number">1</span>),bins=range(<span class="number">0</span>,<span class="number">256</span>,<span class="number">15</span>))</span><br><span class="line">    plt.yscale(<span class="string">'log'</span>)</span><br><span class="line">    plt.xlabel(<span class="string">'gray scale'</span>)</span><br></pre></td></tr></table></figure>
-<img src="/2019/11/03/SSC/output_18_0.png" class="" title="This is an image">
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">fit=PoolRegressor(window=<span class="number">15</span>,step=<span class="number">15</span>,pool= <span class="literal">True</span>)</span><br><span class="line">mse_train=[]</span><br><span class="line">mse_test=[]</span><br><span class="line">df[<span class="string">'pooling_pred'</span>]=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> train, test <span class="keyword">in</span> kf.split(X):</span><br><span class="line">    ytrain= df[<span class="string">'count'</span>][train]</span><br><span class="line">    fit.train(X[train,], df[<span class="string">'count'</span>][train])</span><br><span class="line">    ypred=fit.predict(X[train,])</span><br><span class="line">    mse_train.append( mean_squared_error(y_pred=ypred,y_true=df[<span class="string">'count'</span>][train]))</span><br><span class="line">    ypred=fit.predict(X[test,])</span><br><span class="line">    df[<span class="string">'pooling_pred'</span>][test]=ypred</span><br><span class="line">    mse_test.append(mean_squared_error(y_pred=ypred,y_true=df[<span class="string">'count'</span>][test]))</span><br><span class="line">print(<span class="string">'train mse = '</span>,np.mean(mse_train),<span class="string">'+/-'</span>, np.std(mse_train))</span><br><span class="line">print(<span class="string">'test mse = '</span>,np.mean(mse_test),<span class="string">'+/-'</span>, np.std(mse_test))</span><br></pre></td></tr></table></figure>
-<pre><code>train mse =  0.5545320752842191 +/- 0.01830920026615093
-test mse =  0.6205896336762233 +/- 0.17798416968612663
-</code></pre><p>Overfitting issue is solved by pooling (setting wider bins)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">residual = np.array(df[<span class="string">'count'</span>]) - np.array(df[<span class="string">'pooling_pred'</span>])</span><br><span class="line">fig, ax = plt.subplots(figsize=(<span class="number">6</span>,<span class="number">2.5</span>))</span><br><span class="line">_ = ax.scatter(np.array(df[<span class="string">'count'</span>]),residual)</span><br><span class="line">plt.xlabel(<span class="string">'true count'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'residuals'</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>Text(0, 0.5, &#39;residuals&#39;)
-</code></pre><img src="/2019/11/03/SSC/output_21_1.png" class="" title="This is an image">
-<p><strong>heteroscedasticity</strong> the residuals still get larger as the prediction moves from small to large</p>
-<p>How to Fix</p>
-<ul>
-<li>The most frequently successful solution is to <strong>transform</strong> a variable.</li>
-<li>Often heteroscedasticity indicates that a <strong>variable is missing</strong>.</li>
-</ul>
-<h3 id="log-trasforamtion-failed"><a href="#log-trasforamtion-failed" class="headerlink" title="log trasforamtion (failed)"></a>log trasforamtion (failed)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">X_log=np.log(X+<span class="number">1</span>)</span><br><span class="line">fit=PoolRegressor(window=<span class="number">15</span>,step=<span class="number">15</span>,pool= <span class="literal">True</span>)</span><br><span class="line">mse_train=[]</span><br><span class="line">mse_test=[]</span><br><span class="line">df[<span class="string">'log_pred'</span>]=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> train, test <span class="keyword">in</span> kf.split(X):</span><br><span class="line">    ytrain= df[<span class="string">'count'</span>][train]</span><br><span class="line">    fit.train(X_log[train,], df[<span class="string">'count'</span>][train])</span><br><span class="line">    ypred=fit.predict(X_log[train,])</span><br><span class="line">    mse_train.append( mean_squared_error(y_pred=ypred,y_true=df[<span class="string">'count'</span>][train]))</span><br><span class="line">    ypred=fit.predict(X_log[test,])</span><br><span class="line">    df[<span class="string">'log_pred'</span>][test]=ypred</span><br><span class="line">    mse_test.append(mean_squared_error(y_pred=ypred,y_true=df[<span class="string">'count'</span>][test]))</span><br><span class="line">print(<span class="string">'train mse = '</span>,np.mean(mse_train),<span class="string">'+/-'</span>, np.std(mse_train))</span><br><span class="line">print(<span class="string">'test mse = '</span>,np.mean(mse_test),<span class="string">'+/-'</span>, np.std(mse_test))</span><br></pre></td></tr></table></figure>
-<pre><code>train mse =  137.2764500289679 +/- 6.5020079871442205
-test mse =  196.17602353002354 +/- 132.57460287167424
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">residual = np.array(df[<span class="string">'count'</span>]) - np.array(df[<span class="string">'log_pred'</span>])</span><br><span class="line">fig, ax = plt.subplots(figsize=(<span class="number">6</span>,<span class="number">2.5</span>))</span><br><span class="line">_ = ax.scatter(np.array(df[<span class="string">'count'</span>]),residual)</span><br><span class="line">plt.xlabel(<span class="string">'true count'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'residuals'</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>Text(0, 0.5, &#39;residuals&#39;)
-</code></pre><img src="/2019/11/03/SSC/output_25_1.png" class="" title="This is an image">
-<p>Patterns like this indicate that a variable needs to be transformed you probably need to create a <strong>nonlinear</strong> model</p>
-<h2 id="Topology-feature"><a href="#Topology-feature" class="headerlink" title="Topology feature"></a>Topology feature</h2><h2 id="overlapping-example"><a href="#overlapping-example" class="headerlink" title="overlapping example"></a>overlapping example</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/03/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Jiaxin Zhang">
-      <meta itemprop="description" content="Curious, Open-eyed, Humble, Prepared, Sensitive.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jiaxin Zhang">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/11/03/hello-world/" class="post-title-link" itemprop="url">hello-world</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-11-03 16:49:19" itemprop="dateCreated datePublished" datetime="2019-11-03T16:49:19-07:00">2019-11-03</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
 
 
 
@@ -1842,12 +2804,12 @@ test mse =  196.17602353002354 +/- 132.57460287167424
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>

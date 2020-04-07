@@ -51,40 +51,31 @@
   };
 </script>
 
-  <meta name="description" content="In statistics and machine learning, Ensemble method use multiple learning algorithms to obtain better predictive performance than could be obtained from any of the constituent learning algorithms alon">
-<meta name="keywords" content="Machine learning">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Ensemble learning">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;23&#x2F;Ensemble&#x2F;index.html">
+  <meta name="description" content="Curious, Open-eyed, Humble, Prepared, Sensitive.">
+<meta name="keywords" content="Machine Learning, NLP, Statistics, Data Analysis">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jiaxin Zhang">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;page&#x2F;2&#x2F;index.html">
 <meta property="og:site_name" content="Jiaxin Zhang">
-<meta property="og:description" content="In statistics and machine learning, Ensemble method use multiple learning algorithms to obtain better predictive performance than could be obtained from any of the constituent learning algorithms alon">
+<meta property="og:description" content="Curious, Open-eyed, Humble, Prepared, Sensitive.">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;23&#x2F;Ensemble&#x2F;Notation.jpg">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;23&#x2F;Ensemble&#x2F;Ensemble.jpg">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;23&#x2F;Ensemble&#x2F;bagging.jpg">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;23&#x2F;Ensemble&#x2F;rf.jpg">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;23&#x2F;Ensemble&#x2F;gb.jpg">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;23&#x2F;Ensemble&#x2F;xgb.jpg">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;23&#x2F;Ensemble&#x2F;ada.jpg">
-<meta property="og:updated_time" content="2020-01-13T23:18:26.567Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;23&#x2F;Ensemble&#x2F;Notation.jpg">
 
-<link rel="canonical" href="http://yoursite.com/2019/12/23/Ensemble/">
+<link rel="canonical" href="http://yoursite.com/page/2/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: false,
-    isPost: true,
+    isHome: true,
+    isPost: false,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>Ensemble learning | Jiaxin Zhang</title>
+  <title>Jiaxin Zhang</title>
   
 
 
@@ -208,10 +199,10 @@
             
 
   <div class="posts-expand">
-      
+        
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/23/Ensemble/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -225,7 +216,8 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Ensemble learning
+          
+            <a href="/2019/12/23/Ensemble/" class="post-title-link" itemprop="url">Ensemble learning</a>
         </h1>
 
         <div class="post-meta">
@@ -256,7 +248,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>In statistics and machine learning, <a href="https://en.wikipedia.org/wiki/Ensemble_learning" target="_blank" rel="noopener">Ensemble method</a> use <strong>multiple learning algorithms</strong> to obtain better predictive performance than could be obtained from any of the constituent learning algorithms alone.<br>This post is mainly about the theory behind these big names. </p>
+          <p>In statistics and machine learning, <a href="https://en.wikipedia.org/wiki/Ensemble_learning" target="_blank" rel="noopener">Ensemble method</a> use <strong>multiple learning algorithms</strong> to obtain better predictive performance than could be obtained from any of the constituent learning algorithms alone.<br>This post is mainly about the theory behind these big names. </p>
 <h1 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h1><ul>
 <li>data<br>$\mathcal{X}$ input space ($p$ dimensions) $\mathcal{Y}$ output space<br>$\mathbf{x}$ input variable $\mathbf{x} \in \mathcal{X}$<br>$n$ train sample size<br>$\mathbf{x}_i, y_i$ training input and output, $i= 1, \dots, n$<br>$w_i$ weight for sample $\mathbf{x}_i, y_i$<br>$\mathbf{D}=(\mathbf{X},\mathbf{y})$ is the design matrix $(\mathbf{x}_1,\dots, \mathbf{x}_n)^T$ and output vector $(y_1,\dots, y_n)^T$<br>$\mathcal{RC}(D)$ random choice from dataset $D$ <strong>with no replacement</strong><br>$\mathcal{RS}(D)$ random sampling from dataset $D$ <strong>with replacement</strong></li>
 <li>learners<br>$f: \mathcal{X} \to \mathcal{Y}$ arbitrary function<br>$\mathcal{H}$ base learner space<br>$g: \mathcal{X} \to \mathcal{Y}$ and $g \in \mathcal{H}$ a base learner.<br>$g(\mathbf{x}|\mathbf{D})$ a base learner trained with \mathbf{D}<br>$K$ number of base learners<br>$\alpha_k$ weight for $g_k$, $k=1,\dots, K$</li>
@@ -412,42 +404,326 @@ w_i^t e^{\alpha_i \times 1}, &\ else\\
 </ul>
 <p>In summary, only XGboost contains no independent training step. Independence of GBDT lies in partition while Adaboost also has independent leaves weight training. More flexibility on regularization can be achieved in XGboost as they emphasized in their paper (most boosting methods did not pay enough attention on regularization)</p>
 <h2 id="LightBGM"><a href="#LightBGM" class="headerlink" title="LightBGM"></a>LightBGM</h2><h2 id="Catboost"><a href="#Catboost" class="headerlink" title="Catboost"></a>Catboost</h2>
+      
     </div>
 
     
     
     
-
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/Machine-learning/" rel="tag"># Machine learning</a>
-          </div>
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
         
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/28/Entropy/">
 
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-                <a href="/2019/11/28/Entropy/" rel="next" title="Gini Index vs Entropy">
-                  <i class="fa fa-chevron-left"></i> Gini Index vs Entropy
-                </a>
-            </div>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jiaxin Zhang">
+      <meta itemprop="description" content="Curious, Open-eyed, Humble, Prepared, Sensitive.">
+    </span>
 
-            <span class="post-nav-divider"></span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jiaxin Zhang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/28/Entropy/" class="post-title-link" itemprop="url">Gini Index vs Entropy</a>
+        </h1>
 
-            <div class="post-nav-prev post-nav-item">
-                <a href="/2019/12/25/Hyperparameter/" rel="prev" title="Hyperparameter tuning">
-                  Hyperparameter tuning <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
-      </footer>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-11-28 19:34:18" itemprop="dateCreated datePublished" datetime="2019-11-28T19:34:18-07:00">2019-11-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-01-07 22:14:43" itemprop="dateModified" datetime="2020-01-07T22:14:43-07:00">2020-01-07</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
     
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>Gini Index</strong> and <strong>Entropy</strong> are two types of measure of <strong>impurity $I$</strong> (dispersion, inequality or variance) of <strong>categorical</strong> distribution which is used in information-gain rules in decision tree. Given $k$ categories and corresponding probability $p_k$, <strong>Gini Index</strong> (also called <a href="https://en.wikipedia.org/wiki/Gini_coefficient" target="_blank" rel="noopener">Gini coefficient</a>) is defined as below :</p>
+<script type="math/tex; mode=display">I_{Gini}(p) = \sum_{i=1}^{k}p_i(1-p_i) = 1-\sum_{i=1}^{k}p_i^2 \in (0,1-\frac{1}{k})</script><p>while <strong>Entropy</strong> is defined as below:</p>
+<script type="math/tex; mode=display">I_{Entropy}(p) = -\sum_{i=1}^{k}p_i\log(p_i) \in (0,1)</script><h1 id="Similarity"><a href="#Similarity" class="headerlink" title="Similarity"></a>Similarity</h1><ul>
+<li>formula</li>
+<li>relationship with impurity: The more impurity the distribution is, the larger either measure is.</li>
+</ul>
+<h1 id="Difference"><a href="#Difference" class="headerlink" title="Difference"></a>Difference</h1><ul>
+<li>computing efficiency: Entropy is more computationally heavy due to the log in the equation. </li>
+<li>sensitivity to tiny prob: Entropy is more sensitive to small prob (<0.2) and less sensitive to large prob (>0.2), which means <strong>sensitivity to noise</strong> at the same time.</li>
+</ul>
+<h1 id="Information-gain-rule"><a href="#Information-gain-rule" class="headerlink" title="Information-gain rule"></a>Information-gain rule</h1><p>Decision tree consists of sequence of decision nodes. In decision tree training algorithm, we recursively determine the decision nodes with respect to </p>
+<ul>
+<li>which feature or variable we use</li>
+<li>where the decision boundary(s) for children nodes, i.e. where to split</li>
+</ul>
+<p>Information-gain rule is the guide for determining the decision nodes. <strong>Information-gain</strong> is defined as the difference of information (impurity) between all children nodes and their parent node. In other words, <strong>it measures how much information the splitting carries</strong>. Given the parent node $a$ is split into several children nodes $c_i$ by a splitting $T$, the Information-gain is defined as</p>
+<script type="math/tex; mode=display">IG(T,a) = I(p(a)) - \sum_{i}\frac{|c_i|}{|p|}I(p(c_i))</script><p>where $|a|$ means the number of samples in node $a$ and $p(a)$ means the distribution of node $a$.</p>
+<p>The idea of <strong>Information-gain rule</strong> is greedy algorithm. For each node, without other constrains(max depth, nothing to split), we use the splitting that results in <strong>maximum information gain</strong> and we recursively repeat layer by layer, node by node until all nodes contains no information (impurity is 0). It might stop early if there is constrain on the number of layers (max depth). For regression tree where the target variable is continuous, the impurity is measured by <strong>MSE</strong></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/03/SSC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jiaxin Zhang">
+      <meta itemprop="description" content="Curious, Open-eyed, Humble, Prepared, Sensitive.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jiaxin Zhang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/03/SSC/" class="post-title-link" itemprop="url">SSC</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-11-03 17:25:03 / Modified: 19:34:03" itemprop="dateCreated datePublished" datetime="2019-11-03T17:25:03-07:00">2019-11-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> random <span class="keyword">as</span> rd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> matplotlib.image <span class="keyword">as</span> mpimg</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.chdir(<span class="string">"C:\\Users\\jason\\Desktop\\SSC2019CaseStudy"</span>)</span><br><span class="line"><span class="keyword">import</span> utils</span><br><span class="line"><span class="keyword">import</span> warnings</span><br><span class="line">warnings.filterwarnings(<span class="string">'ignore'</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="Explore-the-cell-images"><a href="#Explore-the-cell-images" class="headerlink" title="Explore the cell images"></a>Explore the cell images</h1><h2 id="load-train-dataset"><a href="#load-train-dataset" class="headerlink" title="load train dataset"></a>load train dataset</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df=pd.read_csv(<span class="string">'train_label.csv'</span>,index_col=<span class="string">'image_name'</span>)</span><br><span class="line">df.head()</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>image_name</th>
+      <th>count</th>
+      <th>blur</th>
+      <th>stain</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A01_C1_F1_s01_w2.TIF</th>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>A01_C1_F1_s02_w1.TIF</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>A01_C1_F1_s02_w2.TIF</th>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>A01_C1_F1_s03_w2.TIF</th>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>A01_C1_F1_s04_w2.TIF</th>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">n=<span class="number">2</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">    plt.subplot(<span class="number">1</span>,n,i+<span class="number">1</span>)</span><br><span class="line">    img_name=rd.choice(df.index)</span><br><span class="line">    im = Image.open(<span class="string">'train/'</span>+img_name)</span><br><span class="line">    im=np.array(im)</span><br><span class="line">    plt.imshow(im,cmap=<span class="string">'gray'</span>)</span><br><span class="line">    plt.title(img_name)</span><br><span class="line">    plt.axis(<span class="string">'off'</span>)</span><br></pre></td></tr></table></figure>
+<img src="/2019/11/03/SSC/output_3_0.png" class="" title="This is an image">
+<h2 id="compare-img-with-different-cell-count"><a href="#compare-img-with-different-cell-count" class="headerlink" title="compare img with different cell count"></a>compare img with different cell count</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">img_name=[<span class="string">'A01_C1_F1_s13_w1.TIF'</span>,</span><br><span class="line">   <span class="string">'A02_C5_F1_s09_w1.TIF'</span>,</span><br><span class="line">    <span class="string">'A16_C66_F1_s04_w1.TIF'</span>]</span><br><span class="line">n=len(img_name)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">    im = Image.open(<span class="string">'train/'</span>+img_name[i])</span><br><span class="line">    im=np.array(im)</span><br><span class="line">    plt.subplot(n,<span class="number">2</span>,<span class="number">2</span>*i+<span class="number">1</span>)</span><br><span class="line">    plt.imshow(im,cmap=<span class="string">'gray'</span>)</span><br><span class="line">    plt.title(<span class="string">'count = '</span>+ str(df.loc[img_name[i],<span class="string">'count'</span>]))</span><br><span class="line">    plt.axis(<span class="string">'off'</span>)</span><br><span class="line">    plt.subplot(n,<span class="number">2</span>,<span class="number">2</span>*i+<span class="number">2</span>)</span><br><span class="line">    plt.hist(im.reshape(<span class="number">-1</span>,<span class="number">1</span>),bins=range(<span class="number">0</span>,<span class="number">256</span>,<span class="number">1</span>))</span><br><span class="line">    plt.yscale(<span class="string">'log'</span>)</span><br><span class="line">    plt.xlabel(<span class="string">'gray scale'</span>)</span><br></pre></td></tr></table></figure>
+<img src="/2019/11/03/SSC/output_5_0.png" class="" title="This is an image">
+<h2 id="compare-img-with-different-level-of-F-and-w"><a href="#compare-img-with-different-level-of-F-and-w" class="headerlink" title="compare img with different level of F and w"></a>compare img with different level of F and w</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">img_name = df.filter(like=<span class="string">'C14'</span>,axis=<span class="number">0</span>).filter(like=<span class="string">'s11'</span>,axis=<span class="number">0</span>).index</span><br><span class="line">n=len(img_name)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">    im = Image.open(<span class="string">'train/'</span>+img_name[i])</span><br><span class="line">    im=np.array(im)</span><br><span class="line">    plt.subplot(n,<span class="number">2</span>,<span class="number">2</span>*i+<span class="number">1</span>)</span><br><span class="line">    plt.imshow(im,cmap=<span class="string">'gray'</span>)</span><br><span class="line">    plt.title(<span class="string">'count = '</span>+ str(df.loc[img_name[i],<span class="string">'count'</span>]))</span><br><span class="line">    plt.axis(<span class="string">'off'</span>)</span><br><span class="line">    plt.subplot(n,<span class="number">2</span>,<span class="number">2</span>*i+<span class="number">2</span>)</span><br><span class="line">    plt.hist(im.reshape(<span class="number">-1</span>,<span class="number">1</span>),bins=range(<span class="number">0</span>,<span class="number">256</span>,<span class="number">1</span>))</span><br><span class="line">    plt.yscale(<span class="string">'log'</span>)</span><br><span class="line">    plt.xlabel(<span class="string">'gray scale'</span>)</span><br></pre></td></tr></table></figure>
+<img src="/2019/11/03/SSC/output_7_0.png" class="" title="This is an image">
+<h1 id="Linear-regression-with-grey-scale"><a href="#Linear-regression-with-grey-scale" class="headerlink" title="Linear regression with grey scale"></a>Linear regression with grey scale</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Regression <span class="keyword">import</span> PoolRegressor</span><br><span class="line"><span class="keyword">import</span> utils</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> KFold</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error</span><br><span class="line"><span class="keyword">from</span> sklearn.utils <span class="keyword">import</span> shuffle</span><br></pre></td></tr></table></figure>
+<h2 id="For-F1-w1-images"><a href="#For-F1-w1-images" class="headerlink" title="For F1 w1 images"></a>For F1 w1 images</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">F = <span class="string">'F1'</span></span><br><span class="line">w = <span class="string">'w1'</span></span><br><span class="line">X, df = utils.read_imgset(csv_path=<span class="string">'train_label.csv'</span>,train=<span class="literal">True</span>, F=F, w=w, hist = <span class="literal">True</span>)</span><br><span class="line">X, df = shuffle(X, df, random_state=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="cross-validation"><a href="#cross-validation" class="headerlink" title="cross validation"></a>cross validation</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">kf = KFold(n_splits=<span class="number">10</span>)</span><br><span class="line">fit=PoolRegressor(pool= <span class="literal">False</span>)</span><br><span class="line">mse_train=[]</span><br><span class="line">mse_test=[]</span><br><span class="line">df[<span class="string">'pred'</span>]=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> train, test <span class="keyword">in</span> kf.split(X):</span><br><span class="line">    ytrain= df[<span class="string">'count'</span>][train]</span><br><span class="line">    fit.train(X[train,], df[<span class="string">'count'</span>][train])</span><br><span class="line">    ypred=fit.predict(X[train,])</span><br><span class="line">    mse_train.append( mean_squared_error(y_pred=ypred,y_true=df[<span class="string">'count'</span>][train]))</span><br><span class="line">    ypred=fit.predict(X[test,])</span><br><span class="line">    df[<span class="string">'pred'</span>][test]=ypred</span><br><span class="line">    mse_test.append(mean_squared_error(y_pred=ypred,y_true=df[<span class="string">'count'</span>][test]))</span><br><span class="line">print(<span class="string">'train mse = '</span>,np.mean(mse_train),<span class="string">'+/-'</span>, np.std(mse_train))</span><br><span class="line">print(<span class="string">'test mse = '</span>,np.mean(mse_test),<span class="string">'+/-'</span>, np.std(mse_test))</span><br></pre></td></tr></table></figure>
+<pre><code>train mse =  0.09604340485504105 +/- 0.006622262312150045
+test mse =  2.389303273614496 +/- 0.33634267102092574
+</code></pre><p>train mse is way smaller than test mse, <strong>overfitting alert</strong>!</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">residual = np.array(df[<span class="string">'count'</span>]) - np.array(df[<span class="string">'pred'</span>])</span><br><span class="line">fig, ax = plt.subplots(figsize=(<span class="number">6</span>,<span class="number">2.5</span>))</span><br><span class="line">_ = ax.scatter(np.array(df[<span class="string">'count'</span>]),residual)</span><br><span class="line">plt.xlabel(<span class="string">'true count'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'residuals'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>Text(0, 0.5, &#39;residuals&#39;)
+</code></pre><img src="/2019/11/03/SSC/output_15_1.png" class="" title="This is an image">
+<p>The error increase when more cells in the image</p>
+<h2 id="pooling"><a href="#pooling" class="headerlink" title="pooling"></a>pooling</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">img_name=[<span class="string">'A01_C1_F1_s13_w1.TIF'</span>,</span><br><span class="line">   <span class="string">'A02_C5_F1_s09_w1.TIF'</span>,</span><br><span class="line">    <span class="string">'A16_C66_F1_s04_w1.TIF'</span>]</span><br><span class="line">n=len(img_name)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">    im = Image.open(<span class="string">'train/'</span>+img_name[i])</span><br><span class="line">    im=np.array(im)</span><br><span class="line">    plt.subplot(n,<span class="number">3</span>,<span class="number">3</span>*i+<span class="number">1</span>)</span><br><span class="line">    plt.imshow(im,cmap=<span class="string">'gray'</span>)</span><br><span class="line">    plt.title(<span class="string">'count = '</span>+ str(df.loc[img_name[i],<span class="string">'count'</span>]))</span><br><span class="line">    plt.axis(<span class="string">'off'</span>)</span><br><span class="line">    plt.subplot(n,<span class="number">3</span>,<span class="number">3</span>*i+<span class="number">2</span>)</span><br><span class="line">    plt.hist(im.reshape(<span class="number">-1</span>,<span class="number">1</span>),bins=range(<span class="number">0</span>,<span class="number">256</span>,<span class="number">1</span>))</span><br><span class="line">    plt.yscale(<span class="string">'log'</span>)</span><br><span class="line">    plt.xlabel(<span class="string">'gray scale'</span>)</span><br><span class="line">    plt.subplot(n,<span class="number">3</span>,<span class="number">3</span>*i+<span class="number">3</span>)</span><br><span class="line">    plt.hist(im.reshape(<span class="number">-1</span>,<span class="number">1</span>),bins=range(<span class="number">0</span>,<span class="number">256</span>,<span class="number">15</span>))</span><br><span class="line">    plt.yscale(<span class="string">'log'</span>)</span><br><span class="line">    plt.xlabel(<span class="string">'gray scale'</span>)</span><br></pre></td></tr></table></figure>
+<img src="/2019/11/03/SSC/output_18_0.png" class="" title="This is an image">
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">fit=PoolRegressor(window=<span class="number">15</span>,step=<span class="number">15</span>,pool= <span class="literal">True</span>)</span><br><span class="line">mse_train=[]</span><br><span class="line">mse_test=[]</span><br><span class="line">df[<span class="string">'pooling_pred'</span>]=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> train, test <span class="keyword">in</span> kf.split(X):</span><br><span class="line">    ytrain= df[<span class="string">'count'</span>][train]</span><br><span class="line">    fit.train(X[train,], df[<span class="string">'count'</span>][train])</span><br><span class="line">    ypred=fit.predict(X[train,])</span><br><span class="line">    mse_train.append( mean_squared_error(y_pred=ypred,y_true=df[<span class="string">'count'</span>][train]))</span><br><span class="line">    ypred=fit.predict(X[test,])</span><br><span class="line">    df[<span class="string">'pooling_pred'</span>][test]=ypred</span><br><span class="line">    mse_test.append(mean_squared_error(y_pred=ypred,y_true=df[<span class="string">'count'</span>][test]))</span><br><span class="line">print(<span class="string">'train mse = '</span>,np.mean(mse_train),<span class="string">'+/-'</span>, np.std(mse_train))</span><br><span class="line">print(<span class="string">'test mse = '</span>,np.mean(mse_test),<span class="string">'+/-'</span>, np.std(mse_test))</span><br></pre></td></tr></table></figure>
+<pre><code>train mse =  0.5545320752842191 +/- 0.01830920026615093
+test mse =  0.6205896336762233 +/- 0.17798416968612663
+</code></pre><p>Overfitting issue is solved by pooling (setting wider bins)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">residual = np.array(df[<span class="string">'count'</span>]) - np.array(df[<span class="string">'pooling_pred'</span>])</span><br><span class="line">fig, ax = plt.subplots(figsize=(<span class="number">6</span>,<span class="number">2.5</span>))</span><br><span class="line">_ = ax.scatter(np.array(df[<span class="string">'count'</span>]),residual)</span><br><span class="line">plt.xlabel(<span class="string">'true count'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'residuals'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>Text(0, 0.5, &#39;residuals&#39;)
+</code></pre><img src="/2019/11/03/SSC/output_21_1.png" class="" title="This is an image">
+<p><strong>heteroscedasticity</strong> the residuals still get larger as the prediction moves from small to large</p>
+<p>How to Fix</p>
+<ul>
+<li>The most frequently successful solution is to <strong>transform</strong> a variable.</li>
+<li>Often heteroscedasticity indicates that a <strong>variable is missing</strong>.</li>
+</ul>
+<h3 id="log-trasforamtion-failed"><a href="#log-trasforamtion-failed" class="headerlink" title="log trasforamtion (failed)"></a>log trasforamtion (failed)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">X_log=np.log(X+<span class="number">1</span>)</span><br><span class="line">fit=PoolRegressor(window=<span class="number">15</span>,step=<span class="number">15</span>,pool= <span class="literal">True</span>)</span><br><span class="line">mse_train=[]</span><br><span class="line">mse_test=[]</span><br><span class="line">df[<span class="string">'log_pred'</span>]=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> train, test <span class="keyword">in</span> kf.split(X):</span><br><span class="line">    ytrain= df[<span class="string">'count'</span>][train]</span><br><span class="line">    fit.train(X_log[train,], df[<span class="string">'count'</span>][train])</span><br><span class="line">    ypred=fit.predict(X_log[train,])</span><br><span class="line">    mse_train.append( mean_squared_error(y_pred=ypred,y_true=df[<span class="string">'count'</span>][train]))</span><br><span class="line">    ypred=fit.predict(X_log[test,])</span><br><span class="line">    df[<span class="string">'log_pred'</span>][test]=ypred</span><br><span class="line">    mse_test.append(mean_squared_error(y_pred=ypred,y_true=df[<span class="string">'count'</span>][test]))</span><br><span class="line">print(<span class="string">'train mse = '</span>,np.mean(mse_train),<span class="string">'+/-'</span>, np.std(mse_train))</span><br><span class="line">print(<span class="string">'test mse = '</span>,np.mean(mse_test),<span class="string">'+/-'</span>, np.std(mse_test))</span><br></pre></td></tr></table></figure>
+<pre><code>train mse =  137.2764500289679 +/- 6.5020079871442205
+test mse =  196.17602353002354 +/- 132.57460287167424
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">residual = np.array(df[<span class="string">'count'</span>]) - np.array(df[<span class="string">'log_pred'</span>])</span><br><span class="line">fig, ax = plt.subplots(figsize=(<span class="number">6</span>,<span class="number">2.5</span>))</span><br><span class="line">_ = ax.scatter(np.array(df[<span class="string">'count'</span>]),residual)</span><br><span class="line">plt.xlabel(<span class="string">'true count'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'residuals'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>Text(0, 0.5, &#39;residuals&#39;)
+</code></pre><img src="/2019/11/03/SSC/output_25_1.png" class="" title="This is an image">
+<p>Patterns like this indicate that a variable needs to be transformed you probably need to create a <strong>nonlinear</strong> model</p>
+<h2 id="Topology-feature"><a href="#Topology-feature" class="headerlink" title="Topology feature"></a>Topology feature</h2><h2 id="overlapping-example"><a href="#overlapping-example" class="headerlink" title="overlapping example"></a>overlapping example</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/03/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jiaxin Zhang">
+      <meta itemprop="description" content="Curious, Open-eyed, Humble, Prepared, Sensitive.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jiaxin Zhang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/03/hello-world/" class="post-title-link" itemprop="url">hello-world</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-11-03 16:49:19" itemprop="dateCreated datePublished" datetime="2019-11-03T16:49:19-07:00">2019-11-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
   </article>
   
   
   
 
   </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
@@ -476,7 +752,6 @@ w_i^t e^{\alpha_i \times 1}, &\ else\\
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Notation"><span class="nav-number">1.</span> <span class="nav-text">Notation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hard-amp-soft-voting"><span class="nav-number">2.</span> <span class="nav-text">Hard &amp; soft voting</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bagging"><span class="nav-number">3.</span> <span class="nav-text">Bagging</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OOB-score"><span class="nav-number">3.1.</span> <span class="nav-text">OOB score??</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Random-forest"><span class="nav-number">3.2.</span> <span class="nav-text">Random forest</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Boosting"><span class="nav-number">4.</span> <span class="nav-text">Boosting</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradient-Boosting"><span class="nav-number">4.1.</span> <span class="nav-text">Gradient Boosting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradient-Boosting-Decision-Tree-GBDT"><span class="nav-number">4.1.1.</span> <span class="nav-text">Gradient Boosting Decision Tree (GBDT)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stochastic-Gradient-Boosting-SGB"><span class="nav-number">4.1.2.</span> <span class="nav-text">Stochastic Gradient Boosting (SGB)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XGboost"><span class="nav-number">4.2.</span> <span class="nav-text">XGboost</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Regularization-on-Model-Complexity"><span class="nav-number">4.2.1.</span> <span class="nav-text">Regularization on Model Complexity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tayler-expansion-approximation"><span class="nav-number">4.2.2.</span> <span class="nav-text">Tayler expansion approximation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradient-Tree-Boosting"><span class="nav-number">4.2.3.</span> <span class="nav-text">Gradient Tree Boosting</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Adaptive-Boosting-Adaboost"><span class="nav-number">4.3.</span> <span class="nav-text">Adaptive Boosting (Adaboost)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Calculate-alpha-t"><span class="nav-number">4.3.1.</span> <span class="nav-text">Calculate $\alpha_t$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Weight-Update"><span class="nav-number">4.3.2.</span> <span class="nav-text">Weight Update</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Train-g-k"><span class="nav-number">4.3.3.</span> <span class="nav-text">Train $g_k$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Classification"><span class="nav-number">4.3.4.</span> <span class="nav-text">Classification</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Regression-R2"><span class="nav-number">4.3.5.</span> <span class="nav-text">Regression (R2)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Regularization"><span class="nav-number">4.3.6.</span> <span class="nav-text">Regularization</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Boosting-Tree-Summary"><span class="nav-number">4.4.</span> <span class="nav-text">Boosting Tree Summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LightBGM"><span class="nav-number">4.5.</span> <span class="nav-text">LightBGM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Catboost"><span class="nav-number">4.6.</span> <span class="nav-text">Catboost</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
